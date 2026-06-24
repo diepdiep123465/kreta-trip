@@ -1,0 +1,602 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --blue: #1a6b9e;
+  --blue-dark: #0f4a72;
+  --gold: #c9a227;
+  --olive: #6b8f47;
+  --white: #ffffff;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+}
+
+body {
+  font-family: 'Georgia', serif;
+  background: var(--gray-50);
+  color: var(--gray-900);
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(15, 74, 114, 0.97);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.5rem;
+}
+
+.nav-title {
+  color: var(--gold);
+  font-size: 1.1rem;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.nav-links {
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.nav-links button {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.85);
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.nav-links button:hover,
+.nav-links button.active {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+}
+
+.nav-hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1602343168117-bb8ffe3e2e9f?w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(15,74,114,0.5) 0%, rgba(0,0,0,0.6) 100%);
+}
+
+.hero-content {
+  position: relative;
+  text-align: center;
+  color: white;
+  padding: 2rem;
+}
+
+.hero-content h1 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+  margin-bottom: 0.5rem;
+}
+
+.hero-content .subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 0.5rem;
+}
+
+.hero-content .dates {
+  font-size: 1rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+}
+
+/* SECTIONS */
+section {
+  scroll-margin-top: 60px;
+}
+
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  color: var(--blue-dark);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-title svg {
+  color: var(--gold);
+}
+
+.section-divider {
+  width: 60px;
+  height: 3px;
+  background: var(--gold);
+  margin-bottom: 2rem;
+}
+
+/* STAT TILES */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.stat-tile {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border-top: 3px solid var(--blue);
+}
+
+.stat-tile .value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--blue-dark);
+}
+
+.stat-tile .label {
+  font-size: 0.85rem;
+  color: var(--gray-600);
+  margin-top: 0.25rem;
+}
+
+/* ACCORDION */
+.accordion-item {
+  background: white;
+  border-radius: 10px;
+  margin-bottom: 0.75rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+  overflow: hidden;
+}
+
+.accordion-header {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 1.1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s;
+}
+
+.accordion-header:hover {
+  background: var(--gray-50);
+}
+
+.accordion-header .day-label {
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--blue);
+  margin-bottom: 0.2rem;
+}
+
+.accordion-header .day-title {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--gray-800);
+}
+
+.accordion-header .day-sub {
+  font-size: 0.85rem;
+  color: var(--gray-600);
+  margin-top: 0.2rem;
+}
+
+.accordion-body {
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid var(--gray-100);
+}
+
+.stop-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.stop-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--gray-700);
+}
+
+.stop-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+  margin-top: 0.35rem;
+}
+
+.hotel-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--blue);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  text-decoration: none;
+  margin-top: 0.75rem;
+}
+
+.hotel-chip:hover {
+  background: var(--blue-dark);
+}
+
+/* RESTAURANT CARDS */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.restaurant-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.restaurant-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.restaurant-card-body {
+  padding: 1.25rem;
+}
+
+.restaurant-card h3 {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--gray-800);
+  margin-bottom: 0.3rem;
+}
+
+.restaurant-meta {
+  font-size: 0.8rem;
+  color: var(--gray-600);
+  margin-bottom: 0.5rem;
+}
+
+.restaurant-specialty {
+  font-size: 0.85rem;
+  color: var(--gray-700);
+  font-style: italic;
+}
+
+.stars {
+  color: var(--gold);
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+/* FOOD CAROUSEL */
+.carousel-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.carousel-slide {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.carousel-image {
+  width: 300px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.carousel-text h3 {
+  font-size: 1.4rem;
+  color: var(--blue-dark);
+  margin-bottom: 0.5rem;
+}
+
+.carousel-text p {
+  color: var(--gray-700);
+  line-height: 1.6;
+}
+
+.carousel-dots {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gray-300);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.carousel-dot.active {
+  background: var(--blue);
+}
+
+/* TEXTS */
+.text-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.text-card-header {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  text-align: left;
+}
+
+.text-card-header:hover {
+  background: var(--gray-50);
+}
+
+.text-card-header h3 {
+  font-size: 1rem;
+  color: var(--gray-800);
+}
+
+.text-card-header .author {
+  font-size: 0.8rem;
+  color: var(--blue);
+  margin-top: 0.2rem;
+}
+
+.text-card-body {
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid var(--gray-100);
+}
+
+.text-original {
+  font-style: italic;
+  color: var(--gray-700);
+  margin-bottom: 0.75rem;
+  line-height: 1.7;
+  border-left: 3px solid var(--gold);
+  padding-left: 1rem;
+}
+
+.text-translation {
+  color: var(--gray-600);
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+.text-comment {
+  background: var(--gray-50);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  color: var(--gray-600);
+  line-height: 1.6;
+}
+
+/* WISSEN DROPDOWN */
+.wissen-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.wissen-tab {
+  padding: 0.5rem 1.2rem;
+  border-radius: 20px;
+  border: 2px solid var(--blue);
+  background: none;
+  color: var(--blue);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.wissen-tab.active {
+  background: var(--blue);
+  color: white;
+}
+
+.lexikon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.lexikon-entry {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+}
+
+.lexikon-term {
+  font-weight: bold;
+  color: var(--blue-dark);
+  margin-bottom: 0.3rem;
+}
+
+.lexikon-def {
+  font-size: 0.875rem;
+  color: var(--gray-700);
+  line-height: 1.5;
+}
+
+/* GLOSSAR */
+.glossar-filter {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.glossar-letter {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--gray-300);
+  background: none;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: bold;
+  color: var(--gray-600);
+  transition: all 0.2s;
+}
+
+.glossar-letter.active {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: white;
+}
+
+.glossar-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.glossar-entry {
+  display: flex;
+  gap: 1rem;
+  background: white;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  align-items: baseline;
+}
+
+.glossar-greek {
+  font-weight: bold;
+  color: var(--blue-dark);
+  min-width: 150px;
+  font-style: italic;
+}
+
+.glossar-german {
+  color: var(--gray-700);
+  font-size: 0.9rem;
+}
+
+/* FOOTER */
+footer {
+  background: var(--blue-dark);
+  color: rgba(255,255,255,0.7);
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.875rem;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--blue-dark);
+    padding: 1rem;
+    z-index: 999;
+  }
+  .nav-hamburger {
+    display: block;
+  }
+  .carousel-slide {
+    flex-direction: column;
+  }
+  .carousel-image {
+    width: 100%;
+    height: 200px;
+  }
+}
