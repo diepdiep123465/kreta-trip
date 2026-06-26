@@ -98,7 +98,7 @@ const reiseroute: Reisetag[] = [
     datum: 'Montag, 20. Juli 2026',
     titel: `Messara-Ebene: Gortyn, Festos & Matala`,
     ort: 'Ierapetra → Sfakaki',
-    hotel: { name: `Hotel Dedalos (Sfakaki bei Rethymnon)`, url: `https://maps.google.com/?q=Hotel+Dedalos+Sfakaki+Rethymno` },
+    hotel: { name: `Hotel Dedalos (Sfakaki bei Rethymnon)`, url: `https://www.google.com/maps/dir//Dedalos+Beach+Hotel,+Sfakaki+Pagkalochoriou,+Sfakaki+741+50,+Griechenland/@35.3822296,24.5835855,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x149ba08ffddd9d85:0x9361d1f48972f329!2m2!1d24.5835855!2d35.3822296` },
     stops: [
       `Gortyn – Stadtanlage und Zeusplatane (105 km)`,
       `Festos – minoische Palastanlage (20 km)`,
@@ -113,7 +113,7 @@ const reiseroute: Reisetag[] = [
     datum: 'Dienstag, 21. Juli 2026',
     titel: `Vathipetro, Archanes & Knossos`,
     ort: 'Sfakaki',
-    hotel: { name: `Hotel Dedalos (Sfakaki bei Rethymnon)`, url: `https://maps.google.com/?q=Hotel+Dedalos+Sfakaki+Rethymno` },
+    hotel: { name: `Hotel Dedalos (Sfakaki bei Rethymnon)`, url: `https://www.google.com/maps/dir//Dedalos+Beach+Hotel,+Sfakaki+Pagkalochoriou,+Sfakaki+741+50,+Griechenland/@35.3822296,24.5835855,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x149ba08ffddd9d85:0x9361d1f48972f329!2m2!1d24.5835855!2d35.3822296` },
     stops: [
       `Vathipetro – minoisches Landhaus (90 km)`,
       `Berg Jouchtas (10 km)`,
@@ -128,7 +128,7 @@ const reiseroute: Reisetag[] = [
     datum: 'Mittwoch, 22. Juli 2026',
     titel: `Eleftherna, Arkadi & Rethymnon`,
     ort: 'Sfakaki',
-    hotel: { name: `Hotel Dedalos (Sfakaki bei Rethymnon)`, url: `https://maps.google.com/?q=Hotel+Dedalos+Sfakaki+Rethymno` },
+    hotel: { name: `Hotel Dedalos (Sfakaki bei Rethymnon)`, url: `https://www.google.com/maps/dir//Dedalos+Beach+Hotel,+Sfakaki+Pagkalochoriou,+Sfakaki+741+50,+Griechenland/@35.3822296,24.5835855,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x149ba08ffddd9d85:0x9361d1f48972f329!2m2!1d24.5835855!2d35.3822296` },
     stops: [
       `Eleftherna – minoisch-dorisch-römische Stadt (25 km)`,
       `Moni Arkadi – Stätte des kretischen Widerstandes (10 km)`,
@@ -143,7 +143,7 @@ const reiseroute: Reisetag[] = [
     datum: 'Donnerstag, 23. Juli 2026',
     titel: `Westkreta: Aptera, Chania & Soldatenfriedhöfe`,
     ort: 'Sfakaki',
-    hotel: { name: `Hotel Dedalos (Sfakaki bei Rethymnon)`, url: `https://maps.google.com/?q=Hotel+Dedalos+Sfakaki+Rethymno` },
+    hotel: { name: `Hotel Dedalos (Sfakaki bei Rethymnon)`, url: `https://www.google.com/maps/dir//Dedalos+Beach+Hotel,+Sfakaki+Pagkalochoriou,+Sfakaki+741+50,+Griechenland/@35.3822296,24.5835855,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x149ba08ffddd9d85:0x9361d1f48972f329!2m2!1d24.5835855!2d35.3822296` },
     stops: [
       `Aptera – minoische Siedlung (60 km)`,
       `Chania – Markthalle, Stadtbesichtigung (25 km)`,
