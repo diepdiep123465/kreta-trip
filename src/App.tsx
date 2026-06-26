@@ -267,6 +267,40 @@ const musik: Musikstueck[] = [
   },
 ]
 
+interface SpotifyTrack {
+  trackId: string
+  titel: string
+  interpret: string
+  hinweis: string
+}
+
+const spotifyTracks: SpotifyTrack[] = [
+  {
+    trackId: `3guVK1NSt3hhbGZ2F8WEfu`,
+    titel: `Ta pedia tou Pirea (Die Kinder von Piräus)`,
+    interpret: `Melina Mercouri · Musik: Manos Hadjidakis`,
+    hinweis: `Aus dem Film „Sonntags … nie!" (1960) – als „Never on Sunday" gewann das Lied den Oscar für den besten Song; die wohl bekannteste griechische Filmmelodie neben dem Sirtaki.`,
+  },
+  {
+    trackId: `7D0fsBJbsNpG253teDJhz6`,
+    titel: `Arnisi (Άρνηση – „Verleugnung")`,
+    interpret: `Mikis Theodorakis · Text: Giorgos Seferis`,
+    hinweis: `Vertonung eines Gedichts des Nobelpreisträgers Seferis („Sto perigiali to kryfo"). Eines der berühmtesten griechischen Lieder – bei der Beerdigung Seferis' 1971 zum Symbol des Widerstands gegen die Militärjunta.`,
+  },
+  {
+    trackId: `4omnCI2FNMDnDpyX8cDyyd`,
+    titel: `Sto Perigiali (Instrumental)`,
+    interpret: `Manolis Michalakis`,
+    hinweis: `Instrumentale Fassung von „Arnisi" – Bouzouki-Klänge, die das melancholische Lebensgefühl der griechischen Inselwelt einfangen.`,
+  },
+  {
+    trackId: `7HEdLmRUt8IL6fm4TmVwiu`,
+    titel: `An Anixis Tin Cardia Mou (The Beginning)`,
+    interpret: `Nikos Ignatiadis · Album „Inspiration"`,
+    hinweis: `Moderne griechische Instrumentalmusik – stimmungsvolle Untermalung für die mediterrane Atmosphäre Kretas.`,
+  },
+]
+
 interface Textquelle {
   titel: string
   autor: string
@@ -667,6 +701,29 @@ export default function App() {
                     <h3>{m.titel}</h3>
                     <div className="musik-interpret">{m.interpret}</div>
                     <p>{m.beschreibung}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <h3 style={{ fontSize: '1.3rem', color: '#0f4a72', marginTop: '3rem', marginBottom: '1.25rem' }}>
+              Weitere griechische Klassiker zum Anhören
+            </h3>
+            <div className="spotify-grid">
+              {spotifyTracks.map((t, i) => (
+                <motion.div key={i} className="spotify-card" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} transition={{ delay: i * 0.08 }}>
+                  <iframe
+                    src={`https://open.spotify.com/embed/track/${t.trackId}?theme=0`}
+                    title={t.titel}
+                    width="100%"
+                    height="152"
+                    frameBorder="0"
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    loading="lazy"
+                  />
+                  <div className="spotify-text">
+                    <div className="spotify-interpret">{t.interpret}</div>
+                    <p>{t.hinweis}</p>
                   </div>
                 </motion.div>
               ))}
