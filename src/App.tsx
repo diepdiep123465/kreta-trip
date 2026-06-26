@@ -4,7 +4,7 @@ import {
   MapPin, Hotel, ChevronDown, ChevronUp, Menu, X,
   UtensilsCrossed, BookOpen, Languages,
   Navigation, ExternalLink, Info, Globe,
-  Map, FileText
+  Map, FileText, Music
 } from 'lucide-react'
 import './App.css'
 
@@ -20,6 +20,7 @@ const navItems = [
   { id: 'route',     label: 'Reiseroute', icon: <Navigation size={14} /> },
   { id: 'restaurants', label: 'Restaurants', icon: <UtensilsCrossed size={14} /> },
   { id: 'speisen',   label: 'Speisen',    icon: <UtensilsCrossed size={14} /> },
+  { id: 'musik',     label: 'Musik',      icon: <Music size={14} /> },
   { id: 'texte',     label: 'Texte',      icon: <FileText size={14} /> },
   { id: 'wissen',    label: 'Wissen',     icon: <BookOpen size={14} /> },
   { id: 'glossar',   label: 'Glossar',    icon: <Languages size={14} /> },
@@ -235,6 +236,34 @@ const speisen: Speise[] = [
     name: `Stamnagathi`,
     beschreibung: `Wilder Chicorée, nur auf Kreta vorkommend – roh oder gedämpft mit Olivenöl und Zitrone.`,
     bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Cichorium_spinosum.jpg/800px-Cichorium_spinosum.jpg`,
+  },
+]
+
+interface Musikstueck {
+  titel: string
+  interpret: string
+  videoId: string
+  beschreibung: string
+}
+
+const musik: Musikstueck[] = [
+  {
+    titel: `Sirtaki – Zorbas' Tanz`,
+    interpret: `Mikis Theodorakis · aus „Alexis Sorbas" (1964)`,
+    videoId: `-RqmAK4cJlY`,
+    beschreibung: `Der wohl berühmteste griechische Tanz – komponiert von Mikis Theodorakis für den Film „Alexis Sorbas". Der Sirtaki beginnt langsam (Hasapiko) und steigert sich zu einem immer schnelleren Rhythmus. Ursprünglich für den Film erfunden, wurde er weltweit zum Inbegriff griechischer Lebensfreude.`,
+  },
+  {
+    titel: `Sirtaki – die berühmte Strandszene`,
+    interpret: `Anthony Quinn als Alexis Sorbas`,
+    videoId: `GIoHp6mr9Vg`,
+    beschreibung: `Die legendäre Schlussszene des Films: Anthony Quinn lehrt am kretischen Strand den Sirtaki – Sinnbild dafür, dem Leben trotz aller Rückschläge tanzend zu begegnen. Gedreht wurde sie am Strand von Stavros auf der Halbinsel Akrotiri bei Chania.`,
+  },
+  {
+    titel: `Zorba's Dance – Original-Filmmusik`,
+    interpret: `Mikis Theodorakis [Original Score]`,
+    videoId: `Xsen9Jh-TPo`,
+    beschreibung: `Die originale Orchesterfassung der Filmmusik. Charakteristisch ist der Klang der Bouzouki – des griechischen Zupfinstruments, das durch diese Komposition weltberühmt wurde.`,
   },
 ]
 
@@ -605,6 +634,42 @@ export default function App() {
                   />
                 ))}
               </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* MUSIK */}
+      <section id="musik" style={{ background: 'white' }}>
+        <div className="section-container">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}>
+            <h2 className="section-title"><Music size={28} /> Musik</h2>
+            <div className="section-divider" />
+            <p style={{ color: '#374151', lineHeight: 1.7, marginBottom: '2rem', maxWidth: 720 }}>
+              Kein anderes Stück verkörpert das Lebensgefühl Griechenlands so sehr wie der <strong>Sirtaki</strong> aus
+              dem Film <em>„Alexis Sorbas"</em> (1964). Die Musik stammt von <strong>Mikis Theodorakis</strong>, gespielt
+              auf der <strong>Bouzouki</strong> – dem griechischen Nationalinstrument. Obwohl der Tanz eigens für den Film
+              komponiert wurde, gilt er heute als Inbegriff der griechischen Folklore.
+            </p>
+            <div className="musik-grid">
+              {musik.map((m, i) => (
+                <motion.div key={i} className="musik-card" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} transition={{ delay: i * 0.1 }}>
+                  <div className="musik-video">
+                    <iframe
+                      src={`https://www.youtube-nocookie.com/embed/${m.videoId}`}
+                      title={m.titel}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="musik-body">
+                    <h3>{m.titel}</h3>
+                    <div className="musik-interpret">{m.interpret}</div>
+                    <p>{m.beschreibung}</p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
         </div>
