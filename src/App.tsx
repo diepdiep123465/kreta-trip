@@ -51,7 +51,7 @@ const reiseroute: Reisetag[] = [
     datum: 'Freitag, 17. Juli 2026',
     titel: `Anreise & Lassithi-Hochebene`,
     ort: 'Salzburg → Ierapetra',
-    hotel: { name: `Hotel Coriva Beach`, url: `https://maps.google.com/?q=Coriva+Beach+Hotel+Ierapetra` },
+    hotel: { name: `Hotel Coriva Beach`, url: `https://www.google.com/maps?um=1&ie=UTF-8&fb=1&gl=at&sa=X&geocode=KQ1Z23enfJAUMQ79SujApZWe&daddr=%CE%9A%CE%BF%CF%85%CF%84%CF%83%CE%BF%CF%85%CE%BD%CE%AC%CF%81%CE%B9,+%CE%91%CE%B3.+%CE%99%CF%89%CE%AC%CE%BD%CE%BD%CE%B7%CF%82+722+00,+Griechenland` },
     stops: [
       `Flug Salzburg – Heraklion`,
       `Lassithi-Hochebene – landschaftlich reizvolle Fahrt (95 km)`,
@@ -66,7 +66,7 @@ const reiseroute: Reisetag[] = [
     datum: 'Samstag, 18. Juli 2026',
     titel: `Ostkreta: Gournia, Zakros & Vai`,
     ort: 'Ierapetra',
-    hotel: { name: `Hotel Coriva Beach`, url: `https://maps.google.com/?q=Coriva+Beach+Hotel+Ierapetra` },
+    hotel: { name: `Hotel Coriva Beach`, url: `https://www.google.com/maps?um=1&ie=UTF-8&fb=1&gl=at&sa=X&geocode=KQ1Z23enfJAUMQ79SujApZWe&daddr=%CE%9A%CE%BF%CF%85%CF%84%CF%83%CE%BF%CF%85%CE%BD%CE%AC%CF%81%CE%B9,+%CE%91%CE%B3.+%CE%99%CF%89%CE%AC%CE%BD%CE%BD%CE%B7%CF%82+722+00,+Griechenland` },
     stops: [
       `Gournia – minoische Stadt (25 km)`,
       `Sitia – Archäologisches Museum (50 km)`,
@@ -82,7 +82,7 @@ const reiseroute: Reisetag[] = [
     datum: 'Sonntag, 19. Juli 2026',
     titel: `Spinalonga, Lato & Agios Nikolaos`,
     ort: 'Ierapetra',
-    hotel: { name: `Hotel Coriva Beach`, url: `https://maps.google.com/?q=Coriva+Beach+Hotel+Ierapetra` },
+    hotel: { name: `Hotel Coriva Beach`, url: `https://www.google.com/maps?um=1&ie=UTF-8&fb=1&gl=at&sa=X&geocode=KQ1Z23enfJAUMQ79SujApZWe&daddr=%CE%9A%CE%BF%CF%85%CF%84%CF%83%CE%BF%CF%85%CE%BD%CE%AC%CF%81%CE%B9,+%CE%91%CE%B3.+%CE%99%CF%89%CE%AC%CE%BD%CE%BD%CE%B7%CF%82+722+00,+Griechenland` },
     stops: [
       `Olous / Spinalonga – versunkene römische Stadt (65 km)`,
       `Kritsa – Kirche Panagia Kera (20 km)`,
