@@ -375,25 +375,141 @@ const zeittafel: LexikonEintrag[] = [
 ]
 
 interface GlossarEintrag {
-  griechisch: string
   deutsch: string
+  griechisch: string
+  aussprache: string
 }
 
-const glossar: GlossarEintrag[] = [
-  { griechisch: `ἀγορά (agorá)`, deutsch: `Marktplatz, Volksversammlung` },
-  { griechisch: `ἄκρα (ákra)`, deutsch: `Kap, Vorgebirge` },
-  { griechisch: `ἀνάκτορον (anáktoron)`, deutsch: `Palast, Herrscherresidenz` },
-  { griechisch: `γλαῦκα (glaúka)`, deutsch: `blaugrau, meeresfarben` },
-  { griechisch: `δαίδαλος (daídalos)`, deutsch: `kunstvoll gearbeitet; Eigenname Daidalos` },
-  { griechisch: `θάλασσα (thálassa)`, deutsch: `Meer, See` },
-  { griechisch: `κρήτη (Krḗtē)`, deutsch: `Kreta (Inselname)` },
-  { griechisch: `λαβύρινθος (labýrinthos)`, deutsch: `Labyrinth (vorgrch. Lehnwort: Haus der Doppelaxt)` },
-  { griechisch: `μίνως (Mínōs)`, deutsch: `Minos (Königsname und Titel)` },
-  { griechisch: `νῆσος (nêsos)`, deutsch: `Insel` },
-  { griechisch: `ξένος (xénos)`, deutsch: `Fremder, Gast; Gastfreundschaft` },
-  { griechisch: `ὄλυμπος (Ólympos)`, deutsch: `Olympos (Götterberg)` },
-  { griechisch: `πόλις (pólis)`, deutsch: `Stadt, Stadtstaat` },
-  { griechisch: `τέκτων (téktōn)`, deutsch: `Zimmermann, Handwerker, Erbauer` },
+interface GlossarKategorie {
+  name: string
+  eintraege: GlossarEintrag[]
+}
+
+// Sprachführer aus dem Kreta-Heft (Teil 3), Deutsch ↔ Neugriechisch
+const glossarKategorien: GlossarKategorie[] = [
+  {
+    name: `Das Wichtigste`,
+    eintraege: [
+      { deutsch: `Ja / Nein`, griechisch: `Ναι / Όχι`, aussprache: `ne / óchi` },
+      { deutsch: `Bitte`, griechisch: `Παρακαλώ`, aussprache: `parakaló` },
+      { deutsch: `Danke`, griechisch: `Ευχαριστώ`, aussprache: `efcharistó` },
+      { deutsch: `Entschuldigung!`, griechisch: `Συγγνώμη`, aussprache: `sighnómi` },
+      { deutsch: `Wie bitte?`, griechisch: `Ορίστε;`, aussprache: `oríste` },
+      { deutsch: `Ich verstehe Sie nicht.`, griechisch: `Δεν σας καταλαβαίνω.`, aussprache: `den sas katalavéno` },
+      { deutsch: `Können Sie mir helfen?`, griechisch: `Μπορείτε να με βοηθήσετε;`, aussprache: `boríte na me voithísete` },
+      { deutsch: `Ich möchte …`, griechisch: `Θέλω …`, aussprache: `thélo` },
+      { deutsch: `Haben Sie …?`, griechisch: `Έχετε …;`, aussprache: `échete` },
+      { deutsch: `Wie viel kostet das?`, griechisch: `Πόσο κοστίζει;`, aussprache: `póso kostízi` },
+      { deutsch: `Wie viel Uhr ist es?`, griechisch: `Τι ώρα είναι;`, aussprache: `ti óra íne` },
+      { deutsch: `Guten Morgen / Guten Tag`, griechisch: `Καλημέρα`, aussprache: `kaliméra` },
+      { deutsch: `Guten Abend`, griechisch: `Καλησπέρα`, aussprache: `kalispéra` },
+      { deutsch: `Gute Nacht`, griechisch: `Καληνύχτα`, aussprache: `kaliníchta` },
+      { deutsch: `Hallo! / Tschüs!`, griechisch: `Γεια σου`, aussprache: `ya su` },
+      { deutsch: `Auf Wiedersehen`, griechisch: `Αντίο`, aussprache: `adío` },
+      { deutsch: `Wie geht es Ihnen?`, griechisch: `Πώς είστε;`, aussprache: `pos íste` },
+      { deutsch: `Mein Name ist …`, griechisch: `Το όνομά μου είναι …`, aussprache: `to ónomá mu íne` },
+      { deutsch: `gestern / heute / morgen`, griechisch: `χθες / σήμερα / αύριο`, aussprache: `chthes / símera / ávrio` },
+    ],
+  },
+  {
+    name: `Wochentage`,
+    eintraege: [
+      { deutsch: `Montag`, griechisch: `Δευτέρα`, aussprache: `deftéra` },
+      { deutsch: `Dienstag`, griechisch: `Τρίτη`, aussprache: `tríti` },
+      { deutsch: `Mittwoch`, griechisch: `Τετάρτη`, aussprache: `tetárti` },
+      { deutsch: `Donnerstag`, griechisch: `Πέμπτη`, aussprache: `pémpti` },
+      { deutsch: `Freitag`, griechisch: `Παρασκευή`, aussprache: `paraskeví` },
+      { deutsch: `Samstag`, griechisch: `Σάββατο`, aussprache: `sávato` },
+      { deutsch: `Sonntag`, griechisch: `Κυριακή`, aussprache: `kiriakí` },
+    ],
+  },
+  {
+    name: `Monate`,
+    eintraege: [
+      { deutsch: `Januar`, griechisch: `Ιανουάριος`, aussprache: `ianuários` },
+      { deutsch: `Februar`, griechisch: `Φεβρουάριος`, aussprache: `fevruários` },
+      { deutsch: `März`, griechisch: `Μάρτιος`, aussprache: `mártios` },
+      { deutsch: `April`, griechisch: `Απρίλιος`, aussprache: `aprílios` },
+      { deutsch: `Mai`, griechisch: `Μάιος`, aussprache: `máios` },
+      { deutsch: `Juni`, griechisch: `Ιούνιος`, aussprache: `iúnios` },
+      { deutsch: `Juli`, griechisch: `Ιούλιος`, aussprache: `iúlios` },
+      { deutsch: `August`, griechisch: `Αύγουστος`, aussprache: `ávgustos` },
+      { deutsch: `September`, griechisch: `Σεπτέμβριος`, aussprache: `septémvrios` },
+      { deutsch: `Oktober`, griechisch: `Οκτώβριος`, aussprache: `októvrios` },
+      { deutsch: `November`, griechisch: `Νοέμβριος`, aussprache: `noémvrios` },
+      { deutsch: `Dezember`, griechisch: `Δεκέμβριος`, aussprache: `dekémvrios` },
+    ],
+  },
+  {
+    name: `Zahlen`,
+    eintraege: [
+      { deutsch: `1`, griechisch: `ένα`, aussprache: `éna` },
+      { deutsch: `2`, griechisch: `δύο`, aussprache: `dío` },
+      { deutsch: `3`, griechisch: `τρία`, aussprache: `tría` },
+      { deutsch: `4`, griechisch: `τέσσερα`, aussprache: `téssera` },
+      { deutsch: `5`, griechisch: `πέντε`, aussprache: `pénde` },
+      { deutsch: `6`, griechisch: `έξι`, aussprache: `éxi` },
+      { deutsch: `7`, griechisch: `εφτά`, aussprache: `eftá` },
+      { deutsch: `8`, griechisch: `οχτώ`, aussprache: `ochtó` },
+      { deutsch: `9`, griechisch: `εννέα`, aussprache: `enéa` },
+      { deutsch: `10`, griechisch: `δέκα`, aussprache: `déka` },
+      { deutsch: `11`, griechisch: `έντεκα`, aussprache: `éndeka` },
+      { deutsch: `12`, griechisch: `δώδεκα`, aussprache: `dódeka` },
+      { deutsch: `20`, griechisch: `είκοσι`, aussprache: `íkosi` },
+      { deutsch: `30`, griechisch: `τριάντα`, aussprache: `triánda` },
+      { deutsch: `40`, griechisch: `σαράντα`, aussprache: `saránda` },
+      { deutsch: `50`, griechisch: `πενήντα`, aussprache: `penínda` },
+      { deutsch: `100`, griechisch: `εκατό`, aussprache: `ekató` },
+      { deutsch: `1000`, griechisch: `χίλια`, aussprache: `chília` },
+    ],
+  },
+  {
+    name: `Unterwegs`,
+    eintraege: [
+      { deutsch: `Nord / Süd`, griechisch: `Βορράς / Νότος`, aussprache: `vorás / nótos` },
+      { deutsch: `West / Ost`, griechisch: `Δύση / Ανατολή`, aussprache: `dísi / anatolí` },
+      { deutsch: `geradeaus`, griechisch: `ευθεία`, aussprache: `efthía` },
+      { deutsch: `links / rechts`, griechisch: `αριστερά / δεξιά`, aussprache: `aristerá / dexiá` },
+      { deutsch: `nah / weit`, griechisch: `κοντά / μακριά`, aussprache: `kondá / makriá` },
+      { deutsch: `Wo ist …?`, griechisch: `Πού είναι …;`, aussprache: `pu íne` },
+      { deutsch: `Bank`, griechisch: `τράπεζα`, aussprache: `trápeza` },
+      { deutsch: `Post`, griechisch: `ταχυδρομείο`, aussprache: `tachidromío` },
+      { deutsch: `Polizei`, griechisch: `αστυνομία`, aussprache: `astinomía` },
+      { deutsch: `Flughafen`, griechisch: `αεροδρόμιο`, aussprache: `aerodrómio` },
+      { deutsch: `Hafen`, griechisch: `λιμάνι`, aussprache: `limáni` },
+      { deutsch: `Markt`, griechisch: `αγορά`, aussprache: `agorá` },
+      { deutsch: `Bus`, griechisch: `λεωφορείο`, aussprache: `leoforío` },
+    ],
+  },
+  {
+    name: `Im Hotel`,
+    eintraege: [
+      { deutsch: `Hotel`, griechisch: `ξενοδοχείο`, aussprache: `xenodochío` },
+      { deutsch: `Einzelzimmer`, griechisch: `μονόκλινο δωμάτιο`, aussprache: `monóklino domátio` },
+      { deutsch: `Doppelzimmer`, griechisch: `δίκλινο δωμάτιο`, aussprache: `díklino domátio` },
+      { deutsch: `mit Bad`, griechisch: `με μπάνιο`, aussprache: `me bánio` },
+      { deutsch: `für eine Nacht`, griechisch: `για μία νύχτα`, aussprache: `ya mía níchta` },
+      { deutsch: `Schlüssel`, griechisch: `κλειδί`, aussprache: `klidí` },
+    ],
+  },
+  {
+    name: `Essen & Trinken`,
+    eintraege: [
+      { deutsch: `Speisekarte`, griechisch: `κατάλογος`, aussprache: `katálogos` },
+      { deutsch: `Die Rechnung, bitte`, griechisch: `Τον λογαριασμό, παρακαλώ`, aussprache: `ton logariasmó parakaló` },
+      { deutsch: `Wasser`, griechisch: `νερό`, aussprache: `neró` },
+      { deutsch: `Wein`, griechisch: `κρασί`, aussprache: `krasí` },
+      { deutsch: `Bier`, griechisch: `μπύρα`, aussprache: `bíra` },
+      { deutsch: `Kaffee`, griechisch: `καφές`, aussprache: `kafés` },
+      { deutsch: `Brot`, griechisch: `ψωμί`, aussprache: `psomí` },
+      { deutsch: `Fisch`, griechisch: `ψάρι`, aussprache: `psári` },
+      { deutsch: `Fleisch`, griechisch: `κρέας`, aussprache: `kréas` },
+      { deutsch: `Gemüse`, griechisch: `λαχανικά`, aussprache: `lachaniká` },
+      { deutsch: `Salz / Pfeffer`, griechisch: `αλάτι / πιπέρι`, aussprache: `aláti / pipéri` },
+      { deutsch: `Zucker`, griechisch: `ζάχαρη`, aussprache: `záchari` },
+      { deutsch: `gegrillt`, griechisch: `στη σχάρα`, aussprache: `sti schára` },
+    ],
+  },
 ]
 
 // ─── COMPONENTS ─────────────────────────────────────────────────────────────
@@ -484,7 +600,7 @@ export default function App() {
   const [openDay, setOpenDay] = useState<number | null>(null)
   const [carouselIdx, setCarouselIdx] = useState(0)
   const [wissenTab, setWissenTab] = useState<'architektur' | 'kulinarisch' | 'zeittafel'>('architektur')
-  const [glossarFilter, setGlossarFilter] = useState<string | null>(null)
+  const [glossarKat, setGlossarKat] = useState(0)
   const carouselTimer = useRef<ReturnType<typeof setInterval> | null>(null)
 
   // auto-rotate carousel
@@ -519,10 +635,6 @@ export default function App() {
     : wissenTab === 'kulinarisch' ? kulinarischesLexikon
     : zeittafel
 
-  const glossarLetters = [...new Set(glossar.map(g => g.griechisch[0].toUpperCase()))].sort()
-  const filteredGlossar = glossarFilter
-    ? glossar.filter(g => g.griechisch[0].toUpperCase() === glossarFilter)
-    : glossar
 
   return (
     <>
@@ -781,23 +893,26 @@ export default function App() {
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}>
             <h2 className="section-title"><Languages size={28} /> Glossar</h2>
             <div className="section-divider" />
-            <div className="glossar-filter">
-              <button className={`glossar-letter ${!glossarFilter ? 'active' : ''}`} onClick={() => setGlossarFilter(null)}>A–Z</button>
-              {glossarLetters.map(l => (
+            <p style={{ color: '#6b7280', marginBottom: '1.25rem', fontSize: '0.9rem' }}>
+              Sprachführer Deutsch ↔ Neugriechisch (aus dem Kreta-Reiseheft) – mit Aussprachehilfe.
+            </p>
+            <div className="wissen-tabs">
+              {glossarKategorien.map((k, i) => (
                 <button
-                  key={l}
-                  className={`glossar-letter ${glossarFilter === l ? 'active' : ''}`}
-                  onClick={() => setGlossarFilter(l === glossarFilter ? null : l)}
+                  key={i}
+                  className={`wissen-tab ${glossarKat === i ? 'active' : ''}`}
+                  onClick={() => setGlossarKat(i)}
                 >
-                  {l}
+                  {k.name}
                 </button>
               ))}
             </div>
             <div className="glossar-list">
-              {filteredGlossar.map((g, i) => (
+              {glossarKategorien[glossarKat].eintraege.map((g, i) => (
                 <div key={i} className="glossar-entry">
-                  <span className="glossar-greek">{g.griechisch}</span>
                   <span className="glossar-german">{g.deutsch}</span>
+                  <span className="glossar-greek">{g.griechisch}</span>
+                  <span className="glossar-aussprache">[{g.aussprache}]</span>
                 </div>
               ))}
             </div>

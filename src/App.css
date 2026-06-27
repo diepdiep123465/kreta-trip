@@ -633,7 +633,8 @@ section {
 }
 
 .glossar-entry {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
   gap: 1rem;
   background: white;
   border-radius: 8px;
@@ -642,16 +643,32 @@ section {
   align-items: baseline;
 }
 
+.glossar-german {
+  color: var(--gray-800);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
 .glossar-greek {
   font-weight: bold;
   color: var(--blue-dark);
-  min-width: 150px;
-  font-style: italic;
 }
 
-.glossar-german {
-  color: var(--gray-700);
-  font-size: 0.9rem;
+.glossar-aussprache {
+  color: var(--gray-600);
+  font-size: 0.85rem;
+  font-style: italic;
+  text-align: right;
+}
+
+@media (max-width: 600px) {
+  .glossar-entry {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+  .glossar-aussprache {
+    text-align: left;
+  }
 }
 
 /* FOOTER */
