@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import {
   MapPin, Hotel, ChevronDown, ChevronUp, Menu, X,
   UtensilsCrossed, BookOpen, Languages,
-  Navigation, ExternalLink, Info, Globe,
+  Navigation, Info, Globe,
   Map, FileText, Music
 } from 'lucide-react'
 import './App.css'
@@ -36,144 +36,151 @@ const stats = [
   { value: '260+', label: 'Sonnentage/Jahr' },
 ]
 
-interface Reisetag {
-  tag: number
-  datum: string
-  titel: string
-  ort: string
-  bild: string
-  hotel?: { name: string; url: string }
-  stops: string[]
-  farbe: string
+interface StopData {
+  name: string
+  desc: string
+  km?: string
+  image?: string
 }
 
-const reiseroute: Reisetag[] = [
+interface HotelData {
+  name: string
+  mapsQuery: string
+  mapsEmbed: string
+}
+
+interface DayData {
+  day: number
+  date: string
+  weekday: string
+  title: string
+  image: string
+  hotel?: string
+  hotelData?: HotelData
+  stops: StopData[]
+}
+
+const corivaHotel: HotelData = {
+  name: `Hotel Coriva Beach`,
+  mapsQuery: `Coriva+Beach+Hotel+Ierapetra+Crete`,
+  mapsEmbed: `Coriva+Beach+Hotel,+Koutsounari,+Ierapetra,+Crete,+Greece`,
+}
+
+const dedalosHotel: HotelData = {
+  name: `Dedalos Beach Hotel`,
+  mapsQuery: `Dedalos+Beach+Hotel+Sfakaki+Rethymno`,
+  mapsEmbed: `Dedalos+Beach+Hotel,+Sfakaki,+Rethymno,+Crete,+Greece`,
+}
+
+const days: DayData[] = [
   {
-    tag: 1,
-    datum: 'Freitag, 17. Juli 2026',
-    titel: `Anreise & Lassithi-Hochebene`,
-    ort: 'Salzburg → Ierapetra',
-    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Psychro-Cave_Lasithi-Plateau_20230608_131004.jpg/1280px-Psychro-Cave_Lasithi-Plateau_20230608_131004.jpg`,
-    hotel: { name: `Hotel Coriva Beach`, url: `https://www.google.com/maps?um=1&ie=UTF-8&fb=1&gl=at&sa=X&geocode=KQ1Z23enfJAUMQ79SujApZWe&daddr=%CE%9A%CE%BF%CF%85%CF%84%CF%83%CE%BF%CF%85%CE%BD%CE%AC%CF%81%CE%B9,+%CE%91%CE%B3.+%CE%99%CF%89%CE%AC%CE%BD%CE%BD%CE%B7%CF%82+722+00,+Griechenland` },
+    day: 1, date: '17. Juli', weekday: 'Freitag',
+    title: 'Salzburg – Heraklion – Lassithi – Ierapetra',
+    image: `https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Psychro-Cave_Lasithi-Plateau_20230608_131004.jpg/1280px-Psychro-Cave_Lasithi-Plateau_20230608_131004.jpg`,
+    hotel: 'Hotel Coriva Beach, Ierapetra (N/F)',
+    hotelData: corivaHotel,
     stops: [
-      `Flug Salzburg – Heraklion`,
-      `Lassithi-Hochebene – landschaftlich reizvolle Fahrt (95 km)`,
-      `Zeus-Höhle (Diktäische Grotte)`,
-      `Weiterfahrt nach Ierapetra (80 km)`,
-      `Hotel Coriva Beach`,
+      { name: 'Flug Salzburg – Heraklion', desc: 'Anreise per Flugzeug auf die größte griechische Insel' },
+      { name: 'Lassithi-Hochebene', desc: 'Fahrt über die landschaftlich reizvolle Hochebene mit ihren Windmühlen und Obstgärten', km: '95 km' },
+      { name: 'Zeus-Höhle', desc: 'Diktäische Grotte (Psychro) – der mythische Geburtsort des Zeus', image: `https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Psychro_Cave%2C_051240x.jpg/960px-Psychro_Cave%2C_051240x.jpg` },
+      { name: 'Ierapetra', desc: 'Südlichste Stadt Europas – Ankunft im Hotel Coriva Beach', km: '80 km' },
     ],
-    farbe: '#1a6b9e',
   },
   {
-    tag: 2,
-    datum: 'Samstag, 18. Juli 2026',
-    titel: `Ostkreta: Gournia, Zakros & Vai`,
-    ort: 'Ierapetra',
-    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Vai_R01.jpg/1280px-Vai_R01.jpg`,
-    hotel: { name: `Hotel Coriva Beach`, url: `https://www.google.com/maps?um=1&ie=UTF-8&fb=1&gl=at&sa=X&geocode=KQ1Z23enfJAUMQ79SujApZWe&daddr=%CE%9A%CE%BF%CF%85%CF%84%CF%83%CE%BF%CF%85%CE%BD%CE%AC%CF%81%CE%B9,+%CE%91%CE%B3.+%CE%99%CF%89%CE%AC%CE%BD%CE%BD%CE%B7%CF%82+722+00,+Griechenland` },
+    day: 2, date: '18. Juli', weekday: 'Samstag',
+    title: 'Ostkreta: Gournia – Sitia – Kato Zakros – Vai',
+    image: `https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Vai_R01.jpg/1280px-Vai_R01.jpg`,
+    hotel: 'Hotel Coriva Beach, Ierapetra (N/F)',
+    hotelData: corivaHotel,
     stops: [
-      `Gournia – minoische Stadt (25 km)`,
-      `Sitia – Archäologisches Museum (50 km)`,
-      `Kato Zakros – minoische Palastanlage (50 km)`,
-      `Vai – Aufenthalt am Palmenstrand (40 km)`,
-      `Moni Toplou – Klosteranlage (10 km)`,
-      `Rückkehr Hotel Coriva Beach (65 km)`,
+      { name: 'Gournia', desc: 'Vollständig ausgegrabene minoische Stadt mit Gassen und Wohnhäusern', km: '25 km', image: `https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Gournia_007.jpg/960px-Gournia_007.jpg` },
+      { name: 'Sitia', desc: 'Hafenstädtchen mit Archäologischem Museum', km: '50 km', image: `https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/SITIA-HARBOUR-CRETE-GREECE-5.jpg/960px-SITIA-HARBOUR-CRETE-GREECE-5.jpg` },
+      { name: 'Kato Zakros', desc: 'Vierter minoischer Palast im äußersten Osten der Insel', km: '50 km', image: `https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Palace_of_Zakros_ruins.jpg/960px-Palace_of_Zakros_ruins.jpg` },
+      { name: 'Vai', desc: 'Aufenthalt am berühmten Palmenstrand – Europas größter natürlicher Palmenhain', km: '40 km', image: `https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Vai_R01.jpg/1280px-Vai_R01.jpg` },
+      { name: 'Moni Toplou', desc: 'Wehrhafte Klosteranlage aus dem 15. Jahrhundert', km: '10 km', image: `https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Moni_Toplou_R02.jpg/960px-Moni_Toplou_R02.jpg` },
+      { name: 'Rückkehr Hotel Coriva Beach', desc: 'Abendessen im Hotel', km: '65 km' },
     ],
-    farbe: '#2d6b4a',
   },
   {
-    tag: 3,
-    datum: 'Sonntag, 19. Juli 2026',
-    titel: `Spinalonga, Lato & Agios Nikolaos`,
-    ort: 'Ierapetra',
-    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/20090620_Spinalogka_Elounta_panoramic_view_from_the_mountain.jpg/1280px-20090620_Spinalogka_Elounta_panoramic_view_from_the_mountain.jpg`,
-    hotel: { name: `Hotel Coriva Beach`, url: `https://www.google.com/maps?um=1&ie=UTF-8&fb=1&gl=at&sa=X&geocode=KQ1Z23enfJAUMQ79SujApZWe&daddr=%CE%9A%CE%BF%CF%85%CF%84%CF%83%CE%BF%CF%85%CE%BD%CE%AC%CF%81%CE%B9,+%CE%91%CE%B3.+%CE%99%CF%89%CE%AC%CE%BD%CE%BD%CE%B7%CF%82+722+00,+Griechenland` },
+    day: 3, date: '19. Juli', weekday: 'Sonntag',
+    title: 'Olous / Spinalonga – Kritsa – Lato – Malia – Agios Nikolaos',
+    image: `https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/20090620_Spinalogka_Elounta_panoramic_view_from_the_mountain.jpg/1280px-20090620_Spinalogka_Elounta_panoramic_view_from_the_mountain.jpg`,
+    hotel: 'Hotel Coriva Beach, Ierapetra (N/F)',
+    hotelData: corivaHotel,
     stops: [
-      `Olous / Spinalonga – versunkene römische Stadt (65 km)`,
-      `Kritsa – Kirche Panagia Kera (20 km)`,
-      `Lato – antike Stadtanlage (5 km)`,
-      `Malia – minoische Palastanlage (35 km)`,
-      `Agios Nikolaos – malerische Stadt (15 km)`,
-      `Badeaufenthalt Hotel Coriva Beach (55 km)`,
+      { name: 'Olous / Spinalonga', desc: 'Versunkene römische Stadt und venezianische Inselfestung, später Leprakolonie', km: '65 km', image: `https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/20090620_Spinalogka_Elounta_panoramic_view_from_the_mountain.jpg/1280px-20090620_Spinalogka_Elounta_panoramic_view_from_the_mountain.jpg` },
+      { name: 'Kritsa', desc: 'Kirche Panagia Kera mit den bedeutendsten byzantinischen Fresken Kretas', km: '20 km', image: `https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/%CE%A0%CE%B1%CE%BD%CE%B1%CE%B3%CE%B9%CE%AC_%CE%9A%CE%B5%CF%81%CE%AC_%CE%9A%CF%81%CE%B9%CF%84%CF%83%CE%AC_2253.jpg/960px-%CE%A0%CE%B1%CE%BD%CE%B1%CE%B3%CE%B9%CE%AC_%CE%9A%CE%B5%CF%81%CE%AC_%CE%9A%CF%81%CE%B9%CF%84%CF%83%CE%AC_2253.jpg` },
+      { name: 'Lato', desc: 'Dorische Stadtanlage mit Blick über den Golf von Mirabello', km: '5 km', image: `https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Lato_-_Prytaneion_03.jpg/960px-Lato_-_Prytaneion_03.jpg` },
+      { name: 'Malia', desc: 'Dritter großer minoischer Palast mit dem berühmten Opfertisch (Kernos)', km: '35 km', image: `https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Malia%2C_Minoan_palace%2C_exhibition_hall.jpg/960px-Malia%2C_Minoan_palace%2C_exhibition_hall.jpg` },
+      { name: 'Agios Nikolaos', desc: 'Malerische Stadt am See Voulismeni', km: '15 km', image: `https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Lake_Voulismeni%2C_Agios_Nikolaos%2C_Crete%2C_Sept_2019.jpg/960px-Lake_Voulismeni%2C_Agios_Nikolaos%2C_Crete%2C_Sept_2019.jpg` },
+      { name: 'Badeaufenthalt Hotel Coriva Beach', desc: 'Entspannung am Hotelstrand', km: '55 km' },
     ],
-    farbe: '#8b4a1a',
   },
   {
-    tag: 4,
-    datum: 'Montag, 20. Juli 2026',
-    titel: `Messara-Ebene: Gortyn, Festos & Matala`,
-    ort: 'Ierapetra → Sfakaki',
-    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Festos_kreta_2016-05-11_%281%29.jpg/1280px-Festos_kreta_2016-05-11_%281%29.jpg`,
-    hotel: { name: `Hotel Dedalos (Sfakaki bei Rethymnon)`, url: `https://www.google.com/maps/dir//Dedalos+Beach+Hotel,+Sfakaki+Pagkalochoriou,+Sfakaki+741+50,+Griechenland/@35.3822296,24.5835855,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x149ba08ffddd9d85:0x9361d1f48972f329!2m2!1d24.5835855!2d35.3822296` },
+    day: 4, date: '20. Juli', weekday: 'Montag',
+    title: 'Messara-Ebene: Gortyn – Festos – Agia Triada – Matala',
+    image: `https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Festos_kreta_2016-05-11_%281%29.jpg/1280px-Festos_kreta_2016-05-11_%281%29.jpg`,
+    hotel: 'Dedalos Beach Hotel, Sfakaki (N/F)',
+    hotelData: dedalosHotel,
     stops: [
-      `Gortyn – Stadtanlage und Zeusplatane (105 km)`,
-      `Festos – minoische Palastanlage (20 km)`,
-      `Agia Triada – minoische Palastanlage (5 km)`,
-      `Matala – Hippiestrand (15 km)`,
-      `Sfakaki bei Rethymnon – Hotel Dedalos (85 km)`,
+      { name: 'Gortyn', desc: 'Römische Provinzhauptstadt mit dem berühmten Gesetzeskodex und der Zeusplatane', km: '105 km', image: `https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Gortyn_Agios_Titos.jpg/960px-Gortyn_Agios_Titos.jpg` },
+      { name: 'Festos', desc: 'Zweitgrößter minoischer Palast, Fundort des rätselhaften Diskos von Phaistos', km: '20 km', image: `https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Festos_kreta_2016-05-11_%281%29.jpg/1280px-Festos_kreta_2016-05-11_%281%29.jpg` },
+      { name: 'Agia Triada', desc: 'Minoische Palastvilla mit bedeutenden Funden (Boxer-Rhyton, Schnittervase)', km: '5 km', image: `https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Agia_Triada%2C_145788.jpg/960px-Agia_Triada%2C_145788.jpg` },
+      { name: 'Matala', desc: 'Hippiestrand mit den berühmten Höhlenwohnungen im Sandstein', km: '15 km', image: `https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Beach_and_troglodytes_at_Matala%2C_Crete%2C_Greece.jpg/960px-Beach_and_troglodytes_at_Matala%2C_Crete%2C_Greece.jpg` },
+      { name: 'Sfakaki bei Rethymnon', desc: 'Ankunft im Dedalos Beach Hotel', km: '85 km' },
     ],
-    farbe: '#6b1a8b',
   },
   {
-    tag: 5,
-    datum: 'Dienstag, 21. Juli 2026',
-    titel: `Vathipetro, Archanes & Knossos`,
-    ort: 'Sfakaki',
-    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Knossos%2C_Sept._2019e.jpg/1280px-Knossos%2C_Sept._2019e.jpg`,
-    hotel: { name: `Hotel Dedalos (Sfakaki bei Rethymnon)`, url: `https://www.google.com/maps/dir//Dedalos+Beach+Hotel,+Sfakaki+Pagkalochoriou,+Sfakaki+741+50,+Griechenland/@35.3822296,24.5835855,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x149ba08ffddd9d85:0x9361d1f48972f329!2m2!1d24.5835855!2d35.3822296` },
+    day: 5, date: '21. Juli', weekday: 'Dienstag',
+    title: 'Vathipetro – Jouchtas – Archanes – Knossos',
+    image: `https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Knossos%2C_Sept._2019e.jpg/1280px-Knossos%2C_Sept._2019e.jpg`,
+    hotel: 'Dedalos Beach Hotel, Sfakaki (N/F)',
+    hotelData: dedalosHotel,
     stops: [
-      `Vathipetro – minoisches Landhaus (90 km)`,
-      `Berg Jouchtas (10 km)`,
-      `Archanes / Fourni – minoische Grabanlage und Museum (90 km)`,
-      `Knossos – minoische Palastanlage (10 km)`,
-      `Rückkehr Hotel Dedalos (85 km)`,
+      { name: 'Vathipetro', desc: 'Minoisches Landhaus mit erhaltener Wein- und Ölpresse', km: '90 km', image: `https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Vathypetro_17.JPG/960px-Vathypetro_17.JPG` },
+      { name: 'Berg Jouchtas', desc: 'Heiliger Berg der Minoer – im Profil das „Antlitz des Zeus"', km: '10 km' },
+      { name: 'Archanes / Fourni', desc: 'Bedeutende minoische Grabanlage (Nekropole) und kleines Museum', km: '90 km', image: `https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/%CE%91%CF%81%CF%87%CE%AC%CE%BD%CE%B5%CF%82_7928.jpg/960px-%CE%91%CF%81%CF%87%CE%AC%CE%BD%CE%B5%CF%82_7928.jpg` },
+      { name: 'Knossos', desc: 'Der größte minoische Palast – Zentrum der Kultur um König Minos und das Labyrinth', km: '10 km', image: `https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Knossos%2C_Sept._2019e.jpg/1280px-Knossos%2C_Sept._2019e.jpg` },
+      { name: 'Rückkehr Hotel Dedalos', desc: 'Abendessen im Hotel', km: '85 km' },
     ],
-    farbe: '#b5651d',
   },
   {
-    tag: 6,
-    datum: 'Mittwoch, 22. Juli 2026',
-    titel: `Eleftherna, Arkadi & Rethymnon`,
-    ort: 'Sfakaki',
-    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/%CE%9C%CE%BF%CE%BD%CE%AE_%CE%91%CF%81%CE%BA%CE%B1%CE%B4%CE%AF%CE%BF%CF%85_5463.jpg/1280px-%CE%9C%CE%BF%CE%BD%CE%AE_%CE%91%CF%81%CE%BA%CE%B1%CE%B4%CE%AF%CE%BF%CF%85_5463.jpg`,
-    hotel: { name: `Hotel Dedalos (Sfakaki bei Rethymnon)`, url: `https://www.google.com/maps/dir//Dedalos+Beach+Hotel,+Sfakaki+Pagkalochoriou,+Sfakaki+741+50,+Griechenland/@35.3822296,24.5835855,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x149ba08ffddd9d85:0x9361d1f48972f329!2m2!1d24.5835855!2d35.3822296` },
+    day: 6, date: '22. Juli', weekday: 'Mittwoch',
+    title: 'Eleftherna – Arkadi – Preveli – Rethymnon',
+    image: `https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/%CE%9C%CE%BF%CE%BD%CE%AE_%CE%91%CF%81%CE%BA%CE%B1%CE%B4%CE%AF%CE%BF%CF%85_5463.jpg/1280px-%CE%9C%CE%BF%CE%BD%CE%AE_%CE%91%CF%81%CE%BA%CE%B1%CE%B4%CE%AF%CE%BF%CF%85_5463.jpg`,
+    hotel: 'Dedalos Beach Hotel, Sfakaki (N/F)',
+    hotelData: dedalosHotel,
     stops: [
-      `Eleftherna – minoisch-dorisch-römische Stadt (25 km)`,
-      `Moni Arkadi – Stätte des kretischen Widerstandes (10 km)`,
-      `Moni Preveli – byzantinisches Kloster (65 km)`,
-      `Rethymnon – Festung, Stadtbesichtigung, Museum (40 km)`,
-      `Rückkehr Hotel Dedalos (10 km)`,
+      { name: 'Eleftherna', desc: 'Minoisch-dorisch-römische Stadt mit modernem Museum', km: '25 km', image: `https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Archaia_Eleftherna_Crete_15.jpg/960px-Archaia_Eleftherna_Crete_15.jpg` },
+      { name: 'Moni Arkadi', desc: 'Nationalheiligtum – Stätte des kretischen Widerstands von 1866', km: '10 km', image: `https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/%CE%9C%CE%BF%CE%BD%CE%AE_%CE%91%CF%81%CE%BA%CE%B1%CE%B4%CE%AF%CE%BF%CF%85_5463.jpg/1280px-%CE%9C%CE%BF%CE%BD%CE%AE_%CE%91%CF%81%CE%BA%CE%B1%CE%B4%CE%AF%CE%BF%CF%85_5463.jpg` },
+      { name: 'Moni Preveli', desc: 'Byzantinisches Kloster hoch über dem Libyschen Meer', km: '65 km', image: `https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Preveli_World_War_II_Memorial.JPG/960px-Preveli_World_War_II_Memorial.JPG` },
+      { name: 'Rethymnon', desc: 'Venezianische Fortezza, Altstadt und Archäologisches Museum', km: '40 km', image: `https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Rethymnon_Lighthouse_at_the_Entrance_to_the_old_Venetian_Harbour_in_Rethymno_Crete_20_July_2019.jpg/960px-Rethymnon_Lighthouse_at_the_Entrance_to_the_old_Venetian_Harbour_in_Rethymno_Crete_20_July_2019.jpg` },
+      { name: 'Rückkehr Hotel Dedalos', desc: 'Abendessen im Hotel', km: '10 km' },
     ],
-    farbe: '#1a8b6b',
   },
   {
-    tag: 7,
-    datum: 'Donnerstag, 23. Juli 2026',
-    titel: `Westkreta: Aptera, Chania & Soldatenfriedhöfe`,
-    ort: 'Sfakaki',
-    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Harbor%2C_Venetian_shipyards_and_Lighthouse_in_Chania._Crete%2C_Greece.jpg/1280px-Harbor%2C_Venetian_shipyards_and_Lighthouse_in_Chania._Crete%2C_Greece.jpg`,
-    hotel: { name: `Hotel Dedalos (Sfakaki bei Rethymnon)`, url: `https://www.google.com/maps/dir//Dedalos+Beach+Hotel,+Sfakaki+Pagkalochoriou,+Sfakaki+741+50,+Griechenland/@35.3822296,24.5835855,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x149ba08ffddd9d85:0x9361d1f48972f329!2m2!1d24.5835855!2d35.3822296` },
+    day: 7, date: '23. Juli', weekday: 'Donnerstag',
+    title: 'Westkreta: Aptera – Chania – Maleme – Souda',
+    image: `https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Harbor%2C_Venetian_shipyards_and_Lighthouse_in_Chania._Crete%2C_Greece.jpg/1280px-Harbor%2C_Venetian_shipyards_and_Lighthouse_in_Chania._Crete%2C_Greece.jpg`,
+    hotel: 'Dedalos Beach Hotel, Sfakaki (N/F)',
+    hotelData: dedalosHotel,
     stops: [
-      `Aptera – minoische Siedlung (60 km)`,
-      `Chania – Markthalle, Stadtbesichtigung (25 km)`,
-      `Maleme – deutscher Soldatenfriedhof (20 km)`,
-      `Souda – britischer Soldatenfriedhof (30 km)`,
-      `Rückkehr Hotel Dedalos (70 km)`,
+      { name: 'Aptera', desc: 'Antike Stadt mit gewaltigen römischen Zisternen und Blick auf die Souda-Bucht', km: '60 km', image: `https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Aptera_cisterns.JPG/960px-Aptera_cisterns.JPG` },
+      { name: 'Chania', desc: 'Venezianischer Hafen, Markthalle und Altstadt – schönste Stadt Kretas', km: '25 km', image: `https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Harbor%2C_Venetian_shipyards_and_Lighthouse_in_Chania._Crete%2C_Greece.jpg/1280px-Harbor%2C_Venetian_shipyards_and_Lighthouse_in_Chania._Crete%2C_Greece.jpg` },
+      { name: 'Maleme', desc: 'Deutscher Soldatenfriedhof – Schauplatz der Luftlandeschlacht 1941', km: '20 km', image: `https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/German_war_cemetery_in_Maleme._Crete%2C_Greece.jpg/960px-German_war_cemetery_in_Maleme._Crete%2C_Greece.jpg` },
+      { name: 'Souda', desc: 'Britischer Soldatenfriedhof (Souda Bay War Cemetery)', km: '30 km', image: `https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Souda_Bay_War_Cemetery%2C_Crete._Greece.jpg/960px-Souda_Bay_War_Cemetery%2C_Crete._Greece.jpg` },
+      { name: 'Rückkehr Hotel Dedalos', desc: 'Abendessen im Hotel', km: '70 km' },
     ],
-    farbe: '#7a1f3d',
   },
   {
-    tag: 8,
-    datum: 'Freitag, 24. Juli 2026',
-    titel: `Heraklion & Heimreise`,
-    ort: 'Sfakaki → Salzburg',
-    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Building_of_the_Archaeological_Museum_of_Heraklion%2C_061381.jpg/1280px-Building_of_the_Archaeological_Museum_of_Heraklion%2C_061381.jpg`,
+    day: 8, date: '24. Juli', weekday: 'Freitag',
+    title: 'Heraklion – Heimreise nach Salzburg',
+    image: `https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Building_of_the_Archaeological_Museum_of_Heraklion%2C_061381.jpg/1280px-Building_of_the_Archaeological_Museum_of_Heraklion%2C_061381.jpg`,
     stops: [
-      `Heraklion – Archäologisches Museum, Stadtbesichtigung (75 km)`,
-      `Transfer zum Flughafen Heraklion (10 km)`,
-      `Rückflug nach Salzburg`,
+      { name: 'Heraklion', desc: 'Archäologisches Museum (die minoischen Meisterwerke) und Stadtbesichtigung', km: '75 km', image: `https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Building_of_the_Archaeological_Museum_of_Heraklion%2C_061381.jpg/1280px-Building_of_the_Archaeological_Museum_of_Heraklion%2C_061381.jpg` },
+      { name: 'Transfer Flughafen Heraklion', desc: 'Fahrt zum Flughafen Nikos Kazantzakis', km: '10 km' },
+      { name: 'Rückflug nach Salzburg', desc: 'Ende der Exkursion' },
     ],
-    farbe: '#444b54',
   },
 ]
 
@@ -531,43 +538,101 @@ function StarRating({ n }: { n: number }) {
   )
 }
 
-function AccordionDay({ tag, open, onToggle }: { tag: Reisetag; open: boolean; onToggle: () => void }) {
+function HotelCard({ hotel, hotelData }: { hotel?: string; hotelData?: HotelData }) {
+  const [expanded, setExpanded] = useState(false)
+  if (!hotel) return null
+
   return (
-    <div className="accordion-item">
-      <button className="accordion-header" onClick={onToggle} style={{ borderLeft: `4px solid ${tag.farbe}` }}>
-        <div>
-          <div className="day-label" style={{ color: tag.farbe }}>Tag {tag.tag} · {tag.datum}</div>
-          <div className="day-title">{tag.titel}</div>
-          <div className="day-sub">{tag.ort}</div>
-        </div>
-        {open ? <ChevronUp size={18} color="#6b7280" /> : <ChevronDown size={18} color="#6b7280" />}
-      </button>
+    <div className="hotel-section">
+      <div className="hotel-info" onClick={() => hotelData && setExpanded(!expanded)} style={{ cursor: hotelData ? 'pointer' : 'default' }}>
+        <Hotel size={18} />
+        <span>{hotel}</span>
+        {hotelData && (expanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />)}
+      </div>
       <AnimatePresence>
-        {open && (
+        {expanded && hotelData && (
           <motion.div
+            className="hotel-map-card"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="accordion-body"
+            transition={{ duration: 0.3 }}
+            style={{ overflow: 'hidden' }}
           >
-            <div className="day-photo">
-              <img src={tag.bild} alt={tag.titel} loading="lazy" />
-              <div className="day-photo-caption">{tag.titel}</div>
-            </div>
-            <ul className="stop-list">
-              {tag.stops.map((s, i) => (
-                <li key={i} className="stop-item">
-                  <span className="stop-dot" />
-                  {s}
-                </li>
-              ))}
-            </ul>
-            {tag.hotel && (
-              <a href={tag.hotel.url} target="_blank" rel="noopener noreferrer" className="hotel-chip">
-                <Hotel size={13} /> {tag.hotel.name} <ExternalLink size={11} />
+            <div className="hotel-map-inner">
+              <iframe
+                className="hotel-map-iframe"
+                src={`https://www.google.com/maps?q=${hotelData.mapsEmbed}&output=embed`}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+                title={hotelData.name}
+              />
+              <a
+                href={`https://www.google.com/maps/search/${hotelData.mapsQuery}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hotel-maps-link"
+              >
+                <MapPin size={14} /> Auf Google Maps öffnen (Bewertungen, Fotos, Route)
               </a>
-            )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  )
+}
+
+function DayAccordion({ d, open, onToggle }: { d: DayData; open: boolean; onToggle: () => void }) {
+  return (
+    <div className={`day-accordion${open ? ' day-accordion-open' : ''}`}>
+      <div className="day-accordion-header" onClick={onToggle}>
+        <span className="day-accordion-badge">{d.weekday.slice(0, 2)}<br />{d.day}</span>
+        <div className="day-accordion-left">
+          <div className="day-accordion-info">
+            <span className="day-accordion-title">{d.title}</span>
+          </div>
+        </div>
+        <div className="day-accordion-chevron">
+          {open ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+        </div>
+      </div>
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            className="day-accordion-body"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            style={{ overflow: 'hidden' }}
+          >
+            <div className="day-card-hero">
+              <img src={d.image} alt={d.title} loading="lazy" />
+              <div className="day-card-overlay">
+                <span className="day-badge">Tag {d.day} – {d.weekday}</span>
+                <h3>{d.date}</h3>
+              </div>
+            </div>
+            <div className="day-card-body">
+              <div className="stops-list">
+                {d.stops.map((s, i) => (
+                  <div key={i} className={`stop-card stop-card-v2${s.image ? ' stop-card-has-img' : ''}`}>
+                    {s.image && (
+                      <div className="stop-card-image">
+                        <img src={s.image} alt={s.name} loading="lazy" />
+                      </div>
+                    )}
+                    <div className="stop-card-content">
+                      <div className="stop-name">{s.name} {s.km && <span className="stop-km">({s.km})</span>}</div>
+                      <div className="stop-desc">{s.desc}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <HotelCard hotel={d.hotel} hotelData={d.hotelData} />
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -610,7 +675,9 @@ function TextCard({ t }: { t: Textquelle }) {
 export default function App() {
   const [activeSection, setActiveSection] = useState('region')
   const [menuOpen, setMenuOpen] = useState(false)
-  const [openDay, setOpenDay] = useState<number | null>(null)
+  const [expandedDays, setExpandedDays] = useState<number[]>([])
+  const toggleDay = (day: number) =>
+    setExpandedDays(prev => prev.includes(day) ? prev.filter(d => d !== day) : [...prev, day])
   const [carouselIdx, setCarouselIdx] = useState(0)
   const [wissenTab, setWissenTab] = useState<'architektur' | 'kulinarisch' | 'zeittafel'>('architektur')
   const [glossarKat, setGlossarKat] = useState(0)
@@ -721,12 +788,15 @@ export default function App() {
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}>
             <h2 className="section-title"><Navigation size={28} /> Reiseroute</h2>
             <div className="section-divider" />
-            {reiseroute.map(tag => (
-              <AccordionDay
-                key={tag.tag}
-                tag={tag}
-                open={openDay === tag.tag}
-                onToggle={() => setOpenDay(openDay === tag.tag ? null : tag.tag)}
+            <p style={{ color: '#6b7280', marginBottom: '1.5rem', fontSize: '0.9rem' }}>
+              8 Tage von Ost nach West durch die Wiege Europas – zum Aufklappen antippen.
+            </p>
+            {days.map(d => (
+              <DayAccordion
+                key={d.day}
+                d={d}
+                open={expandedDays.includes(d.day)}
+                onToggle={() => toggleDay(d.day)}
               />
             ))}
           </motion.div>
