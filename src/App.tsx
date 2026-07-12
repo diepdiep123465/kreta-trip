@@ -241,6 +241,8 @@ interface Restaurant {
   bewertung: number
   spezialitaet: string
   note: string
+  tag: string
+  mapsQuery: string
 }
 
 const restaurants: Restaurant[] = [
@@ -251,6 +253,8 @@ const restaurants: Restaurant[] = [
     bewertung: 4,
     spezialitaet: `Fisch & Meeresfrüchte`,
     note: `Ältestes Fischlokal an der Strandpromenade – traditionsreich und bei Einheimischen beliebt`,
+    tag: `Tage 1–3`,
+    mapsQuery: `Napoleon+Restaurant+Ierapetra+Crete`,
   },
   // ── Agios Nikolaos (Tag 3) ──
   {
@@ -259,6 +263,8 @@ const restaurants: Restaurant[] = [
     bewertung: 5,
     spezialitaet: `Fisch im Villengarten`,
     note: `Frischer Fisch im Garten einer neoklassizistischen Villa – eine der schönsten Adressen der Stadt`,
+    tag: `Tag 3`,
+    mapsQuery: `Pelagos+Restaurant+Agios+Nikolaos+Crete`,
   },
   // ── Heraklion (Tage 5 & 8) ──
   {
@@ -267,6 +273,8 @@ const restaurants: Restaurant[] = [
     bewertung: 5,
     spezialitaet: `Traditionelle kretische Küche`,
     note: `Authentische kretische Küche mit alten Rezepten und eigenen Bio-Zutaten in historischem Ambiente`,
+    tag: `Tage 5 & 8`,
+    mapsQuery: `Peskesi+Heraklion+Crete`,
   },
   {
     name: `Ippokambos`,
@@ -274,6 +282,8 @@ const restaurants: Restaurant[] = [
     bewertung: 4,
     spezialitaet: `Fisch-Mezedes`,
     note: `Einfaches, sehr beliebtes Mezedopolio an der Uferstraße – oft mit Wartezeit, dafür günstig und frisch`,
+    tag: `Tage 5 & 8`,
+    mapsQuery: `Ippokampos+Heraklion+Crete`,
   },
   // ── Rethymno (Tag 6) ──
   {
@@ -282,6 +292,8 @@ const restaurants: Restaurant[] = [
     bewertung: 5,
     spezialitaet: `Gehobene kretische Küche`,
     note: `Kreativ-kretische Küche im romantischen Innenhof eines venezianischen Herrenhauses, ausgezeichnete Weinkarte`,
+    tag: `Tage 4–7`,
+    mapsQuery: `Avli+Restaurant+Rethymno+Crete`,
   },
   // ── Chania (Tag 7) ──
   {
@@ -290,6 +302,8 @@ const restaurants: Restaurant[] = [
     bewertung: 5,
     spezialitaet: `Kretisch-orientalisch`,
     note: `Beliebtes Lokal in einem ehemaligen türkischen Hamam in der Altstadt – würzige, orientalisch beeinflusste Gerichte`,
+    tag: `Tag 7`,
+    mapsQuery: `Tamam+Restaurant+Chania+Crete`,
   },
   {
     name: `To Maridaki`,
@@ -297,6 +311,8 @@ const restaurants: Restaurant[] = [
     bewertung: 5,
     spezialitaet: `Mezedes & frischer Fisch`,
     note: `Modernes Mezedopolio abseits des Touristenhafens – kreative Meze und Fisch, bei Einheimischen hoch geschätzt`,
+    tag: `Tag 7`,
+    mapsQuery: `To+Maridaki+Chania+Crete`,
   },
   {
     name: `Thalassino Ageri`,
@@ -304,6 +320,8 @@ const restaurants: Restaurant[] = [
     bewertung: 5,
     spezialitaet: `Fisch am Meer`,
     note: `Fischtaverne auf den Felsen am Wasser (Stadtteil Tabakaria) – täglich frischer Fang bei Sonnenuntergang`,
+    tag: `Tag 7`,
+    mapsQuery: `Thalassino+Ageri+Chania+Crete`,
   },
   {
     name: `To Maereio`,
@@ -311,6 +329,8 @@ const restaurants: Restaurant[] = [
     bewertung: 4,
     spezialitaet: `Mezedes & Gegrilltes`,
     note: `Kleines, ehrliches Lokal in der Altstadt mit frischen Zutaten vom Markt`,
+    tag: `Tag 7`,
+    mapsQuery: `To+Maereio+Chania+Crete`,
   },
 ]
 
@@ -948,11 +968,17 @@ export default function App() {
               {restaurants.map((r, i) => (
                 <motion.div key={i} className="restaurant-card" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} transition={{ delay: i * 0.08 }}>
                   <div className="restaurant-card-body">
-                    <StarRating n={r.bewertung} />
+                    <div className="restaurant-card-top">
+                      <StarRating n={r.bewertung} />
+                      <span className="restaurant-tag">{r.tag}</span>
+                    </div>
                     <h3>{r.name}</h3>
                     <div className="restaurant-meta"><MapPin size={12} style={{ display: 'inline' }} /> {r.ort}</div>
                     <div className="restaurant-specialty">{r.spezialitaet}</div>
                     <p style={{ fontSize: '0.8rem', color: '#6b7280', marginTop: '0.5rem', lineHeight: 1.5 }}>{r.note}</p>
+                    <a href={`https://www.google.com/maps/search/${r.mapsQuery}`} target="_blank" rel="noopener noreferrer" className="restaurant-maps-link">
+                      <MapPin size={12} /> Auf Google Maps
+                    </a>
                   </div>
                 </motion.div>
               ))}
