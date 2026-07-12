@@ -41,6 +41,7 @@ interface Reisetag {
   datum: string
   titel: string
   ort: string
+  bild: string
   hotel?: { name: string; url: string }
   stops: string[]
   farbe: string
@@ -52,6 +53,7 @@ const reiseroute: Reisetag[] = [
     datum: 'Freitag, 17. Juli 2026',
     titel: `Anreise & Lassithi-Hochebene`,
     ort: 'Salzburg → Ierapetra',
+    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Psychro-Cave_Lasithi-Plateau_20230608_131004.jpg/1280px-Psychro-Cave_Lasithi-Plateau_20230608_131004.jpg`,
     hotel: { name: `Hotel Coriva Beach`, url: `https://www.google.com/maps?um=1&ie=UTF-8&fb=1&gl=at&sa=X&geocode=KQ1Z23enfJAUMQ79SujApZWe&daddr=%CE%9A%CE%BF%CF%85%CF%84%CF%83%CE%BF%CF%85%CE%BD%CE%AC%CF%81%CE%B9,+%CE%91%CE%B3.+%CE%99%CF%89%CE%AC%CE%BD%CE%BD%CE%B7%CF%82+722+00,+Griechenland` },
     stops: [
       `Flug Salzburg – Heraklion`,
@@ -67,6 +69,7 @@ const reiseroute: Reisetag[] = [
     datum: 'Samstag, 18. Juli 2026',
     titel: `Ostkreta: Gournia, Zakros & Vai`,
     ort: 'Ierapetra',
+    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Vai_R01.jpg/1280px-Vai_R01.jpg`,
     hotel: { name: `Hotel Coriva Beach`, url: `https://www.google.com/maps?um=1&ie=UTF-8&fb=1&gl=at&sa=X&geocode=KQ1Z23enfJAUMQ79SujApZWe&daddr=%CE%9A%CE%BF%CF%85%CF%84%CF%83%CE%BF%CF%85%CE%BD%CE%AC%CF%81%CE%B9,+%CE%91%CE%B3.+%CE%99%CF%89%CE%AC%CE%BD%CE%BD%CE%B7%CF%82+722+00,+Griechenland` },
     stops: [
       `Gournia – minoische Stadt (25 km)`,
@@ -83,6 +86,7 @@ const reiseroute: Reisetag[] = [
     datum: 'Sonntag, 19. Juli 2026',
     titel: `Spinalonga, Lato & Agios Nikolaos`,
     ort: 'Ierapetra',
+    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/20090620_Spinalogka_Elounta_panoramic_view_from_the_mountain.jpg/1280px-20090620_Spinalogka_Elounta_panoramic_view_from_the_mountain.jpg`,
     hotel: { name: `Hotel Coriva Beach`, url: `https://www.google.com/maps?um=1&ie=UTF-8&fb=1&gl=at&sa=X&geocode=KQ1Z23enfJAUMQ79SujApZWe&daddr=%CE%9A%CE%BF%CF%85%CF%84%CF%83%CE%BF%CF%85%CE%BD%CE%AC%CF%81%CE%B9,+%CE%91%CE%B3.+%CE%99%CF%89%CE%AC%CE%BD%CE%BD%CE%B7%CF%82+722+00,+Griechenland` },
     stops: [
       `Olous / Spinalonga – versunkene römische Stadt (65 km)`,
@@ -99,6 +103,7 @@ const reiseroute: Reisetag[] = [
     datum: 'Montag, 20. Juli 2026',
     titel: `Messara-Ebene: Gortyn, Festos & Matala`,
     ort: 'Ierapetra → Sfakaki',
+    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Festos_kreta_2016-05-11_%281%29.jpg/1280px-Festos_kreta_2016-05-11_%281%29.jpg`,
     hotel: { name: `Hotel Dedalos (Sfakaki bei Rethymnon)`, url: `https://www.google.com/maps/dir//Dedalos+Beach+Hotel,+Sfakaki+Pagkalochoriou,+Sfakaki+741+50,+Griechenland/@35.3822296,24.5835855,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x149ba08ffddd9d85:0x9361d1f48972f329!2m2!1d24.5835855!2d35.3822296` },
     stops: [
       `Gortyn – Stadtanlage und Zeusplatane (105 km)`,
@@ -114,6 +119,7 @@ const reiseroute: Reisetag[] = [
     datum: 'Dienstag, 21. Juli 2026',
     titel: `Vathipetro, Archanes & Knossos`,
     ort: 'Sfakaki',
+    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Knossos%2C_Sept._2019e.jpg/1280px-Knossos%2C_Sept._2019e.jpg`,
     hotel: { name: `Hotel Dedalos (Sfakaki bei Rethymnon)`, url: `https://www.google.com/maps/dir//Dedalos+Beach+Hotel,+Sfakaki+Pagkalochoriou,+Sfakaki+741+50,+Griechenland/@35.3822296,24.5835855,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x149ba08ffddd9d85:0x9361d1f48972f329!2m2!1d24.5835855!2d35.3822296` },
     stops: [
       `Vathipetro – minoisches Landhaus (90 km)`,
@@ -129,6 +135,7 @@ const reiseroute: Reisetag[] = [
     datum: 'Mittwoch, 22. Juli 2026',
     titel: `Eleftherna, Arkadi & Rethymnon`,
     ort: 'Sfakaki',
+    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/%CE%9C%CE%BF%CE%BD%CE%AE_%CE%91%CF%81%CE%BA%CE%B1%CE%B4%CE%AF%CE%BF%CF%85_5463.jpg/1280px-%CE%9C%CE%BF%CE%BD%CE%AE_%CE%91%CF%81%CE%BA%CE%B1%CE%B4%CE%AF%CE%BF%CF%85_5463.jpg`,
     hotel: { name: `Hotel Dedalos (Sfakaki bei Rethymnon)`, url: `https://www.google.com/maps/dir//Dedalos+Beach+Hotel,+Sfakaki+Pagkalochoriou,+Sfakaki+741+50,+Griechenland/@35.3822296,24.5835855,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x149ba08ffddd9d85:0x9361d1f48972f329!2m2!1d24.5835855!2d35.3822296` },
     stops: [
       `Eleftherna – minoisch-dorisch-römische Stadt (25 km)`,
@@ -144,6 +151,7 @@ const reiseroute: Reisetag[] = [
     datum: 'Donnerstag, 23. Juli 2026',
     titel: `Westkreta: Aptera, Chania & Soldatenfriedhöfe`,
     ort: 'Sfakaki',
+    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Harbor%2C_Venetian_shipyards_and_Lighthouse_in_Chania._Crete%2C_Greece.jpg/1280px-Harbor%2C_Venetian_shipyards_and_Lighthouse_in_Chania._Crete%2C_Greece.jpg`,
     hotel: { name: `Hotel Dedalos (Sfakaki bei Rethymnon)`, url: `https://www.google.com/maps/dir//Dedalos+Beach+Hotel,+Sfakaki+Pagkalochoriou,+Sfakaki+741+50,+Griechenland/@35.3822296,24.5835855,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x149ba08ffddd9d85:0x9361d1f48972f329!2m2!1d24.5835855!2d35.3822296` },
     stops: [
       `Aptera – minoische Siedlung (60 km)`,
@@ -159,6 +167,7 @@ const reiseroute: Reisetag[] = [
     datum: 'Freitag, 24. Juli 2026',
     titel: `Heraklion & Heimreise`,
     ort: 'Sfakaki → Salzburg',
+    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Building_of_the_Archaeological_Museum_of_Heraklion%2C_061381.jpg/1280px-Building_of_the_Archaeological_Museum_of_Heraklion%2C_061381.jpg`,
     stops: [
       `Heraklion – Archäologisches Museum, Stadtbesichtigung (75 km)`,
       `Transfer zum Flughafen Heraklion (10 km)`,
@@ -542,6 +551,10 @@ function AccordionDay({ tag, open, onToggle }: { tag: Reisetag; open: boolean; o
             transition={{ duration: 0.25 }}
             className="accordion-body"
           >
+            <div className="day-photo">
+              <img src={tag.bild} alt={tag.titel} loading="lazy" />
+              <div className="day-photo-caption">{tag.titel}</div>
+            </div>
             <ul className="stop-list">
               {tag.stops.map((s, i) => (
                 <li key={i} className="stop-item">
