@@ -244,26 +244,73 @@ interface Restaurant {
 }
 
 const restaurants: Restaurant[] = [
+  // ── Ierapetra (Tage 1–3) ──
+  {
+    name: `Napoleon`,
+    ort: `Ierapetra`,
+    bewertung: 4,
+    spezialitaet: `Fisch & Meeresfrüchte`,
+    note: `Ältestes Fischlokal an der Strandpromenade – traditionsreich und bei Einheimischen beliebt`,
+  },
+  // ── Agios Nikolaos (Tag 3) ──
+  {
+    name: `Pelagos`,
+    ort: `Agios Nikolaos`,
+    bewertung: 5,
+    spezialitaet: `Fisch im Villengarten`,
+    note: `Frischer Fisch im Garten einer neoklassizistischen Villa – eine der schönsten Adressen der Stadt`,
+  },
+  // ── Heraklion (Tage 5 & 8) ──
   {
     name: `Peskesi`,
     ort: `Heraklion`,
     bewertung: 5,
     spezialitaet: `Traditionelle kretische Küche`,
-    note: `Eines der besten Restaurants für authentische kretische Küche mit historischem Ambiente`,
+    note: `Authentische kretische Küche mit alten Rezepten und eigenen Bio-Zutaten in historischem Ambiente`,
+  },
+  {
+    name: `Ippokambos`,
+    ort: `Heraklion`,
+    bewertung: 4,
+    spezialitaet: `Fisch-Mezedes`,
+    note: `Einfaches, sehr beliebtes Mezedopolio an der Uferstraße – oft mit Wartezeit, dafür günstig und frisch`,
+  },
+  // ── Rethymno (Tag 6) ──
+  {
+    name: `Avli`,
+    ort: `Rethymno`,
+    bewertung: 5,
+    spezialitaet: `Gehobene kretische Küche`,
+    note: `Kreativ-kretische Küche im romantischen Innenhof eines venezianischen Herrenhauses, ausgezeichnete Weinkarte`,
+  },
+  // ── Chania (Tag 7) ──
+  {
+    name: `Tamam`,
+    ort: `Chania`,
+    bewertung: 5,
+    spezialitaet: `Kretisch-orientalisch`,
+    note: `Beliebtes Lokal in einem ehemaligen türkischen Hamam in der Altstadt – würzige, orientalisch beeinflusste Gerichte`,
+  },
+  {
+    name: `To Maridaki`,
+    ort: `Chania`,
+    bewertung: 5,
+    spezialitaet: `Mezedes & frischer Fisch`,
+    note: `Modernes Mezedopolio abseits des Touristenhafens – kreative Meze und Fisch, bei Einheimischen hoch geschätzt`,
+  },
+  {
+    name: `Thalassino Ageri`,
+    ort: `Chania`,
+    bewertung: 5,
+    spezialitaet: `Fisch am Meer`,
+    note: `Fischtaverne auf den Felsen am Wasser (Stadtteil Tabakaria) – täglich frischer Fang bei Sonnenuntergang`,
   },
   {
     name: `To Maereio`,
     ort: `Chania`,
     bewertung: 4,
     spezialitaet: `Mezedes & Gegrilltes`,
-    note: `Einfaches Lokal mit frischen Zutaten vom Markt`,
-  },
-  {
-    name: `Thalassino Ageri`,
-    ort: `Chania`,
-    bewertung: 5,
-    spezialitaet: `Frischer Fisch & Meeresfrüchte`,
-    note: `Am Meer gelegen, täglich frischer Fang`,
+    note: `Kleines, ehrliches Lokal in der Altstadt mit frischen Zutaten vom Markt`,
   },
 ]
 
