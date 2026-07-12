@@ -447,13 +447,18 @@ interface Textquelle {
 const texte: Textquelle[] = [
   {
     titel: `Kreta – Insel der neunzig Städte`,
-    autor: `Homer, Odyssee 19,172–174`,
+    autor: `Homer, Odyssee 19,172–178`,
     epoche: `8. Jh. v. Chr.`,
     original: `Κρήτη τις γαῖ᾽ ἔστι, μέσῳ ἐνὶ οἴνοπι πόντῳ,
 καλὴ καὶ πίειρα, περίρρυτος· ἐν δ᾽ ἄνθρωποι
-πολλοί, ἀπειρέσιοι, καὶ ἐννήκοντα πόληες.`,
-    uebersetzung: `Es gibt ein Land namens Kreta, mitten im weinfarbenen Meer, schön und fruchtbar, ringsum umflossen; darauf leben viele Menschen, unzählige, und neunzig Städte.`,
-    kommentar: `Odysseus beschreibt – als Bettler verkleidet – Penelope seine angebliche Heimat. Die Odyssee nennt neunzig, die Ilias sogar hundert Städte (ἑκατόμπολις): Beide Zahlen spiegeln die außergewöhnliche Urbanität und den Reichtum der Insel in mykenischer Erinnerung.`,
+πολλοὶ ἀπειρέσιοι, καὶ ἐννήκοντα πόληες·
+ἄλλη δ᾽ ἄλλων γλῶσσα μεμιγμένη· ἐν μὲν Ἀχαιοί,
+ἐν δ᾽ Ἐτεόκρητες μεγαλήτορες, ἐν δὲ Κύδωνες
+Δωριέες τε τριχάικες δῖοί τε Πελασγοί·
+τῇσι δ᾽ ἐνὶ Κνωσός, μεγάλη πόλις, ἔνθα τε Μίνως
+ἐννέωρος βασίλευε Διὸς μεγάλου ὀαριστής.`,
+    uebersetzung: `Mitten im wogenden Meer liegt Kreta, fruchtbar und schön anzuschauen. Ringsum wird es von Wellen umbrandet. Unzählige Menschen wohnen dort in neunzig reichen Städten. Überall hört man verschiedene Sprachen, denn es leben dort Achäer und Kydonen, eingeborene Kreter und Dorer, die drei Stämme bilden, und edle Pelasger. Die wichtigste Stadt ist Knossos. In ihr herrscht Minos als König jeweils neun Jahre lang, als Vertrauter des Zeus, mit dem er sich berät.`,
+    kommentar: `Das Eingangszitat unseres Reiseheftes: Odysseus beschreibt – als Bettler verkleidet – Penelope seine angebliche Heimat. Die Verse bezeugen die Vielvölker-Insel (Achäer, Eteokreter, Kydonen, Dorer, Pelasger) und Knossos als „große Stadt" des Minos, der als ὀαριστής („Vertrauter") des Zeus alle neun Jahre die Gesetze vom Gott selbst empfing.`,
   },
   {
     titel: `Minos – der erste Seeherrscher`,
@@ -509,6 +514,91 @@ ponit opus turbatque notas et lumina flexu
 ducit in errorem variarum ambage viarum.`,
     uebersetzung: `Daedalus, hochberühmt durch seine Begabung für die Baukunst, errichtet das Werk: Er verwirrt die Merkzeichen und führt das Auge durch die Windungen der vielerlei Wege in die Irre.`,
     kommentar: `Für den Minotauros ließ Minos das Labyrinth errichten. Der Mythos dürfte eine Erinnerung an den Palast von Knossos (Tag 5) bewahren: Seine hunderten verschachtelten Räume mussten Festlandsgriechen wie ein unentwirrbares Gebäude erscheinen – und die Doppelaxt (labrys) gab ihm wohl den Namen.`,
+  },
+  {
+    titel: `Das Zeusgrab am Jouchtas – „Kreter sind immer Lügner"`,
+    autor: `Kallimachos, Zeushymnos 4–9`,
+    epoche: `3. Jh. v. Chr.`,
+    original: `πῶς καί νιν, Δικταῖον ἀείσομεν ἠὲ Λυκαῖον;
+ἐν δοιῇ μάλα θυμός, ἐπεὶ γένος ἀμφήριστον.
+Ζεῦ, σὲ μὲν Ἰδαίοισιν ἐν οὔρεσί φασι γενέσθαι,
+Ζεῦ, σὲ δ᾽ ἐν Ἀρκαδίῃ· πότεροι, πάτερ, ἐψεύσαντο;
+„Κρῆτες ἀεὶ ψεῦσται"· καὶ γὰρ τάφον, ὦ ἄνα, σεῖο
+Κρῆτες ἐτεκτήναντο· σὺ δ᾽ οὐ θάνες, ἐσσὶ γὰρ αἰεί.`,
+    uebersetzung: `Wie soll ich dich denn nun nennen: Mann vom Dikte-Gebirge oder vom Lykaion? Ich weiß mir nicht zu helfen, deine Herkunft ist umstritten. Die einen sagen, Zeus sei auf dem Ida geboren, die anderen: in Arkadien. Einer muß lügen, aber wer? – Kreter sind immer Lügner, denn auch ein Grab haben sie dir errichtet. Aber du bist doch unsterblich, du lebst ewig.`,
+    kommentar: `Bei der Rückfahrt von Knossos (Tag 5) sehen wir das Profil des Berges Jouchtas – nach alter Überlieferung das Grab des kretischen Zeus, das dem Kopf eines schlafenden bärtigen Mannes ähnelt. Für den Dichter Kallimachos ist schon die Idee eines Zeus-Grabes gotteslästerlich: Sein Spott zitiert dasselbe Kreter-Wort des Epimenides, das später Paulus im Titusbrief aufgreift.`,
+  },
+  {
+    titel: `Der Reigentanz für Ariadne`,
+    autor: `Homer, Ilias 18,590–606`,
+    epoche: `8. Jh. v. Chr.`,
+    original: `ἐν δὲ χορὸν ποίκιλλε περικλυτὸς ἀμφιγυήεις,
+τῷ ἴκελον οἷόν ποτ᾽ ἐνὶ Κνωσῷ εὐρείῃ
+Δαίδαλος ἤσκησεν καλλιπλοκάμῳ Ἀριάδνῃ.`,
+    uebersetzung: `Dädalos hatte einst im weit sich dehnenden Knossos einen Reigentanz ersonnen für die lockige Ariadne. Jünglinge und Jungfrauen hielten einander bei der Hand und tanzten im Kreis. Sie hüpften mit schöngemessenen Schritten anmutig im Kreis herum, wie der Töpfer die Scheibe prüfend herumdreht, ob ihr Lauf auch gleichmäßig ist. Dann tanzten sie in Reihen gegeneinander. Die Zuschauer standen dichtgedrängt um den lieblichen Reigen und freuten sich daran.`,
+    kommentar: `Auf dem Schild des Achilleus bildet Hephaistos einen Tanzplatz ab – „gleich jenem, den Dädalos einst in Knossos für Ariadne schuf". Im Palast von Knossos (Tag 5) wurden tatsächlich Fresken mit Zuschauermengen und tanzenden Mädchen gefunden; die Verse gelten als früheste griechische Erinnerung an höfische Feste der Minoer – und als Keimzelle des Theaters.`,
+  },
+  {
+    titel: `Theseus springt ins Meer`,
+    autor: `Bakchylides 17,1–129 (Auszug)`,
+    epoche: `5. Jh. v. Chr.`,
+    original: `Κυανόπρῳρα μὲν ναῦς μενέκτυπον
+Θησέα δὶς ἑπτά τ᾽ ἀγλαοὺς ἄγουσα
+κούρους Ἰαόνων
+Κρητικὸν τάμνε πέλαγος.`,
+    uebersetzung: `Das Schiff mit dem schwarzen Schnabel, das den in Kämpfen erprobten Theseus und zweimal sieben aus der glänzenden Jugend Athens trug, durchfurchte die kretische See. […] Neben dem Schiff tauchte Theseus wieder auf. Er stieg aus dem Meer, unbenetzt vom Wasser, ein Wunder für alle. Die Geschenke der Götter leuchteten an seinem Leib. […] Gelähmt stand der Herrscher von Knossos. Die Jungen aber umringten ihren Helden, und mit lauter Stimme sangen sie den Paian.`,
+    kommentar: `Der Theseus-Dithyrambos des Bakchylides: Auf der Überfahrt nach Kreta bedrängt Minos eine der athenischen Geiseln – Theseus fordert ihn heraus und beweist seine göttliche Abkunft, indem er zu Poseidon auf den Meeresgrund taucht und mit dem Purpurmantel der Amphitrite zurückkehrt. Das Chorlied wurde vermutlich auf Delos aufgeführt.`,
+  },
+  {
+    titel: `Theseus, Ariadne und der Faden`,
+    autor: `Hygin, Fabeln 41–43`,
+    epoche: `1./2. Jh. n. Chr.`,
+    original: ``,
+    uebersetzung: `Minos führte Krieg mit den Athenern, wobei sein Sohn Androgeos getötet wurde. Die Athener verloren den Krieg und mußten als Entschädigung in jedem Jahr dem Minotaurus sieben Kinder zum Verspeisen schicken. Theseus wollte die Athener von dem Tribut befreien. In Kreta verliebte sich Ariadne, die Tochter des Minos, in ihn. Sie rettete ihn, indem sie ihm den Weg aus dem Labyrinth wies. Theseus ging hinein, erschlug den Minotaurus und fand dadurch, daß er einen Faden abwickelte, wieder aus dem Labyrinth heraus. Ariadne ließ er schlafend auf der Insel Dia zurück.`,
+    kommentar: `Die knappste antike Zusammenfassung des Theseus-Mythos (nach dem Reiseheft). Der jährliche Kinder-Tribut Athens an Knossos spiegelt wohl die historische Oberherrschaft Kretas über die Ägäis – und Theseus' Sieg die spätere Emanzipation der mykenischen Griechen.`,
+  },
+  {
+    titel: `Talos – der bronzene Wächter Kretas`,
+    autor: `Apollodor, Bibliothek 1,9,26`,
+    epoche: `1./2. Jh. n. Chr.`,
+    original: ``,
+    uebersetzung: `Die Argonauten wurden von Talos daran gehindert, in Kreta an Land zu gehen. Es heißt, er sei ein Riese aus Erz gewesen und Hephästos habe ihn dem Minos geschenkt. Eine einzige Ader lief von seinem Hals bis zu den Knöcheln, wo sie ein bronzener Nagel verschloß. Dieser Talos bewachte Kreta und lief dreimal täglich um die ganze Insel. Von Medea überlistet, kam er ums Leben: Nach den einen hat sie ihn mit Rauschgift bewußtlos gemacht, nach anderen zog sie ihm den Nagel heraus, so daß er alles Blut verlor und sterben mußte.`,
+    kommentar: `Die kretischen Paläste – besonders Malia direkt am Meer (Tag 3) – hatten keinerlei Befestigungen: Eine gewaltige Flotte war die „Schiffsmauer" der Insel. Der Mythos vom bronzenen Riesen, der dreimal täglich die Insel umrundet, ist das mythische Abbild dieses Schutzes.`,
+  },
+  {
+    titel: `Sarpedon und die Lykier`,
+    autor: `Herodot, Historien 1,173`,
+    epoche: `5. Jh. v. Chr.`,
+    original: ``,
+    uebersetzung: `Die Lykier stammen ursprünglich aus Kreta. Ganz Kreta wurde nämlich in alter Zeit von Barbaren bewohnt. Als Sarpedon und Minos, die Söhne der Europa, in Kreta um die Herrschaft stritten, siegte Minos und vertrieb Sarpedon und dessen Anhänger. Die Vertriebenen zogen nach Asien in das Land, das jetzt die Lykier bewohnen. Ihre Gebräuche sind zum Teil heute noch kretisch.`,
+    kommentar: `Der „Vater der Geschichtsschreibung" deutet den Mythos historisch: Hinter dem Bruderstreit der Europa-Söhne stehen Machtkämpfe um Kreta, bei denen ganze Volksgruppen auswanderten. Sarpedon galt als König von Malia (Tag 3), bevor er nach Kleinasien zog.`,
+  },
+  {
+    titel: `Kreta – Wiege der Trojaner`,
+    autor: `Vergil, Aeneis 3,102–142 (Auszug: 104–106)`,
+    epoche: `1. Jh. v. Chr.`,
+    original: `Creta Iovis magni medio iacet insula ponto,
+mons Idaeus ubi et gentis cunabula nostrae.
+centum urbes habitant magnas, uberrima regna.`,
+    uebersetzung: `Da überlegte Anchises und dachte an die Geschichten seines Großvaters, und er sprach: »Hört mich an und schöpft neue Hoffnung. Mitten im Meer liegt Kreta, die Insel des großen Jupiter. Dort am Ida-Berg ist die Wiege des Geschlechts der Trojaner. Große Reiche gibt es dort und hundert blühende Städte.« – Doch als die Trojaner sich auf Kreta niederlassen, verdorren Saat und Bäume, eine tödliche Seuche geht um.`,
+    kommentar: `Drei mächtige Reiche gingen fast gleichzeitig im östlichen Mittelmeer zugrunde: die Hethiter, Troja – und die Minoer. Vergil lässt die geflohenen Trojaner zuerst nach Kreta segeln, ins Land ihrer Väter; sie finden verlassene Küsten und leere Städte vor (vgl. die ausgegrabene Stadt Gournia, Tag 2). Erst eine Seuche treibt sie weiter nach Italien.`,
+  },
+  {
+    titel: `Nepenthes – das Mittel gegen Kummer`,
+    autor: `Homer, Odyssee 4,219–230`,
+    epoche: `8. Jh. v. Chr.`,
+    original: `αὐτίκ᾽ ἄρ᾽ εἰς οἶνον βάλε φάρμακον, ἔνθεν ἔπινον,
+νηπενθές τ᾽ ἄχολόν τε, κακῶν ἐπίληθον ἁπάντων.`,
+    uebersetzung: `Ein neues ersann die liebliche Tochter Kronions: Sie warf in den Wein, wovon sie tranken, ein Mittel gegen Kummer und Groll und die Erinnerung an Schmerzen. Kostete einer nur von dem Wein, mit dieser Würze gemischt, benetzte ihm den ganzen Tag keine Träne die Wangen, wäre auch sein Vater und seine Mutter gestorben.`,
+    kommentar: `Im Archäologischen Museum von Heraklion (Tag 8) steht die „Mohngöttin" – ein Idol vom Ende des 2. Jahrtausends v. Chr., das Mohnkapseln auf dem Kopf trägt. Homers Nepenthes, das Helena in den Wein mischt, gilt als literarisches Echo solcher Rauschkulte im alten Kreta.`,
+  },
+  {
+    titel: `„Ich erhoffe nichts, ich fürchte nichts: ich bin frei."`,
+    autor: `Nikos Kazantzakis, Grabinschrift (Iraklion)`,
+    epoche: `20. Jh.`,
+    original: `Δεν ελπίζω τίποτα. Δε φοβούμαι τίποτα. Είμαι λέφτερος.`,
+    uebersetzung: `Ich erhoffe nichts. Ich fürchte nichts. Ich bin frei.`,
+    kommentar: `Auf der Südbastion der venezianischen Stadtmauer von Iraklion liegt das Grab des 1957 gestorbenen kretischen Schriftstellers – Autor von „Alexis Sorbas" (vgl. unsere Musik-Sektion). Die Amtskirche verweigerte dem kirchenkritischen Dichter ein Grab auf dem Friedhof; auf dem Stein steht der von ihm selbst verfasste Grabspruch. Wir kommen am Tag 8 in Heraklion daran vorbei.`,
   },
 ]
 
