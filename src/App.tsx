@@ -446,28 +446,69 @@ interface Textquelle {
 
 const texte: Textquelle[] = [
   {
-    titel: `Minos – König und Gesetzgeber`,
-    autor: `Thukydides`,
-    epoche: `5. Jh. v. Chr.`,
-    original: `Μίνως γὰρ παλαίτατος ὧν ἀκοῇ ἴσμεν ναυτικὸν ἐκτήσατο...`,
-    uebersetzung: `Minos nämlich ist der älteste, von dem wir durch Überlieferung wissen, dass er eine Flotte besaß und die meisten Gewässer kontrollierte...`,
-    kommentar: `Thukydides beschreibt Minos als ersten Thalassokraten der griechischen Geschichte. Die minoische Seeherrschaft war die Grundlage für den kretischen Handel und die kulturelle Ausstrahlung im östlichen Mittelmeer.`,
-  },
-  {
-    titel: `Das Labyrinth des Minotauros`,
-    autor: `Ovid`,
-    epoche: `1. Jh. v. Chr.`,
-    original: `Clausit in hac monstrum Gortynia Daedalus aula, dissimilem nati supposuitque suem.`,
-    uebersetzung: `In diesem Palast sperrte der kretische Daedalus das Ungeheuer ein und band eine Sau an, die dem Kind unähnlich war.`,
-    kommentar: `Der Minotaurus-Mythos spiegelt historische Realität wider: Kreta als Tributmacht über die griechischen Festlandsstädte, symbolisiert im Menschenopfer an das Ungeheuer im Labyrinth.`,
-  },
-  {
-    titel: `Odysseus auf Kreta`,
-    autor: `Homer`,
+    titel: `Kreta – Insel der neunzig Städte`,
+    autor: `Homer, Odyssee 19,172–174`,
     epoche: `8. Jh. v. Chr.`,
-    original: `Κρήτη τις γαῖ᾽ ἔστι, μέσῳ ἐνὶ οἴνοπι πόντῳ, καλὴ καὶ πίειρα, περίρρυτος·`,
-    uebersetzung: `Es gibt ein Land namens Kreta, mitten im weinfarbenen Meer, schön und fruchtbar, ringsum vom Wasser umgeben.`,
-    kommentar: `Homer beschreibt Kreta als 100-Städte-Insel (ἑκατόμπολις). Der Odysseus-Bericht in der Odyssee spiegelt die strategische Bedeutung Kretas als Knotenpunkt des ägäischen Seeverkehrs.`,
+    original: `Κρήτη τις γαῖ᾽ ἔστι, μέσῳ ἐνὶ οἴνοπι πόντῳ,
+καλὴ καὶ πίειρα, περίρρυτος· ἐν δ᾽ ἄνθρωποι
+πολλοί, ἀπειρέσιοι, καὶ ἐννήκοντα πόληες.`,
+    uebersetzung: `Es gibt ein Land namens Kreta, mitten im weinfarbenen Meer, schön und fruchtbar, ringsum umflossen; darauf leben viele Menschen, unzählige, und neunzig Städte.`,
+    kommentar: `Odysseus beschreibt – als Bettler verkleidet – Penelope seine angebliche Heimat. Die Odyssee nennt neunzig, die Ilias sogar hundert Städte (ἑκατόμπολις): Beide Zahlen spiegeln die außergewöhnliche Urbanität und den Reichtum der Insel in mykenischer Erinnerung.`,
+  },
+  {
+    titel: `Minos – der erste Seeherrscher`,
+    autor: `Thukydides, Historien 1,4`,
+    epoche: `5. Jh. v. Chr.`,
+    original: `Μίνως γὰρ παλαίτατος ὧν ἀκοῇ ἴσμεν ναυτικὸν ἐκτήσατο καὶ τῆς νῦν Ἑλληνικῆς θαλάσσης ἐπὶ πλεῖστον ἐκράτησε καὶ τῶν Κυκλάδων νήσων ἦρξέ τε καὶ οἰκιστὴς πρῶτος τῶν πλείστων ἐγένετο.`,
+    uebersetzung: `Minos nämlich ist der älteste, von dem wir durch Überlieferung wissen, dass er sich eine Flotte verschaffte: Er beherrschte den größten Teil des heutigen griechischen Meeres, herrschte über die Kykladen und wurde erster Gründer von Kolonien auf den meisten von ihnen.`,
+    kommentar: `Thukydides macht Minos zum ersten Thalassokraten der Geschichte. Die „minoische Seeherrschaft" ist für ihn ein rational fassbares Faktum – die Grundlage für Handel und kulturelle Ausstrahlung Kretas, deren Zentrum wir in Knossos besichtigen (Tag 5).`,
+  },
+  {
+    titel: `Europa auf dem Stier – die Ankunft in Matala`,
+    autor: `Bakchylides, Erläuterung zu Fragment 10`,
+    epoche: `5. Jh. v. Chr.`,
+    original: ``,
+    uebersetzung: `Zeus erblickte Europa, die Tochter des Phönix, als sie auf einer Wiese mit den Nymphen Blumen pflückte. Er verliebte sich in sie, stieg zur Erde herab und verwandelte sich in einen Stier. Er blies Safranduft aus seinem Mund, täuschte so Europa, ließ sie auf seinen Rücken steigen und trug sie über das Meer nach Kreta. Dort schlief er mit ihr und gab sie Asterios, dem König der Kreter, zur Gattin. Sie aber war schwanger geworden und gebar drei Söhne: Minos, Sarpedon und Rhadamanthys.`,
+    kommentar: `Nach der Überlieferung kam Zeus mit der geraubten Europa in der Bucht von Matala an Land (Tag 4). Die Geschichte steht bei Hesiod und Bakchylides – erhalten ist sie in dieser antiken Erläuterung (Scholion) zu einem Bakchylides-Fragment; ein griechisches Original im Wortlaut ist daher nur bruchstückhaft überliefert.`,
+  },
+  {
+    titel: `Rhadamanthys im Elysion – das Paradies bei Phaistos`,
+    autor: `Homer, Odyssee 4,563–568`,
+    epoche: `8. Jh. v. Chr.`,
+    original: `ἀλλά σ᾽ ἐς Ἠλύσιον πεδίον καὶ πείρατα γαίης
+ἀθάνατοι πέμψουσιν, ὅθι ξανθὸς Ῥαδάμανθυς,
+τῇ περ ῥηίστη βιοτὴ πέλει ἀνθρώποισιν·
+οὐ νιφετός, οὔτ᾽ ἂρ χειμὼν πολὺς οὔτε ποτ᾽ ὄμβρος,
+ἀλλ᾽ αἰεὶ Ζεφύροιο λιγὺ πνείοντος ἀήτας
+Ὠκεανὸς ἀνίησιν ἀναψύχειν ἀνθρώπους.`,
+    uebersetzung: `Dort wohnt der bräunliche Held Rhadamanthys, und ruhiges Leben beseligt die Menschen alle Tage. Dort ist kein Schnee, kein Winterorkan und kein gießender Regen. Ewig wehn die Gesäuse des leise atmenden Westes, die der Ozean sendet, die Menschen sanft zu kühlen. (Übers. J. H. Voß)`,
+    kommentar: `Während Minos in Knossos und Sarpedon in Mallia residierte, war Rhadamanthys König im Palast von Phaistos (Tag 4). Homer versetzt ihn ins Elysion – und die Schilderung des milden Klimas ohne Schnee und Sturm liest sich wie eine Beschreibung der Messara-Ebene selbst.`,
+  },
+  {
+    titel: `„Die Kreter sind von jeher Lügner" – Paulus über Kreta`,
+    autor: `Paulus, Brief an Titus 1,12 (vgl. 1,5–16)`,
+    epoche: `1. Jh. n. Chr.`,
+    original: `εἶπέν τις ἐξ αὐτῶν ἴδιος αὐτῶν προφήτης· Κρῆτες ἀεὶ ψεῦσται, κακὰ θηρία, γαστέρες ἀργαί.`,
+    uebersetzung: `Selbst einer ihrer eigenen Dichter sagt: Die Kreter sind von jeher Lügner, böse Tiere, faule Bäuche. – Paulus fährt fort: Dieses Zeugnis ist wahr. Weise sie deswegen nur derbe zurecht, damit sie im Glauben zu gesunden Begriffen gelangen.`,
+    kommentar: `In römischer Zeit war Gortyn (Tag 4) Hauptstadt der Provinz Kreta und Kyrenaika. Dort setzte der Apostel Paulus seinen Gefährten Titus als Bischof ein. Das zitierte Kreter-Wort stammt vom kretischen Dichter Epimenides – als Kreter, der alle Kreter Lügner nennt, wurde er zum Paradebeispiel des logischen „Lügner-Paradoxons".`,
+  },
+  {
+    titel: `Wie ein Ochse pflügt – die Gesetzesinschrift von Gortyn`,
+    autor: `Pausanias, Beschreibung Griechenlands 5,17,6`,
+    epoche: `2. Jh. n. Chr.`,
+    original: ``,
+    uebersetzung: `Es ist eine Schrift, die die Griechen »bustrophedon« (ochsenwendig) nennen. Am Ende einer Zeile läuft die nächste von rechts nach links mit verkehrten Buchstaben, so wie sich die Ochsen im Pflügen auf dem Acker umwenden oder die Wagen beim Wagenrennen umkehren.`,
+    kommentar: `Der Stadtrechtskodex von Gortyn (Tag 4), in das römische Odeon verbaut, ist die längste erhaltene altgriechische Inschrift: 12 Kolumnen, rund 17.000 Buchstaben in altdorischem Dialekt (5. Jh. v. Chr.). Geregelt werden erstaunlich moderne Themen – Scheidung, Erbrecht, Beleidigung. Pausanias prägte für die zeilenweise wechselnde Schreibrichtung den Begriff βουστροφηδόν.`,
+  },
+  {
+    titel: `Daedalus baut das Labyrinth`,
+    autor: `Ovid, Metamorphosen 8,159–161`,
+    epoche: `1. Jh. v. Chr. / 1. Jh. n. Chr.`,
+    original: `Daedalus ingenio fabrae celeberrimus artis
+ponit opus turbatque notas et lumina flexu
+ducit in errorem variarum ambage viarum.`,
+    uebersetzung: `Daedalus, hochberühmt durch seine Begabung für die Baukunst, errichtet das Werk: Er verwirrt die Merkzeichen und führt das Auge durch die Windungen der vielerlei Wege in die Irre.`,
+    kommentar: `Für den Minotauros ließ Minos das Labyrinth errichten. Der Mythos dürfte eine Erinnerung an den Palast von Knossos (Tag 5) bewahren: Seine hunderten verschachtelten Räume mussten Festlandsgriechen wie ein unentwirrbares Gebäude erscheinen – und die Doppelaxt (labrys) gab ihm wohl den Namen.`,
   },
 ]
 
