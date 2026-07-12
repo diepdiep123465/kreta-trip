@@ -4,7 +4,7 @@ import {
   MapPin, Hotel, ChevronDown, ChevronUp, Menu, X,
   UtensilsCrossed, BookOpen, Languages,
   Navigation, Info, Globe,
-  Map, FileText, Music
+  Map, FileText, Music, Plane, ExternalLink
 } from 'lucide-react'
 import './App.css'
 
@@ -49,6 +49,22 @@ interface HotelData {
   mapsEmbed: string
 }
 
+interface FlightInfo {
+  number: string
+  airline: string
+  aircraft: string
+  fromCode: string
+  fromCity: string
+  toCode: string
+  toCity: string
+  depTime: string
+  arrTime: string
+  depConfirmed: boolean
+  arrConfirmed: boolean
+  date: string
+  statusUrl: string
+}
+
 interface DayData {
   day: number
   date: string
@@ -57,7 +73,40 @@ interface DayData {
   image: string
   hotel?: string
   hotelData?: HotelData
+  flight?: FlightInfo
   stops: StopData[]
+}
+
+const hinflug: FlightInfo = {
+  number: `EW 4384`,
+  airline: `Eurowings`,
+  aircraft: `Airbus A320`,
+  fromCode: `SZG`,
+  fromCity: `Salzburg`,
+  toCode: `HER`,
+  toCity: `Heraklion`,
+  depTime: `06:10`,
+  arrTime: `09:50`,
+  depConfirmed: true,
+  arrConfirmed: false,
+  date: `Freitag, 17. Juli 2026`,
+  statusUrl: `https://www.salzburg-airport.com/?overlay=flight&num=EW+4384&tstmp=1784261400&type=departure&no_cache=1`,
+}
+
+const rueckflug: FlightInfo = {
+  number: `EW 4385`,
+  airline: `Eurowings`,
+  aircraft: `Airbus A320`,
+  fromCode: `HER`,
+  fromCity: `Heraklion`,
+  toCode: `SZG`,
+  toCity: `Salzburg`,
+  depTime: `17:25`,
+  arrTime: `19:05`,
+  depConfirmed: false,
+  arrConfirmed: true,
+  date: `Freitag, 24. Juli 2026`,
+  statusUrl: `https://www.salzburg-airport.com/?overlay=flight&num=EW+4385&tstmp=1784912700&type=arrival&no_cache=1`,
 }
 
 const corivaHotel: HotelData = {
@@ -79,6 +128,7 @@ const days: DayData[] = [
     image: `https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Psychro-Cave_Lasithi-Plateau_20230608_131004.jpg/1280px-Psychro-Cave_Lasithi-Plateau_20230608_131004.jpg`,
     hotel: 'Hotel Coriva Beach, Ierapetra (N/F)',
     hotelData: corivaHotel,
+    flight: hinflug,
     stops: [
       { name: 'Flug Salzburg – Heraklion', desc: 'Anreise per Flugzeug auf die größte griechische Insel' },
       { name: 'Lassithi-Hochebene', desc: 'Fahrt über die landschaftlich reizvolle Hochebene mit ihren Windmühlen und Obstgärten', km: '95 km' },
@@ -176,6 +226,7 @@ const days: DayData[] = [
     day: 8, date: '24. Juli', weekday: 'Freitag',
     title: 'Heraklion – Heimreise nach Salzburg',
     image: `https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Building_of_the_Archaeological_Museum_of_Heraklion%2C_061381.jpg/1280px-Building_of_the_Archaeological_Museum_of_Heraklion%2C_061381.jpg`,
+    flight: rueckflug,
     stops: [
       { name: 'Heraklion', desc: 'Archäologisches Museum (die minoischen Meisterwerke) und Stadtbesichtigung', km: '75 km', image: `https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Building_of_the_Archaeological_Museum_of_Heraklion%2C_061381.jpg/1280px-Building_of_the_Archaeological_Museum_of_Heraklion%2C_061381.jpg` },
       { name: 'Transfer Flughafen Heraklion', desc: 'Fahrt zum Flughafen Nikos Kazantzakis', km: '10 km' },
@@ -584,6 +635,42 @@ function HotelCard({ hotel, hotelData }: { hotel?: string; hotelData?: HotelData
   )
 }
 
+function FlightCard({ f }: { f: FlightInfo }) {
+  return (
+    <div className="flight-card">
+      <div className="flight-card-top">
+        <div className="flight-airline">
+          <Plane size={16} /> {f.airline} · {f.number}
+        </div>
+        <div className="flight-date">{f.date}</div>
+      </div>
+      <div className="flight-route">
+        <div className="flight-endpoint">
+          <div className="flight-time">{f.depTime}{!f.depConfirmed && <span className="flight-ca">ca.</span>}</div>
+          <div className="flight-code">{f.fromCode}</div>
+          <div className="flight-city">{f.fromCity}</div>
+        </div>
+        <div className="flight-path">
+          <span className="flight-line" />
+          <Plane size={18} className="flight-plane" />
+          <span className="flight-line" />
+        </div>
+        <div className="flight-endpoint">
+          <div className="flight-time">{f.arrTime}{!f.arrConfirmed && <span className="flight-ca">ca.</span>}</div>
+          <div className="flight-code">{f.toCode}</div>
+          <div className="flight-city">{f.toCity}</div>
+        </div>
+      </div>
+      <div className="flight-card-bottom">
+        <span className="flight-aircraft">{f.aircraft}</span>
+        <a href={f.statusUrl} target="_blank" rel="noopener noreferrer" className="flight-status-link">
+          Live-Status <ExternalLink size={11} />
+        </a>
+      </div>
+    </div>
+  )
+}
+
 function DayAccordion({ d, open, onToggle }: { d: DayData; open: boolean; onToggle: () => void }) {
   return (
     <div className={`day-accordion${open ? ' day-accordion-open' : ''}`}>
@@ -616,6 +703,7 @@ function DayAccordion({ d, open, onToggle }: { d: DayData; open: boolean; onTogg
               </div>
             </div>
             <div className="day-card-body">
+              {d.flight && <FlightCard f={d.flight} />}
               <div className="stops-list">
                 {d.stops.map((s, i) => (
                   <div key={i} className={`stop-card stop-card-v2${s.image ? ' stop-card-has-img' : ''}`}>
