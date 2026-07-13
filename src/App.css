@@ -101,15 +101,15 @@ nav {
 .hero-bg {
   position: absolute;
   inset: 0;
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Knossos_North_entrance_bull_fresco.jpg/1920px-Knossos_North_entrance_bull_fresco.jpg');
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Throne_of_Minos_at_Knossos_Palace.jpg/1920px-Throne_of_Minos_at_Knossos_Palace.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: center 42%;
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(15,74,114,0.5) 0%, rgba(0,0,0,0.6) 100%);
+  background: linear-gradient(to bottom, rgba(15,74,114,0.25) 0%, rgba(0,0,0,0.5) 100%);
 }
 
 .hero-content {
