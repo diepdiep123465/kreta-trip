@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, lazy, Suspense } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   MapPin, Hotel, ChevronDown, ChevronUp, Menu, X,
@@ -7,6 +7,8 @@ import {
   Map, FileText, Music, Plane, ExternalLink
 } from 'lucide-react'
 import './App.css'
+
+const RouteMap = lazy(() => import('./RouteMap'))
 
 const fadeIn = {
   hidden: { opacity: 0, y: 30 },
@@ -234,6 +236,40 @@ const days: DayData[] = [
     ],
   },
 ]
+
+// ─── WETTER (Open-Meteo, live abgerufen) ────────────────────────────────────
+
+interface DayWeather {
+  tmax: number
+  tmin: number
+  code: number
+  wind: number
+  precip: number
+}
+
+// Repräsentativer Ort pro Reisetag für die Vorhersage
+const wetterOrte: { day: number; name: string; lat: number; lng: number }[] = [
+  { day: 1, name: 'Lassithi-Hochebene', lat: 35.19, lng: 25.48 },
+  { day: 2, name: 'Vai / Ostkreta', lat: 35.25, lng: 26.26 },
+  { day: 3, name: 'Agios Nikolaos', lat: 35.19, lng: 25.72 },
+  { day: 4, name: 'Matala / Messara', lat: 34.99, lng: 24.75 },
+  { day: 5, name: 'Knossos', lat: 35.30, lng: 25.16 },
+  { day: 6, name: 'Rethymno', lat: 35.37, lng: 24.47 },
+  { day: 7, name: 'Chania', lat: 35.51, lng: 24.02 },
+  { day: 8, name: 'Heraklion', lat: 35.34, lng: 25.13 },
+]
+
+function wetterSymbol(code: number): { icon: string; text: string } {
+  if (code === 0) return { icon: '☀️', text: 'sonnig' }
+  if (code <= 2) return { icon: '🌤️', text: 'heiter' }
+  if (code === 3) return { icon: '☁️', text: 'bewölkt' }
+  if (code <= 48) return { icon: '🌫️', text: 'Nebel' }
+  if (code <= 57) return { icon: '🌦️', text: 'Nieselregen' }
+  if (code <= 67) return { icon: '🌧️', text: 'Regen' }
+  if (code <= 77) return { icon: '🌨️', text: 'Schnee' }
+  if (code <= 82) return { icon: '🌦️', text: 'Schauer' }
+  return { icon: '⛈️', text: 'Gewitter' }
+}
 
 interface Restaurant {
   name: string
@@ -934,7 +970,22 @@ function FlightCard({ f }: { f: FlightInfo }) {
   )
 }
 
-function DayAccordion({ d, open, onToggle }: { d: DayData; open: boolean; onToggle: () => void }) {
+function WeatherCard({ ort, datum, w }: { ort: string; datum: string; w: DayWeather | null | undefined }) {
+  return (
+    <div className="weather-card">
+      <span className="weather-loc">🌍 Wetter {ort} · {datum}. Juli:</span>
+      {w ? (
+        <span className="weather-data">
+          {wetterSymbol(w.code).icon} {wetterSymbol(w.code).text} · {w.tmin}–{w.tmax} °C · 💨 max. {w.wind} km/h · ☔ {w.precip} %
+        </span>
+      ) : (
+        <span className="weather-data weather-pending">Vorhersage wird ca. 14 Tage vor dem Termin verfügbar</span>
+      )}
+    </div>
+  )
+}
+
+function DayAccordion({ d, open, onToggle, wetter }: { d: DayData; open: boolean; onToggle: () => void; wetter?: DayWeather | null }) {
   return (
     <div className={`day-accordion${open ? ' day-accordion-open' : ''}`}>
       <div className="day-accordion-header" onClick={onToggle}>
@@ -967,6 +1018,11 @@ function DayAccordion({ d, open, onToggle }: { d: DayData; open: boolean; onTogg
             </div>
             <div className="day-card-body">
               {d.flight && <FlightCard f={d.flight} />}
+              <WeatherCard
+                ort={wetterOrte.find(o => o.day === d.day)?.name ?? d.title}
+                datum={String(16 + d.day)}
+                w={wetter}
+              />
               <div className="stops-list">
                 {d.stops.map((s, i) => (
                   <div key={i} className={`stop-card stop-card-v2${s.image ? ' stop-card-has-img' : ''}`}>
@@ -1029,6 +1085,38 @@ export default function App() {
   const [expandedDays, setExpandedDays] = useState<number[]>([])
   const toggleDay = (day: number) =>
     setExpandedDays(prev => prev.includes(day) ? prev.filter(d => d !== day) : [...prev, day])
+  const [wetter, setWetter] = useState<Record<number, DayWeather | null>>({})
+
+  // Live-Wetter von Open-Meteo für jeden Reisetag am jeweiligen Ort
+  useEffect(() => {
+    let cancelled = false
+    ;(async () => {
+      const results = await Promise.all(wetterOrte.map(async o => {
+        const date = `2026-07-${16 + o.day}`
+        try {
+          const url = `https://api.open-meteo.com/v1/forecast?latitude=${o.lat}&longitude=${o.lng}` +
+            `&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max` +
+            `&timezone=Europe%2FAthens&start_date=${date}&end_date=${date}`
+          const r = await fetch(url)
+          if (!r.ok) return [o.day, null] as const
+          const j = await r.json()
+          const dly = j?.daily
+          if (!dly?.time?.length || dly.temperature_2m_max?.[0] == null) return [o.day, null] as const
+          return [o.day, {
+            tmax: Math.round(dly.temperature_2m_max[0]),
+            tmin: Math.round(dly.temperature_2m_min[0]),
+            code: dly.weather_code?.[0] ?? 0,
+            wind: Math.round(dly.wind_speed_10m_max?.[0] ?? 0),
+            precip: dly.precipitation_probability_max?.[0] ?? 0,
+          }] as const
+        } catch {
+          return [o.day, null] as const
+        }
+      }))
+      if (!cancelled) setWetter(Object.fromEntries(results))
+    })()
+    return () => { cancelled = true }
+  }, [])
   const [carouselIdx, setCarouselIdx] = useState(0)
   const [wissenTab, setWissenTab] = useState<'architektur' | 'kulinarisch' | 'zeittafel'>('architektur')
   const [glossarKat, setGlossarKat] = useState(0)
@@ -1148,6 +1236,7 @@ export default function App() {
                 d={d}
                 open={expandedDays.includes(d.day)}
                 onToggle={() => toggleDay(d.day)}
+                wetter={wetter[d.day]}
               />
             ))}
           </motion.div>
@@ -1367,12 +1456,17 @@ export default function App() {
             <h2 className="section-title"><Map size={28} /> Karten & Pläne</h2>
             <div className="section-divider" />
             <p style={{ color: '#6b7280', marginBottom: '1.5rem', fontSize: '0.9rem' }}>
-              Interaktive Routenkarte und Höhenprofil – GPX-Daten werden nach Festlegung der Route ergänzt.
+              Die komplette Route mit allen Haltepunkten, farblich nach Tagen unterschieden.
+              Fahre mit der Maus über das Höhenprofil – der rote Punkt zeigt die Position auf der Karte.
             </p>
-            <div style={{ background: 'white', borderRadius: 12, padding: '3rem', textAlign: 'center', boxShadow: '0 2px 8px rgba(0,0,0,0.07)' }}>
-              <Map size={48} color="#d1d5db" />
-              <p style={{ color: '#9ca3af', marginTop: '1rem' }}>GPX-Routenkarte wird nach Festlegung der Reiseroute ergänzt.</p>
-            </div>
+            <Suspense fallback={
+              <div style={{ background: 'white', borderRadius: 12, padding: '3rem', textAlign: 'center', boxShadow: '0 2px 8px rgba(0,0,0,0.07)' }}>
+                <Map size={48} color="#d1d5db" />
+                <p style={{ color: '#9ca3af', marginTop: '1rem' }}>Karte wird geladen …</p>
+              </div>
+            }>
+              <RouteMap />
+            </Suspense>
           </motion.div>
         </div>
       </section>

@@ -699,6 +699,97 @@ section {
   background: rgba(255,255,255,0.3);
 }
 
+/* Wetter-Karte */
+.weather-card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.75rem;
+  background: linear-gradient(135deg, #eff6ff, #f0fdfa);
+  border: 1px solid #bfdbfe;
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.85rem;
+}
+
+.weather-loc {
+  font-weight: 600;
+  color: var(--blue-dark);
+}
+
+.weather-data {
+  color: var(--gray-700);
+}
+
+.weather-pending {
+  color: var(--gray-600);
+  font-style: italic;
+}
+
+/* Routenkarte & Höhenprofil */
+.route-map-wrap {
+  background: white;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.route-map {
+  height: 440px;
+  width: 100%;
+  border-radius: 10px;
+  z-index: 0;
+}
+
+.route-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  margin: 0.9rem 0.25rem 0.25rem;
+}
+
+.route-legend-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  color: var(--gray-700);
+}
+
+.route-legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.profil-title {
+  font-size: 0.95rem;
+  color: var(--blue-dark);
+  margin: 1.25rem 0.25rem 0.75rem;
+}
+
+.profil-tooltip {
+  background: white;
+  border: 1px solid var(--gray-200);
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+.profil-tooltip-name {
+  font-weight: 700;
+  margin-bottom: 0.15rem;
+}
+
+@media (max-width: 768px) {
+  .route-map {
+    height: 300px;
+  }
+}
+
 /* RESTAURANT CARDS */
 .card-grid {
   display: grid;
