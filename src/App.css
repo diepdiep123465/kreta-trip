@@ -101,9 +101,9 @@ nav {
 .hero-bg {
   position: absolute;
   inset: 0;
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Throne_of_Minos_at_Knossos_Palace.jpg/1920px-Throne_of_Minos_at_Knossos_Palace.jpg');
+  background-image: url('/kreta-trip/bilder/titel-5.jpg');
   background-size: cover;
-  background-position: center 42%;
+  background-position: center;
 }
 
 .hero-overlay {
