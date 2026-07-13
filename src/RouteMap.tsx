@@ -5,6 +5,7 @@ import {
   ReferenceArea, ResponsiveContainer, CartesianGrid,
 } from 'recharts'
 import 'leaflet/dist/leaflet.css'
+import routeData from './routeData.json'
 
 interface Pt {
   name: string
@@ -14,8 +15,16 @@ interface Pt {
   day: number
 }
 
-interface ProfilPt extends Pt {
+interface RoutePt {
+  lat: number
+  lng: number
+  ele: number
+  day: number
+}
+
+interface ProfilPt extends RoutePt {
   dist: number
+  name: string
 }
 
 export const dayColors: Record<number, string> = {
@@ -78,7 +87,7 @@ const punkte: Pt[] = [
   { name: 'Flughafen Heraklion', lat: 35.339, lng: 25.180, ele: 35, day: 8 },
 ]
 
-function haversineKm(a: Pt, b: Pt): number {
+function haversineKm(a: { lat: number; lng: number }, b: { lat: number; lng: number }): number {
   const R = 6371
   const dLat = (b.lat - a.lat) * Math.PI / 180
   const dLng = (b.lng - a.lng) * Math.PI / 180
@@ -87,12 +96,38 @@ function haversineKm(a: Pt, b: Pt): number {
   return 2 * R * Math.asin(Math.sqrt(s))
 }
 
-// Höhenprofil: kumulative Distanz (Luftlinie zwischen Haltepunkten)
-const profil: ProfilPt[] = punkte.map((p, i) => {
-  let dist = 0
-  for (let j = 1; j <= i; j++) dist += haversineKm(punkte[j - 1], punkte[j])
-  return { ...p, dist: Math.round(dist) }
+// Straßengenaue Route (OSRM) mit Höhendaten (Open-Meteo)
+const route: RoutePt[] = routeData as RoutePt[]
+
+// Nächstgelegener benannter Haltepunkt für die Tooltip-Beschriftung
+function nearestStopName(p: RoutePt): string {
+  let best = punkte[0]
+  let bestD = Infinity
+  for (const s of punkte) {
+    if (s.day !== p.day) continue
+    const d = haversineKm(p, s)
+    if (d < bestD) { bestD = d; best = s }
+  }
+  return bestD < 4 ? best.name : `zwischen den Stationen`
+}
+
+// Höhenprofil: kumulative Straßen-Distanz
+const profil: ProfilPt[] = route.map(p => {
+  return { ...p, dist: 0, name: nearestStopName(p) }
 })
+{
+  let acc = 0
+  for (let i = 1; i < profil.length; i++) {
+    acc += haversineKm(profil[i - 1], profil[i])
+    profil[i].dist = Math.round(acc * 10) / 10
+  }
+}
+
+// Kartenlinien: Punkte je Tag gruppiert
+const dayLines = Object.keys(dayColors).map(d => {
+  const day = Number(d)
+  return { day, positions: route.filter(p => p.day === day).map(p => [p.lat, p.lng] as [number, number]) }
+}).filter(l => l.positions.length > 1)
 
 // Distanzbereiche pro Tag für farbige Hintergrundflächen im Profil
 const dayRanges = Object.keys(dayColors).map(d => {
@@ -127,11 +162,11 @@ export default function RouteMap() {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {punkte.slice(1).map((p, i) => (
+        {dayLines.map(l => (
           <Polyline
-            key={i}
-            positions={[[punkte[i].lat, punkte[i].lng], [p.lat, p.lng]]}
-            pathOptions={{ color: dayColors[p.day], weight: 4, opacity: 0.85 }}
+            key={l.day}
+            positions={l.positions}
+            pathOptions={{ color: dayColors[l.day], weight: 4, opacity: 0.85 }}
           />
         ))}
         {punkte.map((p, i) => (
