@@ -133,7 +133,7 @@ const days: DayData[] = [
     flight: hinflug,
     stops: [
       { name: 'Flug Salzburg – Heraklion', desc: 'Anreise per Flugzeug auf die größte griechische Insel' },
-      { name: 'Lassithi-Hochebene', desc: 'Fahrt über die landschaftlich reizvolle Hochebene mit ihren Windmühlen und Obstgärten', km: '95 km' },
+      { name: 'Lassithi-Hochebene', desc: 'Fahrt über die landschaftlich reizvolle Hochebene mit ihren Windmühlen und Obstgärten', km: '95 km', image: `/kreta-trip/bilder/Lassithi3.jpg` },
       { name: 'Zeus-Höhle', desc: 'Diktäische Grotte (Psychro) – der mythische Geburtsort des Zeus', image: `https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Psychro_Cave%2C_051240x.jpg/960px-Psychro_Cave%2C_051240x.jpg` },
       { name: 'Ierapetra', desc: 'Südlichste Stadt Europas – Ankunft im Hotel Coriva Beach', km: '80 km' },
     ],
