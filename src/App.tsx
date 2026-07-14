@@ -4,7 +4,7 @@ import {
   MapPin, Hotel, ChevronDown, ChevronUp, Menu, X,
   UtensilsCrossed, BookOpen, Languages,
   Navigation, Info, Globe,
-  Map, FileText, Music, Plane, ExternalLink, Landmark
+  Map, FileText, Music, Plane, ExternalLink, Landmark, Users
 } from 'lucide-react'
 import './App.css'
 
@@ -948,6 +948,112 @@ const glossarKategorien: GlossarKategorie[] = [
   },
 ]
 
+// ─── PERSÖNLICHKEITEN (aus Kreta-Heft 2018, Teil 1) ─────────────────────────
+
+interface PersonData {
+  name: string
+  lebensdaten: string
+  kategorie: string
+  herkunft: string
+  farbe: string
+  kreta: string
+  beschreibung: string
+  bild: string
+}
+
+const personenDaten: PersonData[] = [
+  {
+    name: `El Greco (Domenikos Theotokopoulos)`,
+    lebensdaten: `1541–1614`,
+    kategorie: `Maler`,
+    herkunft: `Iraklion (Kreta)`,
+    farbe: `#8b4a1a`,
+    kreta: `In Iraklion geboren und als Ikonenmaler ausgebildet; ein ihm zugeschriebenes Frühwerk hängt im Historischen Museum von Iraklion (Tag 8).`,
+    beschreibung: `Berühmter spanischer Maler kretischer Herkunft. Aufgewachsen in einem venezianisch-griechischen Milieu, erhielt er seine erste Ausbildung als Ikonenmaler, möglicherweise beim Meister Michael Damaskenos. Ab 1568 in Venedig (im Umkreis Tizians und Tintorettos), ab 1570 in Rom, ab 1577 in Toledo. Seine Gemälde signierte er zeitlebens mit seinem griechischen Namen in griechischen Lettern. Stark überlängte Figuren und eine dramatische, fast abstrakte Farbgebung lassen seine Bilder ekstatisch und visionär erscheinen.`,
+    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/El_Greco_-_Portrait_of_a_Man_-_WGA10554.jpg/500px-El_Greco_-_Portrait_of_a_Man_-_WGA10554.jpg`,
+  },
+  {
+    name: `Nikos Kazantzakis`,
+    lebensdaten: `1883–1957`,
+    kategorie: `Schriftsteller & Philosoph`,
+    herkunft: `Iraklion (Kreta)`,
+    farbe: `#1a6b9e`,
+    kreta: `Der berühmteste Sohn Iraklions – sein Grab liegt auf der venezianischen Stadtmauer (Tag 8), mit der Grabinschrift „Ich erhoffe nichts, ich fürchte nichts: ich bin frei."`,
+    beschreibung: `Zählt zu den berühmtesten Dichtern des modernen Griechenland. Nach juristischem Examen in Athen studierte er in Paris bei Henri Bergson Philosophie. Er verfasste Romane, Dramen, Gedichte, Reiseberichte und übersetzte Homer, Dante und Goethes „Faust" ins Neugriechische. Weltbekannt wurde er durch „Alexis Sorbas" (1946, verfilmt 1952 mit Anthony Quinn). Weitere Werke: „Freiheit oder Tod", „Griechische Passion", „Die letzte Versuchung".`,
+    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Nikos_Kazantzakis_1904.jpg/500px-Nikos_Kazantzakis_1904.jpg`,
+  },
+  {
+    name: `Odysseas Elytis`,
+    lebensdaten: `1911–1996`,
+    kategorie: `Dichter · Nobelpreisträger`,
+    herkunft: `Iraklion (Kreta)`,
+    farbe: `#2d6b4a`,
+    kreta: `Der aus Iraklion gebürtige Dichter – wie Theodorakis im Widerstand gegen die Obristendiktatur engagiert.`,
+    beschreibung: `Einer der Hauptvertreter der modernen griechischen Lyrik. 1979 erhielt er den Literaturnobelpreis für „seine Poesie, die mit sinnlicher Vitalität und intellektuellem Scharfblick den Kampf eines modernen Menschen für Freiheit und Kreativität gestaltet". Sein Hauptwerk „To axion esti" („Gepriesen sei", 1959) wurde von Mikis Theodorakis vertont. Weitere Werke: „Sonne, die Allmächtige", „Das Monogramm", „Maria Nefeli".`,
+    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Odysseas_Elytis_1974.jpg/500px-Odysseas_Elytis_1974.jpg`,
+  },
+  {
+    name: `Eleftherios Venizelos`,
+    lebensdaten: `1864–1936`,
+    kategorie: `Staatsmann`,
+    herkunft: `Mournies bei Chania (Kreta)`,
+    farbe: `#7a1f3d`,
+    kreta: `Aus Mournies bei Chania (Tag 7); ihm verdankt Kreta den Anschluss an Griechenland 1913 (Enosis). Der Flughafen Athens trägt seinen Namen.`,
+    beschreibung: `Der bedeutendste griechische Staatsmann der Moderne. Seine Politik zielte auf die Vereinigung aller Griechen in einem Staat („Megali Idea"). Als Justizminister leitete er 1905 den Aufstand der „Therisso-Revolte". 1910 wurde er Begründer und Führer der Liberalen Partei und mehrfach griechischer Premierminister. In den Londoner Verträgen 1913 wurde Kreta dem griechischen Staatsverband einverleibt.`,
+    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Eleftherios_Venizelos_1917.jpg/500px-Eleftherios_Venizelos_1917.jpg`,
+  },
+  {
+    name: `Manos Hadjidakis`,
+    lebensdaten: `1925–1994`,
+    kategorie: `Komponist`,
+    herkunft: `Xanthi (Festland)`,
+    farbe: `#b5651d`,
+    kreta: `Sein weltberühmtes Lied „Ta pedia tou Pirea" („Never on Sunday", 1960) hört ihr in unserer Musik-Sektion.`,
+    beschreibung: `Komponist und Sänger, der kretische und festländische Folklore mit Elementen internationaler Popmusik verband. Sein berühmtester Song „Never on Sunday" wurde durch den gleichnamigen Film (1960) mit Melina Mercouri weltberühmt und gewann den Oscar für den besten Song – die erste Auszeichnung dieser Art für ein nicht-englischsprachiges Lied.`,
+    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Hatzidakis_Nicopolis_1987.jpg/500px-Hatzidakis_Nicopolis_1987.jpg`,
+  },
+  {
+    name: `Mikis Theodorakis`,
+    lebensdaten: `1925–2021`,
+    kategorie: `Komponist`,
+    herkunft: `Chios (kretische Abstammung)`,
+    farbe: `#6b1a8b`,
+    kreta: `Sein „Sirtaki" aus „Alexis Sorbas" (1965) wurde zum Inbegriff der kretischen Lebensfreude – zu hören und zu sehen in unserer Musik-Sektion.`,
+    beschreibung: `Auf Chios geboren, wohin sein Vater – ein Rechtsanwalt kretischer Abstammung – versetzt worden war. Er schrieb Sinfonien, Opern und Ballettmusiken, wurde aber vor allem durch seine von griechischer Volksmusik geprägten Lieder und Filmmusiken populär (u.a. den Sirtaki). Politisch aktiv im Widerstand gegen die Nazis und später gegen die Obristen, was ihm Verhaftungen und Folter einbrachte. 1990–92 amtierte er als Staatsminister.`,
+    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Mikis_Theodorakis_in_Helsinki_1972_%28JOKAHBL3F_C23-9%29.tif/lossy-page1-500px-Mikis_Theodorakis_in_Helsinki_1972_%28JOKAHBL3F_C23-9%29.tif.jpg`,
+  },
+  {
+    name: `Giannis Markopoulos`,
+    lebensdaten: `1939–2023`,
+    kategorie: `Komponist`,
+    herkunft: `Ierapetra (Kreta)`,
+    farbe: `#1a8b6b`,
+    kreta: `Gebürtig aus Ierapetra (Tage 1–3) – er verbindet die kretische Volksmusik, „rauh und doch sanft wie eine Vogelfeder", mit klassisch-modernen Formen.`,
+    beschreibung: `Der über Kreta hinaus in der ganzen Welt gefeierte Komponist verbindet Elemente kretischer Volksmusik – die er „frei und menschlich, ohne überflüssige Schnörkel" nennt – mit klassisch-modernen Kompositionsweisen. Einer seiner bekanntesten Interpreten war der kretische Sänger Nikos Xylouris.`,
+    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Yannis_Markopoulos_%282008%29.jpg/500px-Yannis_Markopoulos_%282008%29.jpg`,
+  },
+  {
+    name: `Sir Arthur Evans`,
+    lebensdaten: `1851–1941`,
+    kategorie: `Archäologe`,
+    herkunft: `Nash Mills (England)`,
+    farbe: `#444b54`,
+    kreta: `Ausgräber von Knossos (Tag 5) – seine Freilegung ab 1900 bedeutete die Wiederentdeckung der minoischen Kultur, die er nach König Minos benannte.`,
+    beschreibung: `Britischer Archäologe. Zunächst Korrespondent des Manchester Guardian auf dem Balkan, wurde er 1881 wegen seines Engagements für lokale Freiheitsbestrebungen ausgewiesen. Als Direktor des Ashmolean Museum in Oxford stieß er auf Siegelsteine mit unbekannter Schrift, die ihn nach Kreta führten. Ab 1900 grub er den Palast von Knossos aus und publizierte ihn in einem monumentalen Werk (1922–35). 1911 wurde er geadelt. (Seine Rekonstruktionen in Beton sind bis heute umstritten.)`,
+    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Arthur_Evans_in_1939.jpg/500px-Arthur_Evans_in_1939.jpg`,
+  },
+  {
+    name: `Michael Ventris`,
+    lebensdaten: `1922–1956`,
+    kategorie: `Architekt & Entzifferer`,
+    herkunft: `Wheathampstead (England)`,
+    farbe: `#0f4a72`,
+    kreta: `Entzifferte 1952 die minoische Linear-B-Schrift – und bewies, dass die Sprache der Tontafeln aus Knossos (Tag 5) eine frühe Form des Griechischen ist.`,
+    beschreibung: `Von Beruf Architekt, widmete sich der Engländer in seiner Freizeit der Entzifferung der „Linear-B-Schrift". 1952 gelang ihm der entscheidende Durchbruch: Er wies nach, dass es sich um eine frühe Form des Griechischen handelt. Gemeinsam mit dem Gräzisten John Chadwick setzte er seine Arbeit fort. Vier Jahre später kam er bei einem Autounfall ums Leben.`,
+    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Michael_Ventris_obituary_photo.jpg/500px-Michael_Ventris_obituary_photo.jpg`,
+  },
+]
+
 // ─── COMPONENTS ─────────────────────────────────────────────────────────────
 
 function StarRating({ n }: { n: number }) {
@@ -1271,6 +1377,8 @@ export default function App() {
   const [wissenTab, setWissenTab] = useState<'architektur' | 'kulinarisch' | 'zeittafel'>('architektur')
   const [glossarKat, setGlossarKat] = useState(0)
   const [archOpen, setArchOpen] = useState(false)
+  const [personenOpen, setPersonenOpen] = useState(false)
+  const [expandedPerson, setExpandedPerson] = useState<number | null>(null)
   const carouselTimer = useRef<ReturnType<typeof setInterval> | null>(null)
 
   // auto-rotate carousel
@@ -1779,6 +1887,55 @@ export default function App() {
               ))}
             </div>
 
+            </motion.div>)}
+            </AnimatePresence>
+
+            {/* ── Galerie kretischer Persönlichkeiten (aus Kreta-Heft, Teil 1) ── */}
+            <div className={`arch-header${personenOpen ? '' : ' collapsed'}`} onClick={() => setPersonenOpen(!personenOpen)}>
+              <h3>
+                <span className="arch-header-icon"><Users size={22} /></span>
+                <span className="arch-header-title">Galerie kretischer Persönlichkeiten</span>
+                <span className="arch-chevron-area">
+                  <span className="arch-toggle-hint">{personenOpen ? 'Einklappen' : 'Aufklappen'}</span>
+                  {personenOpen ? <ChevronUp size={22} /> : <ChevronDown size={22} />}
+                </span>
+              </h3>
+              <p>Bedeutende Menschen Kretas – zum Aufklappen antippen</p>
+            </div>
+
+            <AnimatePresence>
+            {personenOpen && (<motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }} style={{ overflow: 'hidden' }}>
+              <div className="personen-grid">
+                {personenDaten.map((p, i) => (
+                  <motion.div key={i} className={`person-card${expandedPerson === i ? ' person-card-open' : ''}`} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}>
+                    <div className="person-card-header" style={{ borderColor: p.farbe }} onClick={() => setExpandedPerson(expandedPerson === i ? null : i)}>
+                      <img src={p.bild} alt={p.name} className="person-thumb" loading="lazy" />
+                      <div className="person-name-block">
+                        <h4 className="person-name">{p.name}</h4>
+                        <span className="person-lebensdaten" style={{ color: p.farbe }}>{p.lebensdaten}</span>
+                        <span className="person-kategorie" style={{ background: p.farbe }}>{p.kategorie}</span>
+                      </div>
+                      <div className="person-header-right">
+                        {expandedPerson === i ? <ChevronUp size={16} style={{ color: p.farbe, flexShrink: 0 }} /> : <ChevronDown size={16} style={{ color: p.farbe, flexShrink: 0 }} />}
+                      </div>
+                    </div>
+                    <AnimatePresence>
+                      {expandedPerson === i && (
+                        <motion.div className="person-card-body" initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }}>
+                          <div className="person-body-inner">
+                            <img src={p.bild} alt={p.name} className="person-body-img" loading="lazy" />
+                            <div>
+                              <p className="person-beschreibung">{p.beschreibung}</p>
+                              <div className="person-kreta">🏛 <strong>Kreta-Bezug:</strong> {p.kreta}</div>
+                              <div className="person-herkunft"><MapPin size={13} /> {p.herkunft}</div>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                ))}
+              </div>
             </motion.div>)}
             </AnimatePresence>
           </motion.div>

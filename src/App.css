@@ -1574,6 +1574,140 @@ section {
   .arch-diagramme { grid-template-columns: 1fr; }
 }
 
+/* ===== PERSÖNLICHKEITEN (hell, Struktur wie Sizilien) ===== */
+.personen-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+
+.person-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--gray-200);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+}
+
+.person-card-header {
+  padding: 0.8rem 1rem;
+  border-left: 5px solid;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s;
+}
+
+.person-card-header:hover {
+  background: var(--gray-50);
+}
+
+.person-thumb {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  flex-shrink: 0;
+  border: 2px solid var(--gray-200);
+}
+
+.person-name-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.person-name {
+  margin: 0;
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--gray-800);
+  line-height: 1.2;
+}
+
+.person-lebensdaten {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.person-kategorie {
+  font-size: 0.64rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #fff;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  align-self: flex-start;
+  margin-top: 2px;
+}
+
+.person-header-right {
+  margin-left: auto;
+  flex-shrink: 0;
+  display: flex;
+}
+
+.person-card-body {
+  padding: 0 1.2rem 1.1rem;
+}
+
+.person-body-inner {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--gray-100);
+}
+
+.person-body-img {
+  width: 100px;
+  height: 130px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 8px;
+  flex-shrink: 0;
+  border: 1px solid var(--gray-200);
+}
+
+.person-beschreibung {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--gray-700);
+  line-height: 1.55;
+}
+
+.person-kreta {
+  font-size: 0.8rem;
+  color: var(--gray-700);
+  margin-top: 0.5rem;
+  padding: 0.45rem 0.65rem;
+  background: rgba(201, 162, 39, 0.1);
+  border-radius: 6px;
+  border-left: 3px solid var(--gold);
+}
+
+.person-herkunft {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.78rem;
+  color: var(--gray-600);
+  margin-top: 0.6rem;
+}
+
+@media (max-width: 480px) {
+  .person-body-inner { flex-direction: column; }
+  .person-body-img { width: 90px; height: 115px; }
+}
+
 /* GLOSSAR */
 .glossar-filter {
   display: flex;
