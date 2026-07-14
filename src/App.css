@@ -979,6 +979,115 @@ section {
   line-height: 1.6;
 }
 
+/* Klick-Fassaden (YouTube/Spotify erst bei Klick laden) */
+.musik-video .yt-facade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  background: #000;
+}
+
+.yt-facade img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+
+.yt-facade:hover img {
+  opacity: 1;
+}
+
+.facade-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(15, 74, 114, 0.9);
+  color: white;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 5px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+  transition: transform 0.2s, background 0.2s;
+}
+
+.yt-facade:hover .facade-play {
+  transform: translate(-50%, -50%) scale(1.1);
+  background: #c9a227;
+}
+
+.spotify-facade {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #191414, #1db954);
+  color: white;
+  padding: 1.5rem 1.25rem;
+  border-radius: 12px;
+  text-align: left;
+}
+
+.spotify-facade .facade-play-sm {
+  position: static;
+  transform: none;
+  width: 48px;
+  height: 48px;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  background: rgba(255,255,255,0.2);
+}
+
+.spotify-facade:hover .facade-play-sm {
+  background: rgba(255,255,255,0.35);
+}
+
+.spotify-facade-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.spotify-facade-text strong {
+  font-size: 1rem;
+}
+
+.spotify-facade-text small {
+  color: rgba(255,255,255,0.75);
+  font-size: 0.78rem;
+}
+
+.spotify-playlist-card {
+  margin-bottom: 1.5rem;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.spotify-playlist-card iframe {
+  display: block;
+  border-radius: 12px;
+}
+
+.spotify-track-titel {
+  font-weight: 700;
+  color: var(--blue-dark);
+  font-size: 0.92rem;
+  margin-bottom: 0.2rem;
+}
+
 /* SPOTIFY */
 .spotify-grid {
   display: grid;

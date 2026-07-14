@@ -970,6 +970,53 @@ function FlightCard({ f }: { f: FlightInfo }) {
   )
 }
 
+// Klick-Fassade: lädt den YouTube-Player erst beim Klick (schneller, datenschutzfreundlich)
+function YouTubeFacade({ videoId, title }: { videoId: string; title: string }) {
+  const [loaded, setLoaded] = useState(false)
+  if (loaded) {
+    return (
+      <iframe
+        src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1`}
+        title={title}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      />
+    )
+  }
+  return (
+    <button className="yt-facade" onClick={() => setLoaded(true)} aria-label={`Video abspielen: ${title}`}>
+      <img src={`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`} alt={title} />
+      <span className="facade-play">▶</span>
+    </button>
+  )
+}
+
+// Klick-Fassade für Spotify-Player (Track oder Playlist)
+function SpotifyFacade({ embedPath, titel, height }: { embedPath: string; titel: string; height: number }) {
+  const [loaded, setLoaded] = useState(false)
+  if (loaded) {
+    return (
+      <iframe
+        src={`https://open.spotify.com/embed/${embedPath}?theme=0`}
+        title={titel}
+        width="100%"
+        height={height}
+        frameBorder="0"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      />
+    )
+  }
+  return (
+    <button className="spotify-facade" onClick={() => setLoaded(true)} aria-label={`Spotify-Player laden: ${titel}`}>
+      <span className="facade-play facade-play-sm">▶</span>
+      <span className="spotify-facade-text">
+        <strong>{titel}</strong>
+        <small>Klicken zum Laden des Spotify-Players</small>
+      </span>
+    </button>
+  )
+}
+
 function WeatherCard({ ort, datum, w }: { ort: string; datum: string; w: DayWeather | null | undefined }) {
   return (
     <div className="weather-card">
@@ -1330,13 +1377,7 @@ export default function App() {
               {musik.map((m, i) => (
                 <motion.div key={i} className="musik-card" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} transition={{ delay: i * 0.1 }}>
                   <div className="musik-video">
-                    <iframe
-                      src={`https://www.youtube-nocookie.com/embed/${m.videoId}`}
-                      title={m.titel}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                      loading="lazy"
-                    />
+                    <YouTubeFacade videoId={m.videoId} title={m.titel} />
                   </div>
                   <div className="musik-body">
                     <h3>{m.titel}</h3>
@@ -1347,22 +1388,20 @@ export default function App() {
               ))}
             </div>
 
-            <h3 style={{ fontSize: '1.3rem', color: '#0f4a72', marginTop: '3rem', marginBottom: '1.25rem' }}>
-              Weitere griechische Klassiker zum Anhören
+            <h3 style={{ fontSize: '1.3rem', color: '#0f4a72', marginTop: '3rem', marginBottom: '0.5rem' }}>
+              Weitere griechische Klassiker – unsere Playlist
             </h3>
+            <p style={{ color: '#6b7280', fontSize: '0.85rem', marginBottom: '1.25rem' }}>
+              ℹ️ Ohne Spotify-Konto spielt der Player 30-Sekunden-Vorschauen; mit (kostenlosem) Konto laufen die Stücke vollständig.
+            </p>
+            <div className="spotify-playlist-card">
+              <SpotifyFacade embedPath={`playlist/1JfZXzlIvTIF4BCttJz0kX`} titel={`Playlist „Kreta 2026"`} height={420} />
+            </div>
             <div className="spotify-grid">
               {spotifyTracks.map((t, i) => (
                 <motion.div key={i} className="spotify-card" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} transition={{ delay: i * 0.08 }}>
-                  <iframe
-                    src={`https://open.spotify.com/embed/track/${t.trackId}?theme=0`}
-                    title={t.titel}
-                    width="100%"
-                    height="152"
-                    frameBorder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                    loading="lazy"
-                  />
                   <div className="spotify-text">
+                    <div className="spotify-track-titel">{t.titel}</div>
                     <div className="spotify-interpret">{t.interpret}</div>
                     <p>{t.hinweis}</p>
                   </div>
