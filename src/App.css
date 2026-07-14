@@ -1239,6 +1239,341 @@ section {
   line-height: 1.5;
 }
 
+/* ===== ARCHITEKTUR IM DETAIL (Struktur der Sizilien-Seite) ===== */
+.arch-header {
+  background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+  color: white;
+  border-radius: 12px;
+  padding: 1.1rem 1.4rem;
+  margin: 2.5rem 0 1.5rem;
+  cursor: pointer;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.arch-header:hover {
+  box-shadow: 0 6px 20px rgba(15, 74, 114, 0.35);
+  transform: translateY(-1px);
+}
+
+.arch-header h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.15rem;
+  margin: 0 0 0.25rem;
+}
+
+.arch-header-icon {
+  color: var(--gold);
+  display: flex;
+}
+
+.arch-header-title {
+  flex: 1;
+}
+
+.arch-chevron-area {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--gold);
+}
+
+.arch-toggle-hint {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.75);
+}
+
+.arch-header p {
+  margin: 0;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.8);
+}
+
+.arch-subtitle {
+  font-size: 1.3rem;
+  color: var(--blue-dark);
+  margin: 2.5rem 0 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--gold);
+}
+
+.arch-schema-detail {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.arch-schema-img {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid var(--gray-200);
+  cursor: zoom-in;
+  transition: transform 0.2s, box-shadow 0.2s;
+  background: #fff;
+  padding: 0.5rem;
+}
+
+.arch-schema-img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+}
+
+.arch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.arch-grid-3 {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.arch-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.2rem 1.4rem;
+  border-left: 3px solid var(--gold);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.arch-card h4 {
+  color: var(--blue-dark);
+  margin-bottom: 0.4rem;
+  font-size: 1rem;
+}
+
+.arch-card p {
+  font-size: 0.88rem;
+  color: var(--gray-600);
+  line-height: 1.5;
+}
+
+.arch-card-church {
+  border-left-color: var(--blue);
+}
+
+.arch-card-church-img {
+  width: 100%;
+  height: 140px;
+  overflow: hidden;
+  border-radius: 6px;
+  margin-bottom: 0.8rem;
+}
+
+.arch-card-church-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.arch-card-vessel-img {
+  height: 200px !important;
+}
+
+.arch-gefaesse-zweck {
+  font-size: 0.7rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 20px;
+  background: var(--gold);
+  color: #fff;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.arch-beispiel {
+  margin-top: 0.6rem;
+  font-size: 0.8rem;
+  color: var(--gold);
+  font-style: italic;
+}
+
+.arch-ordnungen {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.arch-ordnung-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.arch-ordnung-img {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+}
+
+.arch-ordnung-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.arch-ordnung-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.6rem 1rem;
+  background: rgba(10, 14, 30, 0.75);
+  border-top: 3px solid;
+}
+
+.arch-ordnung-overlay h4 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.arch-slide-label {
+  display: block;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 2px;
+}
+
+.arch-ordnung-dots {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  gap: 5px;
+}
+
+.arch-ordnung-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s;
+}
+
+.arch-ordnung-dot.active {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.arch-ordnung-body {
+  padding: 1rem 1.2rem;
+}
+
+.arch-ordnung-body ul {
+  padding-left: 1.2rem;
+  margin: 0;
+}
+
+.arch-ordnung-body li {
+  font-size: 0.85rem;
+  color: var(--gray-600);
+  margin-bottom: 0.3rem;
+  line-height: 1.4;
+}
+
+.arch-aufbau {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.arch-aufbau-item {
+  display: flex;
+  gap: 0.8rem;
+  align-items: baseline;
+  padding: 0.5rem 0.8rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.arch-aufbau-term {
+  font-weight: 700;
+  color: var(--gold);
+  white-space: nowrap;
+  font-size: 0.9rem;
+  min-width: 110px;
+}
+
+.arch-aufbau-desc {
+  font-size: 0.85rem;
+  color: var(--gray-600);
+}
+
+.arch-diagramme {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1.5rem;
+  margin: 1rem 0;
+  align-items: start;
+}
+
+.arch-eckkonflikt {
+  display: flex;
+  gap: 1.5rem;
+  background: rgba(26, 107, 158, 0.06);
+  border-left: 4px solid var(--blue);
+  border-radius: 0 12px 12px 0;
+  padding: 1.2rem 1.4rem;
+  margin: 2rem 0;
+  align-items: flex-start;
+}
+
+.arch-eckkonflikt-img-wrap {
+  flex-shrink: 0;
+  width: 180px;
+}
+
+.arch-eckkonflikt-img {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--gray-200);
+}
+
+.arch-eckkonflikt-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--blue);
+  margin: 0 0 0.7rem 0;
+}
+
+.arch-eckkonflikt-text p {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  margin-bottom: 0.6rem;
+  color: var(--gray-700);
+}
+
+.arch-eckkonflikt-fachbegriffe {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+
+.arch-eckkonflikt-fachbegriffe span {
+  background: rgba(26, 107, 158, 0.1);
+  border-radius: 6px;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.78rem;
+  color: var(--gray-700);
+}
+
+@media (max-width: 600px) {
+  .arch-eckkonflikt { flex-direction: column; }
+  .arch-eckkonflikt-img-wrap { width: 100%; }
+  .arch-diagramme { grid-template-columns: 1fr; }
+}
+
 /* GLOSSAR */
 .glossar-filter {
   display: flex;

@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 490" width="560" height="490" font-family="Georgia, serif">
+  <rect width="560" height="490" fill="white"/>
+
+  <!-- === FUNDAMENT (hatched block) === -->
+  <rect x="140" y="340" width="320" height="100" fill="white" stroke="#333" stroke-width="1.5"/>
+  <!-- Hatching lines -->
+  <line x1="140" y1="360" x2="200" y2="340" stroke="#555" stroke-width="0.8"/>
+  <line x1="140" y1="380" x2="240" y2="340" stroke="#555" stroke-width="0.8"/>
+  <line x1="140" y1="400" x2="280" y2="340" stroke="#555" stroke-width="0.8"/>
+  <line x1="140" y1="420" x2="320" y2="340" stroke="#555" stroke-width="0.8"/>
+  <line x1="140" y1="440" x2="360" y2="340" stroke="#555" stroke-width="0.8"/>
+  <line x1="160" y1="440" x2="400" y2="340" stroke="#555" stroke-width="0.8"/>
+  <line x1="200" y1="440" x2="440" y2="340" stroke="#555" stroke-width="0.8"/>
+  <line x1="240" y1="440" x2="460" y2="340" stroke="#555" stroke-width="0.8"/>
+  <line x1="280" y1="440" x2="460" y2="360" stroke="#555" stroke-width="0.8"/>
+  <line x1="320" y1="440" x2="460" y2="380" stroke="#555" stroke-width="0.8"/>
+  <line x1="360" y1="440" x2="460" y2="400" stroke="#555" stroke-width="0.8"/>
+  <line x1="400" y1="440" x2="460" y2="420" stroke="#555" stroke-width="0.8"/>
+  <line x1="430" y1="440" x2="460" y2="430" stroke="#555" stroke-width="0.8"/>
+  <!-- Stone joints -->
+  <line x1="220" y1="340" x2="220" y2="440" stroke="#333" stroke-width="0.8"/>
+  <line x1="320" y1="340" x2="320" y2="440" stroke="#333" stroke-width="0.8"/>
+  <line x1="420" y1="340" x2="420" y2="440" stroke="#333" stroke-width="0.8"/>
+  <line x1="140" y1="390" x2="460" y2="390" stroke="#333" stroke-width="0.8"/>
+
+  <!-- === EUTHYNTERIE (1st course of Krepis) === -->
+  <rect x="155" y="308" width="290" height="32" fill="#f0f0f0" stroke="#333" stroke-width="1.5"/>
+  <line x1="250" y1="308" x2="250" y2="340" stroke="#333" stroke-width="0.8"/>
+  <line x1="350" y1="308" x2="350" y2="340" stroke="#333" stroke-width="0.8"/>
+
+  <!-- === KREPIS step 2 === -->
+  <rect x="172" y="275" width="256" height="33" fill="#f0f0f0" stroke="#333" stroke-width="1.5"/>
+  <line x1="265" y1="275" x2="265" y2="308" stroke="#333" stroke-width="0.8"/>
+  <line x1="360" y1="275" x2="360" y2="308" stroke="#333" stroke-width="0.8"/>
+
+  <!-- === KREPIS step 3 === -->
+  <rect x="189" y="242" width="222" height="33" fill="#f0f0f0" stroke="#333" stroke-width="1.5"/>
+  <line x1="280" y1="242" x2="280" y2="275" stroke="#333" stroke-width="0.8"/>
+  <line x1="370" y1="242" x2="370" y2="275" stroke="#333" stroke-width="0.8"/>
+
+  <!-- === STYLOBAT (top step) === -->
+  <rect x="205" y="205" width="190" height="37" fill="#e0e0e0" stroke="#333" stroke-width="2"/>
+
+  <!-- === COLUMN FLUTES === -->
+  <line x1="268" y1="40" x2="268" y2="205" stroke="#444" stroke-width="2.2"/>
+  <line x1="277" y1="40" x2="277" y2="205" stroke="#444" stroke-width="1.5"/>
+  <line x1="286" y1="40" x2="286" y2="205" stroke="#444" stroke-width="1.5"/>
+  <line x1="295" y1="40" x2="295" y2="205" stroke="#444" stroke-width="1.5"/>
+  <line x1="304" y1="40" x2="304" y2="205" stroke="#444" stroke-width="1.5"/>
+  <line x1="313" y1="40" x2="313" y2="205" stroke="#444" stroke-width="1.5"/>
+  <line x1="322" y1="40" x2="322" y2="205" stroke="#444" stroke-width="1.5"/>
+  <line x1="331" y1="40" x2="331" y2="205" stroke="#444" stroke-width="2.2"/>
+
+  <!-- ===== LABELS ===== -->
+
+  <!-- Stylobat label – right side -->
+  <line x1="395" y1="223" x2="470" y2="185" stroke="#333" stroke-width="1"/>
+  <text x="474" y="184" font-size="15" fill="#222" font-style="italic">Stylobat</text>
+
+  <!-- Euthynterie label – left side -->
+  <line x1="155" y1="324" x2="122" y2="324" stroke="#333" stroke-width="1"/>
+  <text x="118" y="328" font-size="13" fill="#222" font-style="italic" text-anchor="end">Euthynterie</text>
+
+  <!-- Krepis bracket – left side -->
+  <!-- Top tick at step 3 -->
+  <line x1="189" y1="242" x2="132" y2="242" stroke="#333" stroke-width="1.2"/>
+  <!-- Bottom tick at euthynterie bottom -->
+  <line x1="155" y1="340" x2="132" y2="340" stroke="#333" stroke-width="1.2"/>
+  <!-- Vertical bracket line -->
+  <line x1="132" y1="242" x2="132" y2="340" stroke="#333" stroke-width="1.2"/>
+  <!-- Tick to label -->
+  <line x1="132" y1="291" x2="118" y2="291" stroke="#333" stroke-width="1"/>
+  <text x="114" y="296" font-size="15" fill="#222" font-style="italic" text-anchor="end">Krepis</text>
+
+  <!-- Fundament bracket – left side -->
+  <line x1="140" y1="340" x2="108" y2="340" stroke="#333" stroke-width="1.2"/>
+  <line x1="140" y1="440" x2="108" y2="440" stroke="#333" stroke-width="1.2"/>
+  <line x1="108" y1="340" x2="108" y2="440" stroke="#333" stroke-width="1.2"/>
+  <line x1="108" y1="390" x2="94" y2="390" stroke="#333" stroke-width="1"/>
+  <text x="90" y="395" font-size="15" fill="#222" font-style="italic" text-anchor="end">Fundament</text>
+
+  <!-- Title -->
+  <text x="300" y="476" font-size="13" fill="#555" text-anchor="middle" font-style="italic">Die dorische Bauordnung: Säulenbasis</text>
+</svg>

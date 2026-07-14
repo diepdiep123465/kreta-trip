@@ -4,7 +4,7 @@ import {
   MapPin, Hotel, ChevronDown, ChevronUp, Menu, X,
   UtensilsCrossed, BookOpen, Languages,
   Navigation, Info, Globe,
-  Map, FileText, Music, Plane, ExternalLink
+  Map, FileText, Music, Plane, ExternalLink, Landmark
 } from 'lucide-react'
 import './App.css'
 
@@ -1087,6 +1087,39 @@ function SpotifyFacade({ embedPath, titel, height }: { embedPath: string; titel:
   )
 }
 
+// Säulenordnungs-Karte mit rotierenden Bildern (Struktur wie Sizilien-Seite)
+interface OrdnungSlide { url: string; label: string }
+interface OrdnungData { name: string; color: string; merkmale: string[]; beispiel: string; slides: OrdnungSlide[] }
+
+function OrdnungCard({ o }: { o: OrdnungData }) {
+  const [idx, setIdx] = useState(0)
+  useEffect(() => {
+    const t = setInterval(() => setIdx(i => (i + 1) % o.slides.length), 7000)
+    return () => clearInterval(t)
+  }, [o.slides.length])
+  const s = o.slides[idx]
+  return (
+    <motion.div className="arch-ordnung-card" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}>
+      <div className="arch-ordnung-img">
+        <img src={s.url} alt={s.label} loading="lazy" />
+        <div className="arch-ordnung-overlay" style={{ borderColor: o.color }}>
+          <h4 style={{ color: o.color }}>{o.name}</h4>
+          <span className="arch-slide-label">{s.label}</span>
+        </div>
+        <div className="arch-ordnung-dots">
+          {o.slides.map((_, i) => (
+            <button key={i} className={`arch-ordnung-dot${i === idx ? ' active' : ''}`} onClick={() => setIdx(i)} />
+          ))}
+        </div>
+      </div>
+      <div className="arch-ordnung-body">
+        <ul>{o.merkmale.map((m, j) => <li key={j}>{m}</li>)}</ul>
+        <div className="arch-beispiel">📍 {o.beispiel}</div>
+      </div>
+    </motion.div>
+  )
+}
+
 function WeatherCard({ ort, datum, w }: { ort: string; datum: string; w: DayWeather | null | undefined }) {
   return (
     <div className="weather-card">
@@ -1237,6 +1270,7 @@ export default function App() {
   const [carouselIdx, setCarouselIdx] = useState(0)
   const [wissenTab, setWissenTab] = useState<'architektur' | 'kulinarisch' | 'zeittafel'>('architektur')
   const [glossarKat, setGlossarKat] = useState(0)
+  const [archOpen, setArchOpen] = useState(false)
   const carouselTimer = useRef<ReturnType<typeof setInterval> | null>(null)
 
   // auto-rotate carousel
@@ -1521,6 +1555,232 @@ export default function App() {
                 </motion.div>
               ))}
             </div>
+
+            {/* ── Architektur im Detail (Struktur wie Sizilien-Seite, aufklappbar) ── */}
+            <div className={`arch-header${archOpen ? '' : ' collapsed'}`} onClick={() => setArchOpen(!archOpen)}>
+              <h3>
+                <span className="arch-header-icon"><Landmark size={22} /></span>
+                <span className="arch-header-title">Architektur im Detail</span>
+                <span className="arch-chevron-area">
+                  <span className="arch-toggle-hint">{archOpen ? 'Einklappen' : 'Aufklappen'}</span>
+                  {archOpen ? <ChevronUp size={22} /> : <ChevronDown size={22} />}
+                </span>
+              </h3>
+              <p>Tempelformen, Säulenordnungen, Kirchentypen auf Kreta, Gefäßformen und Vasenmalerei</p>
+            </div>
+
+            <AnimatePresence>
+            {archOpen && (<motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }} style={{ overflow: 'hidden' }}>
+
+            {/* Tempelformen */}
+            <h3 className="arch-subtitle">Griechische Tempelformen</h3>
+            <div className="arch-schema-detail" style={{ margin: '0 0 1.5rem 0', textAlign: 'center' }}>
+              <p style={{ fontSize: '0.78rem', color: '#6b7280', marginBottom: '0.5rem', fontStyle: 'italic' }}>
+                Grundrissschemata der wichtigsten Tempeltypen (Draufsicht: Punkte = Säulen, dicke Linien = Mauern)
+              </p>
+              <img
+                src="/kreta-trip/arch-tempeltypen.svg"
+                alt="Grundrissdiagramm griechischer Tempeltypen: Tholos, Antentempel, Prostylos, Peripteros, Dipteros u.a."
+                style={{ maxWidth: '100%', width: '660px', border: '1px solid #e5e7eb', borderRadius: '4px', padding: '0.5rem', background: 'white' }}
+              />
+            </div>
+            <div className="arch-grid">
+              {[
+                { name: 'Antentempel', desc: 'Einfachste Form: Kultraum (Naos/Cella) + Vorraum (Pronaos) mit zwei Säulen zwischen den Mauerenden (Anten).', beispiel: 'Frühe Tempel auf Kreta, z.B. Prinias' },
+                { name: 'Prostylos', desc: 'Säulenhalle nur an der Vorderseite. Die Säulen stehen vor dem Pronaos.', beispiel: '' },
+                { name: 'Amphiprostylos', desc: 'Säulenhallen an Vorder- und Rückseite des Tempels.', beispiel: '' },
+                { name: 'Peripteros', desc: 'Vollständiger Säulenkranz (Peristasis) umgibt die Cella. Die Ringhalle heißt Pteron. Das klassische Standardschema.', beispiel: 'Parthenon (Athen); Tempel Siziliens' },
+                { name: 'Dipteros', desc: 'Doppelter Säulenkranz. Sehr aufwendig – nur für die bedeutendsten Heiligtümer.', beispiel: 'Artemision von Ephesus' },
+                { name: 'Pseudodipteros', desc: 'Wirkt wie Dipteros, aber die innere Säulenreihe fehlt – mehr Raum in der Ringhalle.', beispiel: '' },
+                { name: 'Tholos', desc: 'Runder Tempel mit kreisförmigem Säulenkranz und runder Cella.', beispiel: '' },
+                { name: 'Monopteros', desc: 'Runder Säulenkranz ohne Cella – offener Pavillon-Typ.', beispiel: '' },
+              ].map((t, i) => (
+                <motion.div key={i} className="arch-card" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}>
+                  <h4>{t.name}</h4>
+                  <p>{t.desc}</p>
+                  {t.beispiel && <div className="arch-beispiel">📍 {t.beispiel}</div>}
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Säulenordnungen */}
+            <h3 className="arch-subtitle">Die drei Säulenordnungen</h3>
+            <div className="arch-ordnungen">
+              {([
+                {
+                  name: 'Dorische Ordnung',
+                  color: '#c9a227',
+                  merkmale: ['Keine Basis – Säule steht direkt auf dem Stylobat', '16–20 Kanneluren mit scharfen Graten', 'Kapitell: Echinus (runder Wulst) + Abakus (Platte)', 'Fries: abwechselnd Triglyphen und Metopen', 'Wuchtig, schlicht, maskulin'],
+                  beispiel: 'Klassische Tempel Griechenlands; dorische Bauglieder in Gortyn',
+                  slides: [
+                    { url: 'https://upload.wikimedia.org/wikipedia/commons/7/74/Doric_capital_-_Temple_of_Heracles_-_Agrigento_-_Italy_2015.JPG', label: 'Dorisches Kapitell – Heraklestempel, Agrigent' },
+                    { url: 'https://images.unsplash.com/photo-1721250150605-6f43bae03fce?w=800&q=80', label: 'Parthenon, Athen – Dorische Säulen' },
+                  ],
+                },
+                {
+                  name: 'Ionische Ordnung',
+                  color: '#7ec8e3',
+                  merkmale: ['Basis: Torus + Spira + Plinthe', '24 Kanneluren mit stumpfen Stegen', 'Kapitell: charakteristische Voluten (Schnecken)', 'Architrav in drei Fascien (Streifen) gegliedert', 'Schlank, elegant, weiblich'],
+                  beispiel: 'Kleinasien; Erechtheion in Athen',
+                  slides: [
+                    { url: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Ionic_capital_from_the_Erechtheum_at_the_British_Museum.jpg', label: 'Ionisches Kapitell – Erechtheion, Athen (British Museum)' },
+                    { url: 'https://images.unsplash.com/photo-1761701826167-9b5f164e2cf8?w=800&q=80', label: 'Ionisches Volutenkapitell – Nahaufnahme' },
+                  ],
+                },
+                {
+                  name: 'Korinthische Ordnung',
+                  color: '#8fce8f',
+                  merkmale: ['Wie ionisch, aber aufwendigeres Kapitell', 'Kapitell mit Akanthusblättern und Voluten-Bändern', 'Entwickelt ca. 420 v. Chr. in Korinth', 'Besonders prunkvoll und dekorativ', 'In römischer Architektur am beliebtesten'],
+                  beispiel: 'Römische Bauten – z.B. im römischen Gortyn (Tag 4)',
+                  slides: [
+                    { url: 'https://upload.wikimedia.org/wikipedia/commons/6/6d/Corinthian_capital%2C_AM_of_Epidauros%2C_202545.jpg', label: 'Korinthisches Kapitell – Arch. Museum Epidauros' },
+                    { url: 'https://images.unsplash.com/photo-1767551427154-bd320d9ba413?w=800&q=80', label: 'Korinthische Säulen mit Akanthuskapitell' },
+                  ],
+                },
+              ] as OrdnungData[]).map((o, i) => <OrdnungCard key={i} o={o} />)}
+            </div>
+
+            {/* Detailschema */}
+            <div className="arch-schema-detail">
+              <h3 className="arch-subtitle">Detailschema der Säulenordnungen</h3>
+              <p style={{ fontSize: '0.9rem', color: '#6b7280', marginBottom: '0.75rem' }}>Klicken zum Vergrößern – deutsches Übersichtsschema (1892)</p>
+              <a href="https://upload.wikimedia.org/wikipedia/commons/5/53/Schema_Saeulenordnungen.jpg" target="_blank" rel="noopener noreferrer">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/5/53/Schema_Saeulenordnungen.jpg"
+                  alt="Schema der Säulenordnungen – Dorisch, Ionisch, Korinthisch"
+                  loading="lazy"
+                  className="arch-schema-img"
+                />
+              </a>
+            </div>
+
+            {/* Aufbau des Tempels */}
+            <h3 className="arch-subtitle">Aufbau eines dorischen Tempels</h3>
+            <div className="arch-aufbau">
+              {[
+                { teil: 'Stereobat', desc: 'Unterer Stufenunterbau aus drei Stufen' },
+                { teil: 'Krepis', desc: 'Stufenunterbau (= Stereobat)' },
+                { teil: 'Stylobat', desc: 'Oberste Stufe – Standfläche der Säulen' },
+                { teil: 'Säule', desc: 'Mit Kanneluren; dorisch ohne Basis, ionisch mit Basis' },
+                { teil: 'Kapitell', desc: 'Echinus (runder Wulst) und Abakus (Deckplatte)' },
+                { teil: 'Architrav', desc: 'Waagrechter Träger über den Säulen' },
+                { teil: 'Fries', desc: 'Dorisch: Triglyphen + Metopen; ionisch: Bilderfries' },
+                { teil: 'Geison', desc: 'Vorspringendes Kranzgesims' },
+                { teil: 'Tympanon', desc: 'Dreieckiges Giebelfeld, oft mit Skulpturen' },
+                { teil: 'Sima', desc: 'Dachrinne mit Wasserspeiern (Löwenköpfe)' },
+                { teil: 'Akroter', desc: 'Schmuckelemente an den Giebelecken und -spitzen' },
+              ].map((t, i) => (
+                <div key={i} className="arch-aufbau-item">
+                  <span className="arch-aufbau-term">{t.teil}</span>
+                  <span className="arch-aufbau-desc">{t.desc}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Tempel-Aufbau Diagramme */}
+            <div className="arch-diagramme">
+              <div className="arch-schema-detail" style={{ margin: 0 }}>
+                <p style={{ fontSize: '0.85rem', color: '#6b7280', marginBottom: '0.6rem' }}>Schema: Säulenbasis (Fundament – Krepis – Stylobat)</p>
+                <img src="/kreta-trip/arch-saeulenbasis.svg" alt="Dorische Säulenbasis: Fundament, Krepis, Euthynterie, Stylobat" style={{ width: '100%', maxWidth: '320px', borderRadius: '8px', border: '1px solid #e5e7eb', background: '#fff', padding: '0.5rem' }} />
+              </div>
+              <div className="arch-schema-detail" style={{ margin: 0 }}>
+                <p style={{ fontSize: '0.85rem', color: '#6b7280', marginBottom: '0.6rem' }}>Klicken zum Vergrößern – Beschriftetes Schema: Kapitell, Gebälk und Giebel</p>
+                <a href="https://upload.wikimedia.org/wikipedia/commons/a/ae/Doric-order-labeled.jpg" target="_blank" rel="noopener noreferrer">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Doric-order-labeled.jpg" alt="Dorische Ordnung – vollständig beschriftet" loading="lazy" className="arch-schema-img" />
+                </a>
+              </div>
+            </div>
+
+            {/* Dorischer Eckkonflikt */}
+            <div className="arch-eckkonflikt">
+              <div className="arch-eckkonflikt-img-wrap">
+                <img src="/kreta-trip/arch-eckkonflikt.jpg" alt="Dorischer Eckkonflikt – Schema" loading="lazy" className="arch-eckkonflikt-img" />
+              </div>
+              <div className="arch-eckkonflikt-text">
+                <h3 className="arch-eckkonflikt-title">Dorischer Eckkonflikt</h3>
+                <p>Im Steinbau dorischer Ordnung wird damit das Problem bezeichnet, eine gleichmäßige, um die Ecke biegende Abfolge von Triglyphen und Metopen im Gebälk über der Säulenstellung zu bewirken. In der kanonischen dorischen Baustruktur lagert jede zweite Triglyphe mittig über einer Säule. Dies wird an der Ecke unrealisierbar, wo die Tiefe des auf den Kapitellen lagernden Architravs die Breite einer Triglyphe übersteigt – entweder liegt der Architrav nicht mehr zentriert auf der Deckplatte des Eckkapitells auf, oder die Mitte der Ecktriglyphe rückt aus der Säulenachse nach außen.</p>
+                <p>Der Eckkonflikt war in der Antike ein bekanntes, diskutiertes und am Ende ungelöstes Architekturproblem, das nach einer Aussage des Architekten Vitruv letztlich den Verzicht auf die dorische Bauordnung begründet haben soll. Als „Lösung" wurde im späten 6. Jh. vor allem die Verengung (Kontraktion) des Eckjoches entwickelt.</p>
+                <div className="arch-eckkonflikt-fachbegriffe">
+                  <span><strong>Normaljoch</strong> – Standardabstand zwischen zwei Säulen</span>
+                  <span><strong>Eckjoch</strong> – verkleinertes Joch an der Tempelecke</span>
+                  <span><strong>Triglyphe</strong> – senkrecht gerilltes Frieselement</span>
+                  <span><strong>Metope</strong> – glatte oder reliefierte Platte zwischen zwei Triglyphen</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Kirchentypen auf Kreta */}
+            <h3 className="arch-subtitle">Kirchentypen auf Kreta</h3>
+            <div className="arch-grid arch-grid-3">
+              {[
+                { name: 'Frühchristliche Basilika', desc: 'Längsgerichteter Bau mit Mittelschiff, zwei Seitenschiffen und Apsis; Vorbild ist die römische Gerichtsbasilika. Auf Kreta: die Titus-Basilika in Gortyn (6. Jh.) – der Apostelschüler Titus war erster Bischof der Insel (Tag 4).', img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Gortyn_Agios_Titos.jpg/960px-Gortyn_Agios_Titos.jpg' },
+                { name: 'Byzantinische Kreuzkuppel- und Freskenkirche', desc: 'Kompakter Bau über kreuzförmigem Grundriss bzw. mit mehreren Schiffen, innen vollständig ausgemalt. Hauptwerk auf Kreta: Panagia Kera bei Kritsa (13./14. Jh.) mit den bedeutendsten byzantinischen Fresken der Insel (Tag 3). Fachbegriffe: Narthex (Vorhalle), Bema (Altarraum), Ikonostase (Bilderwand), Pantokrator (Christus in der Kuppel).', img: '/kreta-trip/bilder/kritsa.jpg' },
+                { name: 'Venezianische Kloster- und Kirchenfassade', desc: 'Unter venezianischer Herrschaft (1204–1669) verbinden sich Renaissance- und Barockformen mit orthodoxer Tradition. Prunkstück: die Fassade der Klosterkirche von Moni Arkadi (1587) mit Doppelportal, korinthischen Säulchen und geschwungenem Glockengiebel (Tag 6).', img: '/kreta-trip/bilder/arkadi.jpg' },
+              ].map((k, i) => (
+                <motion.div key={i} className="arch-card arch-card-church" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}>
+                  <div className="arch-card-church-img">
+                    <img src={k.img} alt={k.name} loading="lazy" />
+                  </div>
+                  <h4>{k.name}</h4>
+                  <p>{k.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Gefäßformen */}
+            <h3 className="arch-subtitle">Griechische Gefäßformen</h3>
+            <p style={{ fontSize: '0.9rem', color: '#6b7280', marginBottom: '1.5rem' }}>
+              Die griechische Keramik gliedert sich nach Verwendungszweck in Vorrats-, Misch-, Schöpf-, Trink- und Salbgefäße.
+              Prächtige Exemplare sehen wir im Archäologischen Museum Heraklion (Tag 8) und im Museum von Sitia (Tag 2).
+            </p>
+            <div className="arch-grid arch-grid-3">
+              {([
+                { name: 'Amphore', greek: 'ἀμφορεύς · amphoreús', zweck: 'Vorratsgefäß', desc: 'Zweihenkelig, eiförmiger Bauch, enger Hals. Für Wein, Öl und Honig. Die Panathenäische Preisamphore wurde als Wettkampfpreis überreicht.', museum: 'Arch. Museum Heraklion', img: 'https://upload.wikimedia.org/wikipedia/commons/4/49/Amphorae_retouched.jpg' },
+                { name: 'Hydria', greek: 'ὑδρία · hydrίa', zweck: 'Wassergefäß', desc: 'Dreihenkelig: zwei waagrechte Traghenkel, ein senkrechter Ausgusshenkel. Zum Wassertransport vom Brunnen; Frauen beim Füllen der Hydria ist häufiges Bildthema.', museum: '', img: 'https://upload.wikimedia.org/wikipedia/commons/1/19/Hydria_Hermonax_Rhodes.jpg' },
+                { name: 'Krater', greek: 'κρατήρ · kratḗr', zweck: 'Mischgefäß', desc: 'Großes offenes Gefäß für das Mischen von Wein und Wasser beim Symposion. Typen: Volutenkrater, Glockenkrater, Kolonettenkrater, Kelchkrater.', museum: 'Arch. Museum Heraklion', img: 'https://upload.wikimedia.org/wikipedia/commons/9/9b/Bell-krater_rider_Louvre_G493.jpg' },
+                { name: 'Kylix', greek: 'κύλιξ · kýlix', zweck: 'Trinkschale', desc: 'Flache Trinkschale mit zwei waagrechten Henkeln und langem Stiel. Das Innenmedaillon (Tondo) trägt mythologische Bilder.', museum: '', img: 'https://upload.wikimedia.org/wikipedia/commons/b/b6/Kylix_61.7_with_Helen_and_Hermes%2C_ca._420_BC%2C_part_of_the_Vassil_Bojkov_collection%2C_Sofia%2C_Bulgaria.png' },
+                { name: 'Lekythos', greek: 'λήκυθος · lḗkythos', zweck: 'Öl- / Grabgefäß', desc: 'Schlanke Ölflasche mit engem Hals. Weißgrundige Lekythen mit polychromer Bemalung wurden ausschließlich als Grabbeigaben verwendet.', museum: '', img: 'https://upload.wikimedia.org/wikipedia/commons/5/5c/Apollonia_Painter_-_Red-Figure_%22Kerch%22-Style_Lekythos_-_Walters_4884_-_Right.jpg' },
+                { name: 'Oinochoe', greek: 'οἰνοχόη · oinochóē', zweck: 'Weinkanne', desc: 'Weinkrug mit einem Henkel, oft Kleeblatt-Mündung (trilobos). Diente zum Einschenken beim Symposion. Varianten: Olpe (schlank), Chus (bauchig).', museum: '', img: 'https://upload.wikimedia.org/wikipedia/commons/7/72/Oinoche_Camiros_fantastic_Louvre_A318.jpg' },
+                { name: 'Skyphos', greek: 'σκύφος · skýphos', zweck: 'Trinkbecher', desc: 'Tiefer Trinkbecher mit zwei waagrechten Henkeln. Alltägliches Trinkgefäß; mit Herakles assoziiert. Variante Kotyle: mit hohem Fuß.', museum: '', img: 'https://upload.wikimedia.org/wikipedia/commons/f/f8/Skyphos_Boscoreale_Louvre_Bj2367.jpg' },
+                { name: 'Stamnos', greek: 'σταμνός · stamnós', zweck: 'Vorratsgefäß', desc: 'Breites Vorratsgefäß mit kurzem Hals und zwei waagrechten Henkeln. Für Wein; seltener als die Amphore.', museum: '', img: 'https://upload.wikimedia.org/wikipedia/commons/e/e6/Stamnos_tripod_Louvre_G180.jpg' },
+                { name: 'Pithos', greek: 'πίθος · píthos', zweck: 'Großspeicher', desc: 'Mannshohes Vorratsfass aus Ton – das Markenzeichen der minoischen Palastwirtschaft: In den Magazinen von Knossos, Malia und Kato Zakros stehen sie noch in situ (Tage 2/3/5).', museum: 'Knossos · Malia · Kato Zakros', img: 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Knossos_-_North_Entrance_of_the_palace.jpg' },
+              ] as { name: string; greek: string; zweck: string; desc: string; museum: string; img: string }[]).map((v, i) => (
+                <motion.div key={i} className="arch-card arch-card-church" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}>
+                  <div className="arch-card-church-img arch-card-vessel-img">
+                    <img src={v.img} alt={v.name} loading="lazy" />
+                  </div>
+                  <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'baseline', marginBottom: '0.3rem', flexWrap: 'wrap' }}>
+                    <h4 style={{ margin: 0 }}>{v.name}</h4>
+                    <span className="arch-gefaesse-zweck">{v.zweck}</span>
+                  </div>
+                  <div style={{ fontSize: '0.78rem', color: '#c9a227', fontStyle: 'italic', marginBottom: '0.4rem' }}>{v.greek}</div>
+                  <p>{v.desc}</p>
+                  {v.museum && <div className="arch-beispiel">📍 {v.museum}</div>}
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Dekorstile */}
+            <h3 className="arch-subtitle">Dekorstile der griechischen Vasenmalerei</h3>
+            <div className="arch-grid arch-grid-3">
+              {([
+                { name: 'Schwarzfigurig', zeit: 'ca. 700–480 v. Chr.', desc: 'Figuren in schwarzem Firnis auf rotem Tongrund. Details durch Einritzen (Sgraffito) gearbeitet; weißer Schlicker für Frauenhaut. Entstanden in Korinth und Athen; häufige Grabbeigabe.', img: 'https://upload.wikimedia.org/wikipedia/commons/2/24/Herakles_Geryon_Staatliche_Antikensammlungen_1379.jpg' },
+                { name: 'Rotfigurig', zeit: 'ab ca. 530 v. Chr.', desc: 'Figuren bleiben im Tonrot, Hintergrund schwarz gefirnisst. Körperdetails mit dem Pinsel frei gemalt – ermöglicht naturalistischere Zeichnung. Technik erfunden in Athen.', img: 'https://upload.wikimedia.org/wikipedia/commons/3/33/Cup_Apatouria_Louvre_G138.jpg' },
+                { name: 'Weißgrundig', zeit: 'ab ca. 500 v. Chr.', desc: 'Weißer Kalkschlicker als Grundierung, darüber polychrome Bemalung. Sehr fragil – fast ausschließlich für Lekythen als Grabbeigaben; Totenklage und Abschied sind typische Themen.', img: 'https://upload.wikimedia.org/wikipedia/commons/2/2c/Loutrophoros_Louvre_CA1960.jpg' },
+              ] as { name: string; zeit: string; desc: string; img: string }[]).map((d, i) => (
+                <motion.div key={i} className="arch-card arch-card-church" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}>
+                  <div className="arch-card-church-img">
+                    <img src={d.img} alt={d.name} loading="lazy" />
+                  </div>
+                  <h4>{d.name}</h4>
+                  <div style={{ fontSize: '0.78rem', color: '#c9a227', marginBottom: '0.4rem' }}>{d.zeit}</div>
+                  <p>{d.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+
+            </motion.div>)}
+            </AnimatePresence>
           </motion.div>
         </div>
       </section>
