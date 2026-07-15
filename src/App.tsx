@@ -516,6 +516,18 @@ const nachspeisen: Speise[] = [
     bild: `/kreta-trip/bilder/speise-halva.jpg`,
     quelle: `Foto: Drejwen / Wikimedia Commons (CC BY 4.0)`,
   },
+  {
+    name: `Loukoumades`,
+    beschreibung: `Frittierte Teigbällchen, warm serviert und mit Honig oder Sirup übergossen, dazu Zimt und Walnüsse – eine der ältesten Süßspeisen überhaupt, schon in der Antike den Olympiasiegern gereicht.`,
+    bild: `/kreta-trip/bilder/speise-loukoumades.jpg`,
+    quelle: `Foto: avlxyz / Wikimedia Commons (CC BY-SA 2.0)`,
+  },
+  {
+    name: `Baklava`,
+    beschreibung: `Vielschichtiges Filoteig-Gebäck mit gehackten Walnüssen oder Pistazien, getränkt in Honig- oder Zuckersirup – der Klassiker zu festlichen Anlässen im östlichen Mittelmeerraum.`,
+    bild: `/kreta-trip/bilder/speise-baklava.jpg`,
+    quelle: `Foto: Mari Beika / Wikimedia Commons (CC BY-SA 4.0)`,
+  },
 ]
 
 // Speisen-Karussell – rotiert automatisch alle 7 Sekunden
