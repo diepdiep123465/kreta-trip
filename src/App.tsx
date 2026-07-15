@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, lazy, Suspense } from 'react'
+import { useState, useEffect, lazy, Suspense } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   MapPin, Hotel, ChevronDown, ChevronUp, Menu, X,
@@ -441,7 +441,7 @@ interface Speise {
   bild: string
 }
 
-const speisen: Speise[] = [
+const vorspeisen: Speise[] = [
   {
     name: `Dakos`,
     beschreibung: `Kretischer Zwieback (Paximadi) mit geriebenen Tomaten, Mizithra-Käse, Oregano und Olivenöl – das kretische Nationalgericht schlechthin, einfach und uralt zugleich.`,
@@ -458,20 +458,18 @@ const speisen: Speise[] = [
     bild: `/kreta-trip/bilder/speise-dolmadakia.jpg`,
   },
   {
-    name: `Gemista`,
-    beschreibung: `Mit Reis, Kräutern und Gemüse gefüllte Tomaten und Paprika, im Ofen gebacken – ein sommerliches Familiengericht, das auf fast jedem griechischen Tisch zu finden ist.`,
-    bild: `/kreta-trip/bilder/speise-gemista.jpg`,
+    name: `Taramosalata`,
+    beschreibung: `Cremiger Dip aus Fischrogen (Tarama), eingeweichtem Weißbrot oder Kartoffeln, Öl und Zitrone – klassische Vorspeise, meist mit Oliven und Pita gereicht.`,
+    bild: `/kreta-trip/bilder/speise-taramosalata.jpg`,
   },
   {
-    name: `Giouvetsi`,
-    beschreibung: `Schmorgericht aus Fleisch (meist Rind oder Lamm) und Kritharaki-Nudeln (Orzo) in Tomatensauce, im Tontopf im Ofen gegart – deftige griechische Hausmannskost.`,
-    bild: `/kreta-trip/bilder/speise-jouvetsi.jpg`,
+    name: `Tiropita`,
+    beschreibung: `Knuspriges Filoteig-Gebäck, gefüllt mit Feta und anderen Käsesorten – als kleines Dreieck ein beliebter Snack für unterwegs, verwandt mit den kretischen Kalitsounia.`,
+    bild: `/kreta-trip/bilder/speise-tiropita.jpg`,
   },
-  {
-    name: `Kataifi`,
-    beschreibung: `Süßgebäck aus feinen Weizenfäden, gefüllt mit Nüssen und mit Zuckersirup getränkt – verwandt mit der Baklava, ein fester Bestandteil griechischer Konditoreien.`,
-    bild: `/kreta-trip/bilder/speise-kataifi.jpg`,
-  },
+]
+
+const hauptspeisen: Speise[] = [
   {
     name: `Moussaka`,
     beschreibung: `Auflauf aus geschichteten Auberginen, Kartoffeln, Hackfleisch in Tomatensauce und einer Béchamel-Haube – das bekannteste griechische Gericht international.`,
@@ -483,21 +481,74 @@ const speisen: Speise[] = [
     bild: `/kreta-trip/bilder/speise-souvlaki.jpg`,
   },
   {
+    name: `Gemista`,
+    beschreibung: `Mit Reis, Kräutern und Gemüse gefüllte Tomaten und Paprika, im Ofen gebacken – ein sommerliches Familiengericht, das auf fast jedem griechischen Tisch zu finden ist.`,
+    bild: `/kreta-trip/bilder/speise-gemista.jpg`,
+  },
+  {
+    name: `Giouvetsi`,
+    beschreibung: `Schmorgericht aus Fleisch (meist Rind oder Lamm) und Kritharaki-Nudeln (Orzo) in Tomatensauce, im Tontopf im Ofen gegart – deftige griechische Hausmannskost.`,
+    bild: `/kreta-trip/bilder/speise-jouvetsi.jpg`,
+  },
+  {
     name: `Stifado`,
     beschreibung: `Schmorgericht aus Rind- oder Kaninchenfleisch mit vielen kleinen Perlzwiebeln, Rotwein, Tomaten und Zimt – ein langsam gegartes Wintergericht.`,
     bild: `/kreta-trip/bilder/speise-stifado.jpg`,
   },
+]
+
+const nachspeisen: Speise[] = [
   {
-    name: `Taramosalata`,
-    beschreibung: `Cremiger Dip aus Fischrogen (Tarama), eingeweichtem Weißbrot oder Kartoffeln, Öl und Zitrone – klassische Vorspeise, meist mit Oliven und Pita gereicht.`,
-    bild: `/kreta-trip/bilder/speise-taramosalata.jpg`,
-  },
-  {
-    name: `Tiropita`,
-    beschreibung: `Knuspriges Filoteig-Gebäck, gefüllt mit Feta und anderen Käsesorten – als kleines Dreieck ein beliebter Snack für unterwegs, verwandt mit den kretischen Kalitsounia.`,
-    bild: `/kreta-trip/bilder/speise-tiropita.jpg`,
+    name: `Kataifi`,
+    beschreibung: `Süßgebäck aus feinen Weizenfäden, gefüllt mit Nüssen und mit Zuckersirup getränkt – verwandt mit der Baklava, ein fester Bestandteil griechischer Konditoreien.`,
+    bild: `/kreta-trip/bilder/speise-kataifi.jpg`,
   },
 ]
+
+// Speisen-Karussell – rotiert automatisch alle 7 Sekunden
+function SpeisenKarussel({ gerichte }: { gerichte: Speise[] }) {
+  const [idx, setIdx] = useState(0)
+  useEffect(() => {
+    if (gerichte.length < 2) return
+    const timer = setInterval(() => setIdx(i => (i + 1) % gerichte.length), 7000)
+    return () => clearInterval(timer)
+  }, [gerichte.length])
+  const s = gerichte[idx]
+  return (
+    <div className="speise-karussel">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={idx}
+          className="speise-card"
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -40 }}
+          transition={{ duration: 0.4 }}
+        >
+          <div className="speise-img">
+            <img src={s.bild} alt={s.name} loading="lazy" />
+          </div>
+          <div className="speise-body">
+            <h4>{s.name}</h4>
+            <p>{s.beschreibung}</p>
+          </div>
+        </motion.div>
+      </AnimatePresence>
+      {gerichte.length > 1 && (
+        <div className="carousel-dots">
+          {gerichte.map((_, i) => (
+            <button
+              key={i}
+              className={`carousel-dot ${i === idx ? 'active' : ''}`}
+              onClick={() => setIdx(i)}
+              aria-label={gerichte[i].name}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
 
 interface Musikstueck {
   titel: string
@@ -1398,21 +1449,11 @@ export default function App() {
     })()
     return () => { cancelled = true }
   }, [])
-  const [carouselIdx, setCarouselIdx] = useState(0)
   const [wissenTab, setWissenTab] = useState<'architektur' | 'kulinarisch' | 'zeittafel'>('architektur')
   const [glossarKat, setGlossarKat] = useState(0)
   const [archOpen, setArchOpen] = useState(false)
   const [personenOpen, setPersonenOpen] = useState(false)
   const [expandedPerson, setExpandedPerson] = useState<number | null>(null)
-  const carouselTimer = useRef<ReturnType<typeof setInterval> | null>(null)
-
-  // auto-rotate carousel
-  useEffect(() => {
-    carouselTimer.current = setInterval(() => {
-      setCarouselIdx(i => (i + 1) % speisen.length)
-    }, 7000)
-    return () => { if (carouselTimer.current) clearInterval(carouselTimer.current) }
-  }, [])
 
   // scroll spy
   useEffect(() => {
@@ -1562,36 +1603,21 @@ export default function App() {
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}>
             <h2 className="section-title"><UtensilsCrossed size={28} /> Speisen</h2>
             <div className="section-divider" />
-            <div style={{ background: 'white', borderRadius: 16, padding: '2rem', boxShadow: '0 4px 16px rgba(0,0,0,0.08)' }}>
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={carouselIdx}
-                  initial={{ opacity: 0, x: 40 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -40 }}
-                  transition={{ duration: 0.4 }}
-                  className="carousel-slide"
-                >
-                  <img
-                    src={speisen[carouselIdx].bild}
-                    alt={speisen[carouselIdx].name}
-                    className="carousel-image"
-                    onError={e => { (e.target as HTMLImageElement).src = `https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=300&q=60` }}
-                  />
-                  <div className="carousel-text">
-                    <h3>{speisen[carouselIdx].name}</h3>
-                    <p>{speisen[carouselIdx].beschreibung}</p>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-              <div className="carousel-dots">
-                {speisen.map((_, i) => (
-                  <button
-                    key={i}
-                    className={`carousel-dot ${i === carouselIdx ? 'active' : ''}`}
-                    onClick={() => { setCarouselIdx(i); if (carouselTimer.current) clearInterval(carouselTimer.current) }}
-                  />
-                ))}
+            <p style={{ color: '#6b7280', marginBottom: '1.5rem', fontSize: '0.9rem' }}>
+              Kulinarische Höhepunkte Kretas – von der Meze bis zum Dessert.
+            </p>
+            <div className="speisen-sections">
+              <div className="speisen-kategorie">
+                <h3 className="speisen-kat-titel">🥗 Vorspeisen</h3>
+                <SpeisenKarussel gerichte={vorspeisen} />
+              </div>
+              <div className="speisen-kategorie">
+                <h3 className="speisen-kat-titel">🍝 Hauptspeisen</h3>
+                <SpeisenKarussel gerichte={hauptspeisen} />
+              </div>
+              <div className="speisen-kategorie">
+                <h3 className="speisen-kat-titel">🍮 Nachspeisen</h3>
+                <SpeisenKarussel gerichte={nachspeisen} />
               </div>
             </div>
           </motion.div>
