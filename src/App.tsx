@@ -444,33 +444,58 @@ interface Speise {
 const speisen: Speise[] = [
   {
     name: `Dakos`,
-    beschreibung: `Kretischer Zwieback (Paximadi) mit Tomaten, Mizithra-Käse und Olivenöl – das kretische Nationalgericht.`,
-    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Dakos_greek_food.jpg/800px-Dakos_greek_food.jpg`,
+    beschreibung: `Kretischer Zwieback (Paximadi) mit geriebenen Tomaten, Mizithra-Käse, Oregano und Olivenöl – das kretische Nationalgericht schlechthin, einfach und uralt zugleich.`,
+    bild: `/kreta-trip/bilder/speise-dakos.jpg`,
   },
   {
-    name: `Gamopilafo`,
-    beschreibung: `Hochzeitsreis – mit Hammel- oder Ziegenfleisch-Bouillon gekochter Reis, traditionell bei Hochzeiten auf Kreta serviert.`,
-    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Pilaf_rice.jpg/800px-Pilaf_rice.jpg`,
+    name: `Choriatiki (Bauernsalat)`,
+    beschreibung: `Der klassische griechische Salat aus Tomaten, Gurken, Zwiebeln, grünem Paprika, Oliven und einem Stück Feta obenauf – nie mit Blattsalat, dafür mit viel Olivenöl.`,
+    bild: `/kreta-trip/bilder/speise-choriatiki.jpg`,
   },
   {
-    name: `Apaki`,
-    beschreibung: `Geräuchertes und mariniertes Schweinefleisch, charakteristisches kretisches Wurstwaren-Produkt.`,
-    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Prosciutto_di_Parma.jpg/800px-Prosciutto_di_Parma.jpg`,
+    name: `Dolmadakia`,
+    beschreibung: `Mit Reis, Kräutern und manchmal Hackfleisch gefüllte Weinblätter, die in Zitronen-Ei-Sauce (Avgolemono) oder mit Zitronensaft serviert werden – eine mediterrane Delikatesse mit langer Tradition.`,
+    bild: `/kreta-trip/bilder/speise-dolmadakia.jpg`,
   },
   {
-    name: `Kalitsounia`,
-    beschreibung: `Kleine Teigtaschen, gefüllt mit Mizithra-Käse und frischen Kräutern – typisches Ostergericht Kretas.`,
-    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Cheese_pastry.jpg/800px-Cheese_pastry.jpg`,
+    name: `Gemista`,
+    beschreibung: `Mit Reis, Kräutern und Gemüse gefüllte Tomaten und Paprika, im Ofen gebacken – ein sommerliches Familiengericht, das auf fast jedem griechischen Tisch zu finden ist.`,
+    bild: `/kreta-trip/bilder/speise-gemista.jpg`,
   },
   {
-    name: `Sfakianes Pites`,
-    beschreibung: `Pfannkuchen aus Sfakia, gefüllt mit Anthotiro-Käse, mit Honig und Zimt serviert.`,
-    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Sfakianopita.jpg/800px-Sfakianopita.jpg`,
+    name: `Giouvetsi`,
+    beschreibung: `Schmorgericht aus Fleisch (meist Rind oder Lamm) und Kritharaki-Nudeln (Orzo) in Tomatensauce, im Tontopf im Ofen gegart – deftige griechische Hausmannskost.`,
+    bild: `/kreta-trip/bilder/speise-jouvetsi.jpg`,
   },
   {
-    name: `Stamnagathi`,
-    beschreibung: `Wilder Chicorée, nur auf Kreta vorkommend – roh oder gedämpft mit Olivenöl und Zitrone.`,
-    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Cichorium_spinosum.jpg/800px-Cichorium_spinosum.jpg`,
+    name: `Kataifi`,
+    beschreibung: `Süßgebäck aus feinen Weizenfäden, gefüllt mit Nüssen und mit Zuckersirup getränkt – verwandt mit der Baklava, ein fester Bestandteil griechischer Konditoreien.`,
+    bild: `/kreta-trip/bilder/speise-kataifi.jpg`,
+  },
+  {
+    name: `Moussaka`,
+    beschreibung: `Auflauf aus geschichteten Auberginen, Kartoffeln, Hackfleisch in Tomatensauce und einer Béchamel-Haube – das bekannteste griechische Gericht international.`,
+    bild: `/kreta-trip/bilder/speise-mousaka.jpg`,
+  },
+  {
+    name: `Souvlaki`,
+    beschreibung: `Marinierte Fleischspieße vom Grill, meist Schwein oder Hähnchen, mit Salat, Zwiebeln, Reis oder Pommes serviert – der Klassiker griechischer Straßenküche.`,
+    bild: `/kreta-trip/bilder/speise-souvlaki.jpg`,
+  },
+  {
+    name: `Stifado`,
+    beschreibung: `Schmorgericht aus Rind- oder Kaninchenfleisch mit vielen kleinen Perlzwiebeln, Rotwein, Tomaten und Zimt – ein langsam gegartes Wintergericht.`,
+    bild: `/kreta-trip/bilder/speise-stifado.jpg`,
+  },
+  {
+    name: `Taramosalata`,
+    beschreibung: `Cremiger Dip aus Fischrogen (Tarama), eingeweichtem Weißbrot oder Kartoffeln, Öl und Zitrone – klassische Vorspeise, meist mit Oliven und Pita gereicht.`,
+    bild: `/kreta-trip/bilder/speise-taramosalata.jpg`,
+  },
+  {
+    name: `Tiropita`,
+    beschreibung: `Knuspriges Filoteig-Gebäck, gefüllt mit Feta und anderen Käsesorten – als kleines Dreieck ein beliebter Snack für unterwegs, verwandt mit den kretischen Kalitsounia.`,
+    bild: `/kreta-trip/bilder/speise-tiropita.jpg`,
   },
 ]
 
