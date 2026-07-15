@@ -439,6 +439,7 @@ interface Speise {
   name: string
   beschreibung: string
   bild: string
+  quelle?: string
 }
 
 const vorspeisen: Speise[] = [
@@ -503,6 +504,18 @@ const nachspeisen: Speise[] = [
     beschreibung: `Süßgebäck aus feinen Weizenfäden, gefüllt mit Nüssen und mit Zuckersirup getränkt – verwandt mit der Baklava, ein fester Bestandteil griechischer Konditoreien.`,
     bild: `/kreta-trip/bilder/speise-kataifi.jpg`,
   },
+  {
+    name: `Galaktoboureko`,
+    beschreibung: `Warmer Grießpudding, eingebacken in knusprigen Filoteig und mit Zitronensirup getränkt – „Milchbörek“, eines der beliebtesten griechischen Desserts.`,
+    bild: `/kreta-trip/bilder/speise-galaktoboureko.jpg`,
+    quelle: `Foto: Badseed / Wikimedia Commons (CC BY 3.0)`,
+  },
+  {
+    name: `Halva`,
+    beschreibung: `Dichte Süßspeise aus Sesammus (Tahin) und Zucker, oft mit Pistazien oder Mandeln – hier als traditioneller Laib auf einem griechischen Markt, in Scheiben verkauft.`,
+    bild: `/kreta-trip/bilder/speise-halva.jpg`,
+    quelle: `Foto: Drejwen / Wikimedia Commons (CC BY 4.0)`,
+  },
 ]
 
 // Speisen-Karussell – rotiert automatisch alle 7 Sekunden
@@ -531,6 +544,7 @@ function SpeisenKarussel({ gerichte }: { gerichte: Speise[] }) {
           <div className="speise-body">
             <h4>{s.name}</h4>
             <p>{s.beschreibung}</p>
+            {s.quelle && <span className="speise-quelle">{s.quelle}</span>}
           </div>
         </motion.div>
       </AnimatePresence>

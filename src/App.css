@@ -989,6 +989,13 @@ section {
   line-height: 1.55;
 }
 
+.speise-quelle {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: 0.72rem;
+  color: var(--gray-500, #9ca3af);
+}
+
 @media (max-width: 900px) {
   .speisen-sections { grid-template-columns: 1fr; }
 }
