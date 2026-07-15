@@ -828,18 +828,134 @@ const kulinarischesLexikon: LexikonEintrag[] = [
   { term: `Marathopita`, definition: `Fenchelkuchen – blätterteigartiger Kuchen mit Fenchel und Olivenöl` },
 ]
 
-const zeittafel: LexikonEintrag[] = [
-  { term: `ca. 3000 v. Chr.`, definition: `Frühminoische Zeit: erste Besiedlung der Insel durch Vorgriechische Bevölkerung` },
-  { term: `2000–1700 v. Chr.`, definition: `Altpalastzeit: Entstehung der Paläste von Knossos, Phaistos und Malia` },
-  { term: `1700–1450 v. Chr.`, definition: `Neupalastzeit: Blütezeit der minoischen Hochkultur, Palaststil und Wandmalerei` },
-  { term: `1450 v. Chr.`, definition: `Vulkanausbruch Thera (Santorin) und mykenische Übernahme Kretas` },
-  { term: `1100 v. Chr.`, definition: `Zusammenbruch der mykenischen Zivilisation, Beginn der Dunklen Jahrhunderte` },
-  { term: `67 v. Chr.`, definition: `Römische Eroberung Kretas unter Quintus Caecilius Metellus (Creticus)` },
-  { term: `824–961 n. Chr.`, definition: `Arabische Herrschaft auf Kreta (Emirat von Kreta)` },
-  { term: `1204–1669`, definition: `Venezianische Herrschaft auf Kreta (Herzogtum Kandia)` },
-  { term: `1669–1898`, definition: `Osmanische Herrschaft auf Kreta` },
-  { term: `1913`, definition: `Eingliederung Kretas in den griechischen Staat` },
-  { term: `1941–1945`, definition: `Deutsche Besatzung, Luftlandung bei Maleme (Unternehmen Merkur)` },
+// Zeittafel nach der Zeittafel im Kreta-Heft (Teil 1, „Geschichte, Kunst, Kultur im Überblick")
+interface ZeitEreignis { datum: string; text: string }
+interface ZeitEpoche { epoche: string; zeitraum: string; farbe: string; ereignisse: ZeitEreignis[] }
+
+const zeittafelDaten: ZeitEpoche[] = [
+  {
+    epoche: `Neolithikum`,
+    zeitraum: `6000–2600 v. Chr.`,
+    farbe: `#7B6B52`,
+    ereignisse: [
+      { datum: `ab 6500 v. Chr.`, text: `Spuren erster Besiedlung. Höhlen werden sporadisch bewohnt, Tote im rückwärtigen Teil beigesetzt. In Knossos und Festos entstehen erste Häuser aus Bruchstein und Lehm. Werkzeug aus Knochen, Stein und Obsidian (von der Kykladeninsel Milos importiert). Weibliche Fruchtbarkeitsidole.` },
+    ],
+  },
+  {
+    epoche: `Vorpalastzeit`,
+    zeitraum: `2600–1900 v. Chr.`,
+    farbe: `#a9743b`,
+    ereignisse: [
+      { datum: `ab 2600 v. Chr.`, text: `Entwicklung der Landwirtschaft, engere Beziehungen zur ägäischen Inselwelt, erste Bronzewerkzeuge. Kuppelgräber in der Mesara-Ebene, Siedlungen von Vassiliki und Myrtos bei Ierapetra. Kykladenidole werden importiert, reiche Grabbeigaben und Töpferware.` },
+      { datum: `um 2200 v. Chr.`, text: `Erstmals Verwendung der Töpferscheibe. Goldschmiedekunst (Granulationstechnik), Scheibenräder für Ochsenkarren. Siegelsteine, Schmuck und Amulette werden gefertigt.` },
+    ],
+  },
+  {
+    epoche: `Zeit der Alten Paläste`,
+    zeitraum: `1900–1700 v. Chr.`,
+    farbe: `#b8860b`,
+    ereignisse: [
+      { datum: `ab 1900 v. Chr.`, text: `Konzentration der Macht auf einige Plätze. Größter Palast in Knossos, ferner Festos, Malia, Zakros, Archanes und Kydonia (Chania). Mehrstöckige Paläste mit Flügeltüren, Fenstern, Boden- und Wandschmuck sowie großen Magazinen. Minoische Seeherrschaft, Handel mit Ägypten und dem Orient.` },
+      { datum: `Kamares-Ware`, text: `Feine Keramik mit hellen Ornamenten auf schwarzem Grund. Starke Bedeutung der Religion (Kultstätten in Palästen, auf Bergen und in Höhlen). Hieroglyphenschrift. Schwere Erdbeben beenden die Alte Palastzeit.` },
+    ],
+  },
+  {
+    epoche: `Zeit der Neuen Paläste – „Goldene Zeit"`,
+    zeitraum: `1700–1450 v. Chr.`,
+    farbe: `#c0392b`,
+    ereignisse: [
+      { datum: `um 1700 v. Chr.`, text: `Erneuerung der Kultur auf höherem Niveau – die Blütezeit der minoischen Hochkultur. Prächtige Palastanlagen mit Lichtschächten und Abwasserleitung. Große Städte, mehrstöckige Herrenhäuser mit Fresken. Bedeutender Seehandel, Handelsniederlassungen in Afrika, Kleinasien und auf den ägäischen Inseln.` },
+    ],
+  },
+  {
+    epoche: `Nachpalastzeit`,
+    zeitraum: `1450–1100 v. Chr.`,
+    farbe: `#8e6f3e`,
+    ereignisse: [
+      { datum: `um 1450 v. Chr.`, text: `Eine Katastrophe beendet die Blütezeit der minoischen Kultur: Paläste, Herrenhäuser und Städte werden zerstört; nur der Palast von Knossos bleibt teilweise erhalten.` },
+      { datum: `ab 1450 v. Chr.`, text: `Achäer (Mykener) übernehmen die Macht, mit Königssitz in Knossos. Einführung der Linear-B-Schrift (frühes Griechisch, 1953 entziffert). Blüte des Flora- und Meeresstils in der Töpferei.` },
+      { datum: `um 1380 v. Chr.`, text: `Schwere Erdbeben und Feuer zerstören den Palast von Knossos endgültig. Bauten im mykenischen „Megaronstil" in Agia Triada und Tylissos. Kultidole mit erhobenen Armen.` },
+      { datum: `ab 1200 v. Chr.`, text: `Im gesamten Mittelmeerraum Unruhen und Zerstörungen – Ende der minoisch-mykenischen Hochkultur auf Kreta.` },
+    ],
+  },
+  {
+    epoche: `Protogeometrische Zeit`,
+    zeitraum: `1100–900 v. Chr.`,
+    farbe: `#6b7280`,
+    ereignisse: [
+      { datum: `ab 1100 v. Chr.`, text: `Neue Einwanderer, vorwiegend dorische Griechen. Die alteingesessene Bevölkerung wird unterworfen oder zieht sich in die Berge zurück (die „Eteokreter", die wahren Kreter). Verehrung der Vegetationsgöttin und lokaler Kulte (Diktynna, Britomartis). Eisen für Waffen und Schmuck.` },
+    ],
+  },
+  {
+    epoche: `Zeit der griechischen Stadtstaaten`,
+    zeitraum: `900–67 v. Chr.`,
+    farbe: `#2C6E9E`,
+    ereignisse: [
+      { datum: `ab 900 v. Chr.`, text: `Dorische Stadtstaaten, nach dem Vorbild Spartas organisiert und kriegerisch geprägt. Handel mit Ägypten und dem Vorderen Orient.` },
+      { datum: `um 650 v. Chr.`, text: `Unter dem Einfluss Ägyptens entsteht der „dädalische" Stil in Reliefs und Plastiken (Reiterfries aus Prinias). Frühe griechische Rechtsprechung: der berühmte Gesetzestext von Gortys.` },
+      { datum: `ab 500 v. Chr.`, text: `Kreta bleibt gegenüber dem übrigen Griechenland zurück, profitiert aber weiter vom Handel; die Kunst übernimmt den Stil des Festlands.` },
+      { datum: `ab 200 v. Chr.`, text: `Von Kreta aus operieren Seeräuber und stören zunehmend die Interessen Roms.` },
+    ],
+  },
+  {
+    epoche: `Römische, byzantinische & arabische Herrschaft`,
+    zeitraum: `67 v. Chr. – 1204 n. Chr.`,
+    farbe: `#8B1A1A`,
+    ereignisse: [
+      { datum: `67 v. Chr.`, text: `Der römische Konsul Quintus Caecilius Metellus unterwirft Kreta nach dreijährigem Kampf und erhält den Ehrennamen „Creticus". Die Stadtstaaten werden aufgelöst, Hauptstadt der Provinz Creta et Cyrenaica wird Gortys. Großzügiger Ausbau der Städte (Tempel, Odeon, Theater, Bäder); ca. 300 000 Einwohner.` },
+      { datum: `58 n. Chr.`, text: `Auf der Reise nach Rom setzt der Apostel Paulus seinen Mitarbeiter Titus als ersten Bischof Kretas ein.` },
+      { datum: `824`, text: `Aus Spanien vertriebene sarazenische Araber unter Abu Hafs landen an der Südküste; die Städte werden zerstört, die Festung Chandak (heute Iraklion) errichtet.` },
+      { datum: `960`, text: `Der byzantinische Feldherr und spätere Kaiser Nikephoros Phokas erobert die Insel zurück.` },
+      { datum: `961–1204`, text: `Kreta gehört wieder zum Byzantinischen Reich. Religiöse Neuordnung, Verlegung der Bischofssitze; Missionare wie Joannis o Xenos gründen Klöster.` },
+    ],
+  },
+  {
+    epoche: `Venezianische Herrschaft`,
+    zeitraum: `1204–1669`,
+    farbe: `#1f7a6b`,
+    ereignisse: [
+      { datum: `1204`, text: `Nach dem Vierten Kreuzzug gelangt Kreta an Venedig. Kaiser Nikephoros siedelt später Veteranen an; die einzelnen Kastelle werden mit dem Markuslöwen geschmückt.` },
+      { datum: `1239`, text: `Bau der katholischen Markus-Basilika in Iraklion, dazu San Francesco und San Nikolaos in Chania. Die orthodoxen Bischöfe müssen weichen, Land geht an venezianische Adelige – in den folgenden Jahrhunderten 14 große Aufstände (1283–99 unter Alexios Kallergis).` },
+      { datum: `1299`, text: `Friedensvertrag „Pax Calergii": Steuererleichterungen; die Kreter verteidigen ihre griechische Sprache und den orthodoxen Glauben.` },
+      { datum: `1453`, text: `Konstantinopel fällt an die Osmanen. Viele griechische Flüchtlinge kommen nach Kreta und geben Impulse für die „kretische Renaissance", die byzantinische und venezianische Elemente vereint.` },
+      { datum: `16.–17. Jh.`, text: `Iraklion wird Zentrum der kretischen Renaissance. Ikonenmaler wie Michael Damaskinos, Georgios Klontzas und die Maler der „kretischen Schule". 1541 wird der Maler El Greco (Domenico Theotokopoulos) in Fodele bei Iraklion geboren.` },
+    ],
+  },
+  {
+    epoche: `Türkische Besatzungszeit`,
+    zeitraum: `1645–1898`,
+    farbe: `#6d3b8f`,
+    ereignisse: [
+      { datum: `1644–1645`, text: `Ausbruch des fünften venezianisch-türkischen Krieges. Chania fällt an die Türken, kurz darauf der größte Teil Kretas.` },
+      { datum: `1669`, text: `Iraklion kapituliert nach dreijähriger Endbelagerung (insgesamt 21 Jahre). Das Land ist verwüstet, die Bevölkerung von 287 000 auf rund 134 000 Einwohner dezimiert.` },
+      { datum: `1770`, text: `Aufstand des Ioannis Daskalogiannis in Sfakia gegen die osmanische Herrschaft.` },
+      { datum: `1821–1830`, text: `Griechischer Befreiungskrieg; trotz kretischer Beteiligung bleibt die Insel osmanisch.` },
+      { datum: `1866–1868`, text: `Der „Große kretische Aufstand", Höhepunkt ist die Selbstsprengung des Klosters Moni Arkadi. Der Vertrag von Chalepa bringt Zugeständnisse (u. a. Zulassung der griechischen Sprache vor Gericht).` },
+      { datum: `1883`, text: `Nikos Kazantzakis, der bedeutendste Dichter Kretas, wird in Iraklion geboren (Tod 1957).` },
+      { datum: `1898`, text: `Nach einem erneuten Aufstand landen internationale Truppen der Großmächte; das Ende der türkischen Herrschaft. Kreta wird autonomer Staat unter Oberhoheit des Sultans.` },
+    ],
+  },
+  {
+    epoche: `Kreta im 20. / 21. Jahrhundert`,
+    zeitraum: `ab 1898`,
+    farbe: `#34495e`,
+    ereignisse: [
+      { datum: `1898`, text: `Prinz Georg wird Hochkommissar. Die Kreter wünschen die Vereinigung (Enosis) mit Griechenland.` },
+      { datum: `1900`, text: `Sir Arthur Evans beginnt mit der Ausgrabung von Knossos – die minoische Kultur wird wiederentdeckt.` },
+      { datum: `1905`, text: `Erste Unruhen unter Führung von Eleftherios Venizelos, dem Anwalt aus Chania.` },
+      { datum: `1913`, text: `Kreta wird mit Griechenland vereinigt; im Dezember wird die griechische Fahne auf der Festung Firka in Chania gehisst.` },
+      { datum: `1923`, text: `Nach dem griechisch-türkischen Krieg großer Bevölkerungsaustausch: Griechen aus Kleinasien kommen nach Kreta, die verbliebenen Türken verlassen die Insel.` },
+      { datum: `1926`, text: `Schweres Erdbeben in Iraklion; beim Wiederaufbau von Knossos werden die bekannten Betonrekonstruktionen errichtet.` },
+      { datum: `20.–30. Mai 1941`, text: `Invasion deutscher Luftlandetruppen – die Luftlandeschlacht um Kreta.` },
+      { datum: `1941–1945`, text: `Deutsche Besatzung. Heftiger Widerstandskampf der Kreter, viele Opfer unter der Zivilbevölkerung durch Vergeltungsmaßnahmen.` },
+      { datum: `1962`, text: `Nikolaos Platon beginnt die Ausgrabungen des Palastes von Kato Zakros.` },
+      { datum: `1967–1974`, text: `Militärdiktatur der „Obristen" in Griechenland; auch Kreter wie der Komponist Mikis Theodorakis leiden darunter.` },
+      { datum: `ab 1970`, text: `Verstärkt einsetzender Tourismus, zunächst an der Nordküste östlich von Iraklion und am Golf von Mirabello.` },
+      { datum: `1972`, text: `Gründung der Universität Kreta; Iraklion wird Hauptstadt der Insel.` },
+      { datum: `1981`, text: `Griechenland wird EG-Mitglied.` },
+      { datum: `2001`, text: `Griechenland wird Mitglied der Eurozone.` },
+    ],
+  },
 ]
 
 interface GlossarEintrag {
@@ -1480,6 +1596,9 @@ export default function App() {
   const [archOpen, setArchOpen] = useState(false)
   const [personenOpen, setPersonenOpen] = useState(false)
   const [expandedPerson, setExpandedPerson] = useState<number | null>(null)
+  const [expandedEpochen, setExpandedEpochen] = useState<number[]>([])
+  const toggleEpoche = (idx: number) =>
+    setExpandedEpochen(prev => prev.includes(idx) ? prev.filter(e => e !== idx) : [...prev, idx])
 
   // scroll spy
   useEffect(() => {
@@ -1501,9 +1620,7 @@ export default function App() {
     setMenuOpen(false)
   }
 
-  const wissenData = wissenTab === 'architektur' ? architekturLexikon
-    : wissenTab === 'kulinarisch' ? kulinarischesLexikon
-    : zeittafel
+  const wissenData = wissenTab === 'kulinarisch' ? kulinarischesLexikon : architekturLexikon
 
 
   return (
@@ -1732,14 +1849,53 @@ export default function App() {
                 </button>
               ))}
             </div>
-            <div className="lexikon-grid">
-              {wissenData.map((e, i) => (
-                <motion.div key={i} className="lexikon-entry" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} transition={{ delay: i * 0.04 }}>
-                  <div className="lexikon-term">{e.term}</div>
-                  <div className="lexikon-def">{e.definition}</div>
-                </motion.div>
-              ))}
-            </div>
+            {wissenTab === 'zeittafel' ? (
+              <>
+                <p style={{ color: '#6b7280', margin: '0 0 1.25rem', fontSize: '0.9rem' }}>
+                  Nach der Zeittafel aus dem Kreta-Heft der Griechischklassen – Epoche antippen zum Aufklappen.
+                </p>
+                <div className="timeline">
+                  {zeittafelDaten.map((epoche, ei) => {
+                    const epocheOpen = expandedEpochen.includes(ei)
+                    return (
+                      <div key={ei} className="timeline-epoche">
+                        <div className="timeline-epoche-header" style={{ borderLeftColor: epoche.farbe }} onClick={() => toggleEpoche(ei)}>
+                          <div>
+                            <h3 style={{ color: epoche.farbe }}>{epoche.epoche}</h3>
+                            <span className="timeline-epoche-zeitraum">{epoche.zeitraum}</span>
+                          </div>
+                          {epocheOpen ? <ChevronUp size={18} style={{ color: epoche.farbe }} /> : <ChevronDown size={18} style={{ color: epoche.farbe }} />}
+                        </div>
+                        <AnimatePresence>
+                          {epocheOpen && (
+                            <motion.div className="timeline-ereignisse" initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }} style={{ overflow: 'hidden' }}>
+                              {epoche.ereignisse.map((e, i) => (
+                                <div key={i} className="timeline-item">
+                                  <div className="timeline-dot" style={{ background: epoche.farbe }} />
+                                  <div className="timeline-content">
+                                    <span className="timeline-datum" style={{ color: epoche.farbe }}>{e.datum}</span>
+                                    <p className="timeline-text">{e.text}</p>
+                                  </div>
+                                </div>
+                              ))}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    )
+                  })}
+                </div>
+              </>
+            ) : (
+              <div className="lexikon-grid">
+                {wissenData.map((e, i) => (
+                  <motion.div key={i} className="lexikon-entry" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} transition={{ delay: i * 0.04 }}>
+                    <div className="lexikon-term">{e.term}</div>
+                    <div className="lexikon-def">{e.definition}</div>
+                  </motion.div>
+                ))}
+              </div>
+            )}
 
             {/* ── Architektur im Detail (Struktur wie Sizilien-Seite, aufklappbar) ── */}
             <div className={`arch-header${archOpen ? '' : ' collapsed'}`} onClick={() => setArchOpen(!archOpen)}>

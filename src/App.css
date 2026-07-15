@@ -1314,6 +1314,86 @@ section {
   line-height: 1.5;
 }
 
+/* ===== ZEITTAFEL (Epochen-Timeline, Struktur der Sizilien-Seite) ===== */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.timeline-epoche {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.07);
+}
+
+.timeline-epoche-header {
+  padding: 1rem 1.4rem;
+  border-left: 5px solid;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.timeline-epoche-header:hover {
+  background: #f9fafb;
+}
+
+.timeline-epoche-header h3 {
+  margin: 0;
+  font-size: 1.12rem;
+  font-weight: 700;
+}
+
+.timeline-epoche-zeitraum {
+  font-size: 0.82rem;
+  color: var(--gray-500, #9ca3af);
+  font-style: italic;
+}
+
+.timeline-ereignisse {
+  padding: 0.4rem 1.4rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.timeline-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+.timeline-content {
+  flex: 1;
+}
+
+.timeline-datum {
+  font-size: 0.78rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.timeline-text {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--gray-700);
+  line-height: 1.55;
+}
+
 /* ===== ARCHITEKTUR IM DETAIL (Struktur der Sizilien-Seite) ===== */
 .arch-header {
   background: linear-gradient(135deg, var(--blue-dark), var(--blue));
