@@ -1795,6 +1795,9 @@ export default function App() {
   const [personenOpen, setPersonenOpen] = useState(false)
   const [naturOpen, setNaturOpen] = useState(false)
   const [zeittafelOpen, setZeittafelOpen] = useState(false)
+  const [openKartenGruppen, setOpenKartenGruppen] = useState<number[]>([])
+  const toggleKartenGruppe = (idx: number) =>
+    setOpenKartenGruppen(prev => prev.includes(idx) ? prev.filter(g => g !== idx) : [...prev, idx])
   const [expandedPerson, setExpandedPerson] = useState<number | null>(null)
   const [expandedEpochen, setExpandedEpochen] = useState<number[]>([])
   const toggleEpoche = (idx: number) =>
@@ -2494,26 +2497,43 @@ export default function App() {
               <RouteMap />
             </Suspense>
 
-            {/* Karten- und Plan-Galerie (Fotos aus dem Bilderordner, wie bei Sizilien) */}
-            {kartenGruppen.map((g, gi) => (
-              <div key={gi}>
-                <h3 className="arch-subtitle" style={{ marginTop: gi === 0 ? '2.5rem' : '2rem' }}>{g.icon} {g.gruppe}</h3>
-                <div className="karten-grid">
-                  {g.karten.map((k, i) => (
-                    <a key={i} href={k.bild} target="_blank" rel="noopener noreferrer" className="karten-card">
-                      <div className="karten-card-img">
-                        <img src={k.bild} alt={k.titel} loading="lazy" />
-                      </div>
-                      <div className="karten-card-body">
-                        <div className="karten-card-title">{k.titel}</div>
-                        {k.tag && <span className="karten-card-tag">{k.tag}</span>}
-                      </div>
-                      <div className="karten-card-open"><ExternalLink size={14} /> Öffnen</div>
-                    </a>
-                  ))}
+            {/* Karten- und Plan-Galerie (Fotos aus dem Bilderordner, aufklappbar) */}
+            {kartenGruppen.map((g, gi) => {
+              const open = openKartenGruppen.includes(gi)
+              return (
+                <div key={gi}>
+                  <div className={`arch-header${open ? '' : ' collapsed'}`} onClick={() => toggleKartenGruppe(gi)} style={{ marginTop: gi === 0 ? '2.5rem' : '1rem', marginBottom: open ? '1.5rem' : '0' }}>
+                    <h3>
+                      <span className="arch-header-icon">{g.icon}</span>
+                      <span className="arch-header-title">{g.gruppe}</span>
+                      <span className="arch-chevron-area">
+                        <span className="arch-toggle-hint">{open ? 'Einklappen' : 'Aufklappen'}</span>
+                        {open ? <ChevronUp size={22} /> : <ChevronDown size={22} />}
+                      </span>
+                    </h3>
+                    <p>{g.karten.length} Karten – zum Öffnen in voller Auflösung antippen</p>
+                  </div>
+                  <AnimatePresence>
+                  {open && (<motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }} style={{ overflow: 'hidden' }}>
+                    <div className="karten-grid">
+                      {g.karten.map((k, i) => (
+                        <a key={i} href={k.bild} target="_blank" rel="noopener noreferrer" className="karten-card">
+                          <div className="karten-card-img">
+                            <img src={k.bild} alt={k.titel} loading="lazy" />
+                          </div>
+                          <div className="karten-card-body">
+                            <div className="karten-card-title">{k.titel}</div>
+                            {k.tag && <span className="karten-card-tag">{k.tag}</span>}
+                          </div>
+                          <div className="karten-card-open"><ExternalLink size={14} /> Öffnen</div>
+                        </a>
+                      ))}
+                    </div>
+                  </motion.div>)}
+                  </AnimatePresence>
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </motion.div>
         </div>
       </section>
