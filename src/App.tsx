@@ -191,7 +191,7 @@ const days: DayData[] = [
     hotelData: dedalosHotel,
     stops: [
       { name: 'Vathipetro', desc: 'Minoisches Landhaus mit erhaltener Wein- und Ölpresse', km: '90 km', image: `https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Vathypetro_17.JPG/960px-Vathypetro_17.JPG` },
-      { name: 'Berg Jouchtas', desc: 'Heiliger Berg der Minoer – im Profil das „Antlitz des Zeus"', km: '10 km' },
+      { name: 'Berg Jouchtas', desc: 'Heiliger Berg der Minoer – im Profil das „Antlitz des Zeus"', km: '10 km', image: `/kreta-trip/bilder/jouchtas.jpg` },
       { name: 'Archanes / Fourni', desc: 'Bedeutende minoische Grabanlage (Nekropole) und kleines Museum', km: '90 km', image: `https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/%CE%91%CF%81%CF%87%CE%AC%CE%BD%CE%B5%CF%82_7928.jpg/960px-%CE%91%CF%81%CF%87%CE%AC%CE%BD%CE%B5%CF%82_7928.jpg` },
       { name: 'Knossos', desc: 'Der größte minoische Palast – Zentrum der Kultur um König Minos und das Labyrinth', km: '10 km', image: `/kreta-trip/bilder/knossos.jpg` },
       { name: 'Rückkehr Hotel Dedalos', desc: 'Abendessen im Hotel', km: '85 km' },
