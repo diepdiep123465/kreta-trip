@@ -64,7 +64,7 @@ const punkte: Pt[] = [
   { name: 'Agios Nikolaos', lat: 35.190, lng: 25.716, ele: 15, day: 3 },
   { name: 'Hotel Coriva Beach', lat: 35.008, lng: 25.796, ele: 15, day: 3 },
   { name: 'Gortyn', lat: 35.063, lng: 24.947, ele: 170, day: 4 },
-  { name: 'Festos', lat: 35.051, lng: 24.813, ele: 100, day: 4 },
+  { name: 'Phaistos', lat: 35.051, lng: 24.813, ele: 100, day: 4 },
   { name: 'Agia Triada', lat: 35.059, lng: 24.792, ele: 60, day: 4 },
   { name: 'Matala', lat: 34.995, lng: 24.749, ele: 5, day: 4 },
   { name: 'Hotel Dedalos (Sfakaki)', lat: 35.383, lng: 24.584, ele: 10, day: 4 },

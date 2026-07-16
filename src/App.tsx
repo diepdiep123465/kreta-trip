@@ -171,13 +171,13 @@ const days: DayData[] = [
   },
   {
     day: 4, date: '20. Juli', weekday: 'Montag',
-    title: 'Messara-Ebene: Gortyn – Festos – Agia Triada – Matala',
+    title: 'Messara-Ebene: Gortyn – Phaistos – Agia Triada – Matala',
     image: `/kreta-trip/bilder/titel-4.jpg`,
     hotel: 'Dedalos Beach Hotel, Sfakaki (N/F)',
     hotelData: dedalosHotel,
     stops: [
       { name: 'Gortyn', desc: 'Römische Provinzhauptstadt mit dem berühmten Gesetzeskodex und der Zeusplatane', km: '105 km', image: `/kreta-trip/bilder/gortyn.jpg` },
-      { name: 'Festos', desc: 'Zweitgrößter minoischer Palast, Fundort des rätselhaften Diskos von Phaistos', km: '20 km', image: `/kreta-trip/bilder/festos.jpg` },
+      { name: 'Phaistos', desc: 'Zweitgrößter minoischer Palast, Fundort des rätselhaften Diskos von Phaistos', km: '20 km', image: `/kreta-trip/bilder/festos.jpg` },
       { name: 'Agia Triada', desc: 'Minoische Palastvilla mit bedeutenden Funden (Boxer-Rhyton, Schnittervase)', km: '5 km', image: `https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Agia_Triada%2C_145788.jpg/960px-Agia_Triada%2C_145788.jpg` },
       { name: 'Matala', desc: 'Hippiestrand mit den berühmten Höhlenwohnungen im Sandstein', km: '15 km', image: `https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Beach_and_troglodytes_at_Matala%2C_Crete%2C_Greece.jpg/960px-Beach_and_troglodytes_at_Matala%2C_Crete%2C_Greece.jpg` },
       { name: 'Sfakaki bei Rethymnon', desc: 'Ankunft im Dedalos Beach Hotel', km: '85 km' },
@@ -880,7 +880,7 @@ const zeittafelDaten: ZeitEpoche[] = [
     zeitraum: `6000–2600 v. Chr.`,
     farbe: `#7B6B52`,
     ereignisse: [
-      { datum: `ab 6500 v. Chr.`, text: `Spuren erster Besiedlung. Höhlen werden sporadisch bewohnt, Tote im rückwärtigen Teil beigesetzt. In Knossos und Festos entstehen erste Häuser aus Bruchstein und Lehm. Werkzeug aus Knochen, Stein und Obsidian (von der Kykladeninsel Milos importiert). Weibliche Fruchtbarkeitsidole.` },
+      { datum: `ab 6500 v. Chr.`, text: `Spuren erster Besiedlung. Höhlen werden sporadisch bewohnt, Tote im rückwärtigen Teil beigesetzt. In Knossos und Phaistos entstehen erste Häuser aus Bruchstein und Lehm. Werkzeug aus Knochen, Stein und Obsidian (von der Kykladeninsel Milos importiert). Weibliche Fruchtbarkeitsidole.` },
     ],
   },
   {
@@ -897,7 +897,7 @@ const zeittafelDaten: ZeitEpoche[] = [
     zeitraum: `1900–1700 v. Chr.`,
     farbe: `#b8860b`,
     ereignisse: [
-      { datum: `ab 1900 v. Chr.`, text: `Konzentration der Macht auf einige Plätze. Größter Palast in Knossos, ferner Festos, Malia, Zakros, Archanes und Kydonia (Chania). Mehrstöckige Paläste mit Flügeltüren, Fenstern, Boden- und Wandschmuck sowie großen Magazinen. Minoische Seeherrschaft, Handel mit Ägypten und dem Orient.` },
+      { datum: `ab 1900 v. Chr.`, text: `Konzentration der Macht auf einige Plätze. Größter Palast in Knossos, ferner Phaistos, Malia, Zakros, Archanes und Kydonia (Chania). Mehrstöckige Paläste mit Flügeltüren, Fenstern, Boden- und Wandschmuck sowie großen Magazinen. Minoische Seeherrschaft, Handel mit Ägypten und dem Orient.` },
       { datum: `Kamares-Ware`, text: `Feine Keramik mit hellen Ornamenten auf schwarzem Grund. Starke Bedeutung der Religion (Kultstätten in Palästen, auf Bergen und in Höhlen). Hieroglyphenschrift. Schwere Erdbeben beenden die Alte Palastzeit.` },
     ],
   },
@@ -1501,7 +1501,7 @@ const kartenGruppen: { gruppe: string; icon: string; karten: KartenEintrag[] }[]
       { titel: `Lato – dorische Stadt`, tag: `Tag 3`, bild: `/kreta-trip/bilder/plan-lato.jpg` },
       { titel: `Kritsa – Panagia Kera (Fresken)`, tag: `Tag 3`, bild: `/kreta-trip/bilder/plan-kritsa1.jpg` },
       { titel: `Kritsa – Panagia Kera (Plan)`, tag: `Tag 3`, bild: `/kreta-trip/bilder/plan-kritsa2.jpg` },
-      { titel: `Festos – Palastplan`, tag: `Tag 4`, bild: `/kreta-trip/bilder/plan-phaistos.jpg` },
+      { titel: `Phaistos – Palastplan`, tag: `Tag 4`, bild: `/kreta-trip/bilder/plan-phaistos.jpg` },
       { titel: `Agia Triada – Palastvilla`, tag: `Tag 4`, bild: `/kreta-trip/bilder/plan-agia-triada.jpg` },
       { titel: `Knossos – Palastplan`, tag: `Tag 5`, bild: `/kreta-trip/bilder/plan-knossos.jpg` },
       { titel: `Eleftherna – Ausgrabung`, tag: `Tag 6`, bild: `/kreta-trip/bilder/plan-eleftherna.jpg` },
