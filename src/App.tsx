@@ -1417,6 +1417,59 @@ const naturFauna: NaturEintrag[] = [
   },
 ]
 
+// ─── KARTEN & PLÄNE (Fotos aus dem Bilderordner) ────────────────────────────
+
+interface KartenEintrag {
+  titel: string
+  tag?: string
+  bild: string
+}
+
+const kartenGruppen: { gruppe: string; icon: string; karten: KartenEintrag[] }[] = [
+  {
+    gruppe: `Übersichtskarten`,
+    icon: `🗺`,
+    karten: [
+      { titel: `Kreta – Gesamtkarte mit Reiseroute`, bild: `/kreta-trip/bilder/karte-gesamt.jpg` },
+      { titel: `Ostkreta`, tag: `Tage 1–3`, bild: `/kreta-trip/bilder/karte-ost.jpg` },
+      { titel: `Mittel- und Ostkreta`, tag: `Tage 3–5`, bild: `/kreta-trip/bilder/karte-mitte-ost.jpg` },
+      { titel: `Mittelkreta`, tag: `Tage 4–5`, bild: `/kreta-trip/bilder/karte-mitte.jpg` },
+      { titel: `Westkreta`, tag: `Tage 6–7`, bild: `/kreta-trip/bilder/karte-west.jpg` },
+      { titel: `Westkreta – Detail`, tag: `Tage 6–7`, bild: `/kreta-trip/bilder/karte-west2.jpg` },
+    ],
+  },
+  {
+    gruppe: `Stadtpläne`,
+    icon: `🏙`,
+    karten: [
+      { titel: `Agios Nikolaos – Stadtplan`, tag: `Tag 3`, bild: `/kreta-trip/bilder/plan-agios-nikolaos.jpg` },
+      { titel: `Rethymnon – Stadtplan`, tag: `Tag 6`, bild: `/kreta-trip/bilder/plan-rethymnon.jpg` },
+      { titel: `Chania – Stadtplan`, tag: `Tag 7`, bild: `/kreta-trip/bilder/plan-chania.jpg` },
+      { titel: `Chania – Umgebungskarte`, tag: `Tag 7`, bild: `/kreta-trip/bilder/karte-chania1.jpg` },
+      { titel: `Iraklion – Stadtplan`, tag: `Tag 8`, bild: `/kreta-trip/bilder/plan-heraklion.jpg` },
+      { titel: `Iraklion – Umgebungskarte`, tag: `Tag 8`, bild: `/kreta-trip/bilder/karte-heraklion2.jpg` },
+    ],
+  },
+  {
+    gruppe: `Ausgrabungs- und Anlagenpläne`,
+    icon: `🏛`,
+    karten: [
+      { titel: `Gournia – minoische Stadt`, tag: `Tag 2`, bild: `/kreta-trip/bilder/plan-gournia.jpg` },
+      { titel: `Kato Zakros – Palastplan`, tag: `Tag 2`, bild: `/kreta-trip/bilder/plan-kato-zakros.jpg` },
+      { titel: `Lato – dorische Stadt`, tag: `Tag 3`, bild: `/kreta-trip/bilder/plan-lato.jpg` },
+      { titel: `Kritsa – Panagia Kera (Fresken)`, tag: `Tag 3`, bild: `/kreta-trip/bilder/plan-kritsa1.jpg` },
+      { titel: `Kritsa – Panagia Kera (Plan)`, tag: `Tag 3`, bild: `/kreta-trip/bilder/plan-kritsa2.jpg` },
+      { titel: `Festos – Palastplan`, tag: `Tag 4`, bild: `/kreta-trip/bilder/plan-phaistos.jpg` },
+      { titel: `Agia Triada – Palastvilla`, tag: `Tag 4`, bild: `/kreta-trip/bilder/plan-agia-triada.jpg` },
+      { titel: `Knossos – Palastplan`, tag: `Tag 5`, bild: `/kreta-trip/bilder/plan-knossos.jpg` },
+      { titel: `Eleftherna – Ausgrabung`, tag: `Tag 6`, bild: `/kreta-trip/bilder/plan-eleftherna.jpg` },
+      { titel: `Moni Arkadi – Klosterplan`, tag: `Tag 6`, bild: `/kreta-trip/bilder/plan-arkadi.jpg` },
+      { titel: `Moni Preveli – Klosterplan`, tag: `Tag 6`, bild: `/kreta-trip/bilder/plan-preveli.jpg` },
+      { titel: `Rethymnon – Fortezza`, tag: `Tag 6`, bild: `/kreta-trip/bilder/plan-rethymnon-festung.jpg` },
+    ],
+  },
+]
+
 // ─── COMPONENTS ─────────────────────────────────────────────────────────────
 
 function StarRating({ n }: { n: number }) {
@@ -2440,6 +2493,27 @@ export default function App() {
             }>
               <RouteMap />
             </Suspense>
+
+            {/* Karten- und Plan-Galerie (Fotos aus dem Bilderordner, wie bei Sizilien) */}
+            {kartenGruppen.map((g, gi) => (
+              <div key={gi}>
+                <h3 className="arch-subtitle" style={{ marginTop: gi === 0 ? '2.5rem' : '2rem' }}>{g.icon} {g.gruppe}</h3>
+                <div className="karten-grid">
+                  {g.karten.map((k, i) => (
+                    <a key={i} href={k.bild} target="_blank" rel="noopener noreferrer" className="karten-card">
+                      <div className="karten-card-img">
+                        <img src={k.bild} alt={k.titel} loading="lazy" />
+                      </div>
+                      <div className="karten-card-body">
+                        <div className="karten-card-title">{k.titel}</div>
+                        {k.tag && <span className="karten-card-tag">{k.tag}</span>}
+                      </div>
+                      <div className="karten-card-open"><ExternalLink size={14} /> Öffnen</div>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ))}
           </motion.div>
         </div>
       </section>
