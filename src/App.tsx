@@ -206,7 +206,7 @@ const days: DayData[] = [
     stops: [
       { name: 'Eleftherna', desc: 'Minoisch-dorisch-römische Stadt mit modernem Museum', km: '25 km', image: `/kreta-trip/bilder/eleftherna.jpg` },
       { name: 'Moni Arkadi', desc: 'Nationalheiligtum – Stätte des kretischen Widerstands von 1866', km: '10 km', image: `/kreta-trip/bilder/arkadi.jpg` },
-      { name: 'Moni Preveli', desc: 'Byzantinisches Kloster hoch über dem Libyschen Meer', km: '65 km', image: `https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Preveli_World_War_II_Memorial.JPG/960px-Preveli_World_War_II_Memorial.JPG` },
+      { name: 'Moni Preveli', desc: 'Byzantinisches Kloster hoch über dem Libyschen Meer', km: '65 km', image: `/kreta-trip/bilder/preveli-strand.jpg` },
       { name: 'Rethymnon', desc: 'Venezianische Fortezza, Altstadt und Archäologisches Museum', km: '40 km', image: `/kreta-trip/bilder/rethymno.jpg` },
       { name: 'Rückkehr Hotel Dedalos', desc: 'Abendessen im Hotel', km: '10 km' },
     ],
