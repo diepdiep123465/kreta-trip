@@ -1394,6 +1394,50 @@ section {
   line-height: 1.55;
 }
 
+/* ===== FLORA & FAUNA (Struktur der Sizilien-Seite) ===== */
+.natur-badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 20px;
+  font-weight: 600;
+  white-space: nowrap;
+  margin-bottom: 0.35rem;
+}
+
+.natur-badge-flora {
+  background: #2d6a2d;
+  color: #fff;
+}
+
+.natur-badge-fauna {
+  background: #1a4d7a;
+  color: #fff;
+}
+
+.natur-badge-tipp {
+  background: var(--gold, #c9a227);
+  color: #fff;
+  margin-left: 0.3rem;
+}
+
+.natur-lat {
+  font-size: 0.72rem;
+  font-style: italic;
+  color: var(--gray-500, #9ca3af);
+  margin-bottom: 0.3rem;
+}
+
+.arch-card-natur-img {
+  height: 180px !important;
+  object-fit: cover;
+  width: 100%;
+}
+
+@media (max-width: 700px) {
+  .arch-card-natur-img { height: 150px !important; }
+}
+
 /* ===== ARCHITEKTUR IM DETAIL (Struktur der Sizilien-Seite) ===== */
 .arch-header {
   background: linear-gradient(135deg, var(--blue-dark), var(--blue));

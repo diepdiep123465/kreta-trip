@@ -4,7 +4,7 @@ import {
   MapPin, Hotel, ChevronDown, ChevronUp, Menu, X,
   UtensilsCrossed, BookOpen, Languages,
   Navigation, Info, Globe,
-  Map, FileText, Music, Plane, ExternalLink, Landmark, Users
+  Map, FileText, Music, Plane, ExternalLink, Landmark, Users, Clock
 } from 'lucide-react'
 import './App.css'
 
@@ -1181,6 +1181,26 @@ interface PersonData {
 
 const personenDaten: PersonData[] = [
   {
+    name: `Epimenides`,
+    lebensdaten: `7./6. Jh. v. Chr.`,
+    kategorie: `Seher & Dichter`,
+    herkunft: `Knossos (Kreta)`,
+    farbe: `#6b5b3e`,
+    kreta: `Der Legende nach schlief er 57 Jahre in der Höhle des diktäischen Zeus (Tag 1) und erwachte mit der Gabe der Weissagung.`,
+    beschreibung: `Halblegendärer kretischer Seher, Dichter und Philosoph, der zu den „Sieben Weisen" gezählt wurde. Um 596 v. Chr. soll er Athen von einer Pest entsühnt haben. Berühmt ist das nach ihm benannte „Epimenides-Paradox": Sein Ausspruch „Alle Kreter sind Lügner" – als Kreter gesagt – beschäftigt die Logik bis heute und wird sogar im neutestamentlichen Titusbrief (1,12) zitiert.`,
+    bild: `https://upload.wikimedia.org/wikipedia/commons/c/cd/Epimenides-poet.jpg`,
+  },
+  {
+    name: `Michael Damaskinos`,
+    lebensdaten: `um 1535–1593`,
+    kategorie: `Ikonenmaler`,
+    herkunft: `Iraklion (Kreta)`,
+    farbe: `#a0761b`,
+    kreta: `Bekanntester Meister der „kretischen Schule" der Ikonenmalerei; sechs seiner Hauptwerke hängen in der Kirche Agia Ekaterini in Iraklion (Tag 8).`,
+    beschreibung: `Der bedeutendste Ikonenmaler der kretischen Renaissance. Er verband die strenge byzantinische Maltradition mit Elementen der venezianischen Malerei – Licht, Schatten und räumliche Tiefe. Mehrere Jahre arbeitete er in Venedig für die griechische Gemeinde. Möglicherweise war der junge Domenikos Theotokopoulos (El Greco) sein Schüler.`,
+    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Michael_Damaskinos_The_Last_Supper.png/500px-Michael_Damaskinos_The_Last_Supper.png`,
+  },
+  {
     name: `El Greco (Domenikos Theotokopoulos)`,
     lebensdaten: `1541–1614`,
     kategorie: `Maler`,
@@ -1189,6 +1209,46 @@ const personenDaten: PersonData[] = [
     kreta: `In Iraklion geboren und als Ikonenmaler ausgebildet; ein ihm zugeschriebenes Frühwerk hängt im Historischen Museum von Iraklion (Tag 8).`,
     beschreibung: `Berühmter spanischer Maler kretischer Herkunft. Aufgewachsen in einem venezianisch-griechischen Milieu, erhielt er seine erste Ausbildung als Ikonenmaler, möglicherweise beim Meister Michael Damaskenos. Ab 1568 in Venedig (im Umkreis Tizians und Tintorettos), ab 1570 in Rom, ab 1577 in Toledo. Seine Gemälde signierte er zeitlebens mit seinem griechischen Namen in griechischen Lettern. Stark überlängte Figuren und eine dramatische, fast abstrakte Farbgebung lassen seine Bilder ekstatisch und visionär erscheinen.`,
     bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/El_Greco_-_Portrait_of_a_Man_-_WGA10554.jpg/500px-El_Greco_-_Portrait_of_a_Man_-_WGA10554.jpg`,
+  },
+  {
+    name: `Vitsentzos Kornaros`,
+    lebensdaten: `1553–1613/14`,
+    kategorie: `Dichter`,
+    herkunft: `Trapezonda bei Sitia (Kreta)`,
+    farbe: `#4a6b1a`,
+    kreta: `Bei Sitia (Tag 2) geboren – dort erinnert ein Denkmal an den Dichter des kretischen Nationalepos.`,
+    beschreibung: `Der große Dichter der kretischen Renaissance. Sein Versroman „Erotokritos" (rund 10 000 gereimte Fünfzehnsilber im kretischen Dialekt) erzählt die Liebesgeschichte von Erotokritos und Aretousa und gilt als Nationalepos Kretas. Verse daraus werden bis heute zu den Klängen der Lyra gesungen. Ihm zugeschrieben wird auch das geistliche Drama „Die Opferung Abrahams".`,
+    bild: `https://upload.wikimedia.org/wikipedia/commons/8/84/Thysia_tou_Abraam_exwfyllo.jpg`,
+  },
+  {
+    name: `Ioannis Daskalogiannis`,
+    lebensdaten: `um 1730–1771`,
+    kategorie: `Freiheitskämpfer`,
+    herkunft: `Anopoli, Sfakia (Kreta)`,
+    farbe: `#8b1a1a`,
+    kreta: `Führte 1770 den ersten großen kretischen Aufstand gegen die Osmanen; der Flughafen von Chania (Tag 7) trägt heute seinen Namen.`,
+    beschreibung: `Wohlhabender Reeder aus dem unbeugsamen Bergland der Sfakia. 1770 erhob er sich – im Vertrauen auf russische Unterstützung, die ausblieb – mit etwa 2 000 Kämpfern gegen die osmanische Herrschaft. Der Aufstand wurde niedergeschlagen; um sein Volk zu schonen, stellte er sich den Osmanen und wurde in Iraklion grausam hingerichtet. Er gilt als erster Märtyrer des kretischen Freiheitskampfes.`,
+    bild: `https://upload.wikimedia.org/wikipedia/commons/0/09/Daskalogiannis.jpg`,
+  },
+  {
+    name: `Sir Arthur Evans`,
+    lebensdaten: `1851–1941`,
+    kategorie: `Archäologe`,
+    herkunft: `Nash Mills (England)`,
+    farbe: `#444b54`,
+    kreta: `Ausgräber von Knossos (Tag 5) – seine Freilegung ab 1900 bedeutete die Wiederentdeckung der minoischen Kultur, die er nach König Minos benannte.`,
+    beschreibung: `Britischer Archäologe. Zunächst Korrespondent des Manchester Guardian auf dem Balkan, wurde er 1881 wegen seines Engagements für lokale Freiheitsbestrebungen ausgewiesen. Als Direktor des Ashmolean Museum in Oxford stieß er auf Siegelsteine mit unbekannter Schrift, die ihn nach Kreta führten. Ab 1900 grub er den Palast von Knossos aus und publizierte ihn in einem monumentalen Werk (1922–35). 1911 wurde er geadelt. (Seine Rekonstruktionen in Beton sind bis heute umstritten.)`,
+    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Arthur_Evans_in_1939.jpg/500px-Arthur_Evans_in_1939.jpg`,
+  },
+  {
+    name: `Eleftherios Venizelos`,
+    lebensdaten: `1864–1936`,
+    kategorie: `Staatsmann`,
+    herkunft: `Mournies bei Chania (Kreta)`,
+    farbe: `#7a1f3d`,
+    kreta: `Aus Mournies bei Chania (Tag 7); ihm verdankt Kreta den Anschluss an Griechenland 1913 (Enosis). Der Flughafen Athens trägt seinen Namen.`,
+    beschreibung: `Der bedeutendste griechische Staatsmann der Moderne. Seine Politik zielte auf die Vereinigung aller Griechen in einem Staat („Megali Idea"). Als Justizminister leitete er 1905 den Aufstand der „Therisso-Revolte". 1910 wurde er Begründer und Führer der Liberalen Partei und mehrfach griechischer Premierminister. In den Londoner Verträgen 1913 wurde Kreta dem griechischen Staatsverband einverleibt.`,
+    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Eleftherios_Venizelos_1917.jpg/500px-Eleftherios_Venizelos_1917.jpg`,
   },
   {
     name: `Nikos Kazantzakis`,
@@ -1201,6 +1261,16 @@ const personenDaten: PersonData[] = [
     bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Nikos_Kazantzakis_1904.jpg/500px-Nikos_Kazantzakis_1904.jpg`,
   },
   {
+    name: `Pandelis Prevelakis`,
+    lebensdaten: `1909–1986`,
+    kategorie: `Schriftsteller`,
+    herkunft: `Rethymnon (Kreta)`,
+    farbe: `#54466b`,
+    kreta: `In Rethymnon (Tag 6) geboren – seine „Chronik einer Stadt" (1938) ist eine poetische Liebeserklärung an seine Heimatstadt.`,
+    beschreibung: `Schriftsteller, Dichter und Kunsthistoriker, enger Freund und Biograph von Nikos Kazantzakis. Sein bekanntestes Werk, die „Chronik einer Stadt", schildert das alte Rethymnon zwischen venezianischem Erbe und türkischer Vergangenheit. Daneben schuf er die Romantrilogie „Der Kreter" über den Freiheitskampf der Insel und lehrte Kunstgeschichte an der Akademie der Schönen Künste in Athen.`,
+    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Fotis_kontoglou%2C_rotratto_di_pantelis_prevelakis%2C_1938-39.jpg/500px-Fotis_kontoglou%2C_rotratto_di_pantelis_prevelakis%2C_1938-39.jpg`,
+  },
+  {
     name: `Odysseas Elytis`,
     lebensdaten: `1911–1996`,
     kategorie: `Dichter · Nobelpreisträger`,
@@ -1211,14 +1281,14 @@ const personenDaten: PersonData[] = [
     bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Odysseas_Elytis_1974.jpg/500px-Odysseas_Elytis_1974.jpg`,
   },
   {
-    name: `Eleftherios Venizelos`,
-    lebensdaten: `1864–1936`,
-    kategorie: `Staatsmann`,
-    herkunft: `Mournies bei Chania (Kreta)`,
-    farbe: `#7a1f3d`,
-    kreta: `Aus Mournies bei Chania (Tag 7); ihm verdankt Kreta den Anschluss an Griechenland 1913 (Enosis). Der Flughafen Athens trägt seinen Namen.`,
-    beschreibung: `Der bedeutendste griechische Staatsmann der Moderne. Seine Politik zielte auf die Vereinigung aller Griechen in einem Staat („Megali Idea"). Als Justizminister leitete er 1905 den Aufstand der „Therisso-Revolte". 1910 wurde er Begründer und Führer der Liberalen Partei und mehrfach griechischer Premierminister. In den Londoner Verträgen 1913 wurde Kreta dem griechischen Staatsverband einverleibt.`,
-    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Eleftherios_Venizelos_1917.jpg/500px-Eleftherios_Venizelos_1917.jpg`,
+    name: `Michael Ventris`,
+    lebensdaten: `1922–1956`,
+    kategorie: `Architekt & Entzifferer`,
+    herkunft: `Wheathampstead (England)`,
+    farbe: `#0f4a72`,
+    kreta: `Entzifferte 1952 die minoische Linear-B-Schrift – und bewies, dass die Sprache der Tontafeln aus Knossos (Tag 5) eine frühe Form des Griechischen ist.`,
+    beschreibung: `Von Beruf Architekt, widmete sich der Engländer in seiner Freizeit der Entzifferung der „Linear-B-Schrift". 1952 gelang ihm der entscheidende Durchbruch: Er wies nach, dass es sich um eine frühe Form des Griechischen handelt. Gemeinsam mit dem Gräzisten John Chadwick setzte er seine Arbeit fort. Vier Jahre später kam er bei einem Autounfall ums Leben.`,
+    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Michael_Ventris_obituary_photo.jpg/500px-Michael_Ventris_obituary_photo.jpg`,
   },
   {
     name: `Manos Hadjidakis`,
@@ -1250,25 +1320,100 @@ const personenDaten: PersonData[] = [
     beschreibung: `Der über Kreta hinaus in der ganzen Welt gefeierte Komponist verbindet Elemente kretischer Volksmusik – die er „frei und menschlich, ohne überflüssige Schnörkel" nennt – mit klassisch-modernen Kompositionsweisen. Einer seiner bekanntesten Interpreten war der kretische Sänger Nikos Xylouris.`,
     bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Yannis_Markopoulos_%282008%29.jpg/500px-Yannis_Markopoulos_%282008%29.jpg`,
   },
+]
+
+// ─── FLORA & FAUNA KRETAS ────────────────────────────────────────────────────
+
+interface NaturEintrag {
+  name: string
+  lat: string
+  ort: string
+  desc: string
+  img: string
+  tipp?: boolean
+}
+
+const naturFlora: NaturEintrag[] = [
   {
-    name: `Sir Arthur Evans`,
-    lebensdaten: `1851–1941`,
-    kategorie: `Archäologe`,
-    herkunft: `Nash Mills (England)`,
-    farbe: `#444b54`,
-    kreta: `Ausgräber von Knossos (Tag 5) – seine Freilegung ab 1900 bedeutete die Wiederentdeckung der minoischen Kultur, die er nach König Minos benannte.`,
-    beschreibung: `Britischer Archäologe. Zunächst Korrespondent des Manchester Guardian auf dem Balkan, wurde er 1881 wegen seines Engagements für lokale Freiheitsbestrebungen ausgewiesen. Als Direktor des Ashmolean Museum in Oxford stieß er auf Siegelsteine mit unbekannter Schrift, die ihn nach Kreta führten. Ab 1900 grub er den Palast von Knossos aus und publizierte ihn in einem monumentalen Werk (1922–35). 1911 wurde er geadelt. (Seine Rekonstruktionen in Beton sind bis heute umstritten.)`,
-    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Arthur_Evans_in_1939.jpg/500px-Arthur_Evans_in_1939.jpg`,
+    name: `Olivenbaum von Vouves`, lat: `Olea europaea`,
+    ort: `Ano Vouves, Westkreta`,
+    desc: `Kreta ist von über 30 Millionen Olivenbäumen bedeckt – das Olivenöl der Insel gilt als eines der besten der Welt. Der berühmteste Baum steht in Vouves bei Chania: Mit einem geschätzten Alter von 2000–4000 Jahren gilt er als einer der ältesten Olivenbäume der Erde und trägt noch immer Früchte. Aus seinen Zweigen wurden die Siegerkränze der Olympischen Spiele 2004 geflochten.`,
+    img: `https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Olive_tree_of_Vouves.jpg/960px-Olive_tree_of_Vouves.jpg`,
   },
   {
-    name: `Michael Ventris`,
-    lebensdaten: `1922–1956`,
-    kategorie: `Architekt & Entzifferer`,
-    herkunft: `Wheathampstead (England)`,
-    farbe: `#0f4a72`,
-    kreta: `Entzifferte 1952 die minoische Linear-B-Schrift – und bewies, dass die Sprache der Tontafeln aus Knossos (Tag 5) eine frühe Form des Griechischen ist.`,
-    beschreibung: `Von Beruf Architekt, widmete sich der Engländer in seiner Freizeit der Entzifferung der „Linear-B-Schrift". 1952 gelang ihm der entscheidende Durchbruch: Er wies nach, dass es sich um eine frühe Form des Griechischen handelt. Gemeinsam mit dem Gräzisten John Chadwick setzte er seine Arbeit fort. Vier Jahre später kam er bei einem Autounfall ums Leben.`,
-    bild: `https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Michael_Ventris_obituary_photo.jpg/500px-Michael_Ventris_obituary_photo.jpg`,
+    name: `Kretische Dattelpalme`, lat: `Phoenix theophrasti`,
+    ort: `📍 Palmenstrand von Vai (Tag 2)`,
+    desc: `Eine der nur zwei in Europa heimischen Palmenarten – benannt nach Theophrast, dem Schüler des Aristoteles und „Vater der Botanik". Am Strand von Vai bildet sie mit rund 5000 Bäumen den größten natürlichen Palmenhain Europas, den wir am zweiten Tag besuchen. Der Legende nach entstand er aus den Dattelkernen sarazenischer Piraten.`,
+    img: `https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Phoenix_theophrasti_A.jpg/960px-Phoenix_theophrasti_A.jpg`,
+    tipp: true,
+  },
+  {
+    name: `Diktam (Diktamos)`, lat: `Origanum dictamnus`,
+    ort: `📍 Dikti-Gebirge (Tag 1) & Bergschluchten`,
+    desc: `Der „kretische Diptam" wächst ausschließlich auf Kreta, an steilen Felswänden der Berge und Schluchten – benannt nach dem Dikti-Gebirge, in dem auch die Zeus-Höhle liegt. Schon in der Antike als Wunderheilmittel berühmt: Aristoteles berichtet, verwundete Wildziegen fräßen Diktam, um Pfeile aus ihrem Körper zu treiben. Heute als Tee („Erontas" – Liebeskraut) beliebt; die Sammler, die sich früher an Seilen abseilten, hießen „Erondades".`,
+    img: `https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Origanum_dictamnus_kz10.jpg/960px-Origanum_dictamnus_kz10.jpg`,
+    tipp: true,
+  },
+  {
+    name: `Platane von Gortyn`, lat: `Platanus orientalis var. cretica`,
+    ort: `📍 Gortyn (Tag 4)`,
+    desc: `Direkt neben dem Odeon von Gortyn steht eine berühmte immergrüne Platane – eine seltene Mutation, die ihr Laub im Winter nicht verliert. Der Mythos: Unter diesem Baum vermählte sich Zeus in Stiergestalt mit der phönizischen Königstochter Europa; aus der Verbindung ging König Minos hervor. Seitdem, so die Sage, darf die Platane ihr Laub nie mehr abwerfen.`,
+    img: `https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Gortys_Plane_Tree_%285217013928%29.jpg/960px-Gortys_Plane_Tree_%285217013928%29.jpg`,
+    tipp: true,
+  },
+  {
+    name: `Stamnagathi`, lat: `Cichorium spinosum`,
+    ort: `Küstenfelsen & Bergregionen`,
+    desc: `Der stachelige wilde Chicorée ist DAS kretische Wildgemüse (Chórta). Die leicht bitteren Blätter werden gedämpft und mit Olivenöl und Zitrone serviert – früher Arme-Leute-Essen, heute Delikatesse in den besten Tavernen. Die kretische Ernährung mit viel Wildgemüse, Olivenöl und wenig Fleisch gilt als Musterbeispiel gesunder Mittelmeerkost.`,
+    img: `https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Cichorium_spinosum.jpg/800px-Cichorium_spinosum.jpg`,
+  },
+  {
+    name: `Johannisbrotbaum`, lat: `Ceratonia siliqua`,
+    ort: `Trockene Hänge, ganz Kreta`,
+    desc: `Der immergrüne „Charoupia" prägt die trockenen Hänge Kretas. Seine zuckerreichen Hülsen dienten in Notzeiten als Nahrung – zuletzt während der deutschen Besatzung. Die gleichmäßig schweren Samen nutzten schon antike Goldschmiede als Gewichtseinheit: Daraus entstand das „Karat".`,
+    img: `https://upload.wikimedia.org/wikipedia/commons/3/36/Ceratonia_siliqua_MHNT.BOT.2011.3.89.jpg`,
+  },
+]
+
+const naturFauna: NaturEintrag[] = [
+  {
+    name: `Kri-Kri (Kretische Wildziege)`, lat: `Capra aegagrus cretica`,
+    ort: `Weiße Berge / Samaria-Schlucht`,
+    desc: `Das Wappentier Kretas: Die scheue Wildziege mit den mächtigen, geschwungenen Hörnern lebt heute fast nur noch in der Samaria-Schlucht und auf vorgelagerten Inseln – nur wenige tausend Tiere existieren. Schon die Minoer verehrten sie; auf Siegeln und Fresken ist der „Agrimi" häufig dargestellt. Der Mythos verbindet sie mit der Ziege Amaltheia, die den Zeus-Säugling in der Diktäischen Höhle nährte.`,
+    img: `https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Kri-kri_1.jpg/960px-Kri-kri_1.jpg`,
+  },
+  {
+    name: `Bartgeier`, lat: `Gypaetus barbatus`,
+    ort: `📍 Lassithi-Hochebene & Dikti (Tag 1)`,
+    desc: `Kreta beherbergt die letzte Brutpopulation des Bartgeiers in Griechenland – nur noch wenige Paare kreisen über den Hochgebirgen. Mit bis zu 2,80 m Spannweite ist er einer der größten Greifvögel Europas. Seine Spezialität: Er lässt Knochen aus großer Höhe auf Felsen fallen, um an das Mark zu gelangen – daher sein griechischer Name „Kokkalás" (Knochenfresser). Mit Glück bei der Fahrt über die Lassithi-Hochebene zu sehen!`,
+    img: `https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Lammergeier_%28Gypaetus_barbatus%29_%2838450063712%29.jpg/960px-Lammergeier_%28Gypaetus_barbatus%29_%2838450063712%29.jpg`,
+    tipp: true,
+  },
+  {
+    name: `Unechte Karettschildkröte`, lat: `Caretta caretta`,
+    ort: `📍 Strände bei Rethymnon (Tage 4–7)`,
+    desc: `Die Sandstrände östlich von Rethymnon – genau dort, wo unser Hotel Dedalos liegt! – gehören zu den wichtigsten Nistplätzen dieser bedrohten Meeresschildkröte im Mittelmeer. Im Juli schlüpfen nachts die ersten Jungen und krabbeln zum Meer. Markierte Nester am Strand bitte unbedingt respektieren; nachts kein Licht am Strand.`,
+    img: `https://upload.wikimedia.org/wikipedia/commons/8/8e/Loggerhead_sea_turtle.jpg`,
+    tipp: true,
+  },
+  {
+    name: `Mittelmeer-Mönchsrobbe`, lat: `Monachus monachus`,
+    ort: `Abgelegene Küstenhöhlen`,
+    desc: `Eines der seltensten Meeressäugetiere der Welt – nur noch etwa 700 Tiere existieren, ein Teil davon in den Gewässern um Kreta. Die scheuen Robben ziehen ihre Jungen in unzugänglichen Küstenhöhlen auf. Schon Homer erwähnt sie in der Odyssee: Der Meergreis Proteus hütet seine Robbenherde „wie ein Hirte die Schafe".`,
+    img: `https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Monachus_monachus_DSC_0274.jpg/960px-Monachus_monachus_DSC_0274.jpg`,
+  },
+  {
+    name: `Eleonorenfalke`, lat: `Falco eleonorae`,
+    ort: `Küstenfelsen & vorgelagerte Inseln`,
+    desc: `Der elegante Zugvogel brütet in Kolonien auf Kretas Küstenfelsen und unbewohnten Inseln – etwa auf Dia vor Iraklion. Einzigartig ist sein später Brutbeginn im Hochsommer: So kann er seine Jungen mit den im Herbst durchziehenden Singvögeln füttern. Im Oktober zieht die gesamte Population nach Madagaskar.`,
+    img: `https://upload.wikimedia.org/wikipedia/commons/d/d8/Eleonora%27s_falcon_%28Falco_eleonorae%29_in_flight_3.jpg`,
+  },
+  {
+    name: `Großer Tümmler`, lat: `Tursiops truncatus`,
+    ort: `Küstengewässer, Golf von Mirabello`,
+    desc: `Delfine begleiten seit der Antike die Schiffe der Ägäis – die berühmten Delphinfresken aus dem Palast von Knossos (Megaron der Königin, Tag 5) zeigen, wie vertraut die Minoer mit ihnen waren. Mit etwas Glück sieht man sie bei der Bootsüberfahrt nach Spinalonga (Tag 3) oder vor der Nordküste spielen.`,
+    img: `https://upload.wikimedia.org/wikipedia/commons/1/10/Tursiops_truncatus_01.jpg`,
+    tipp: true,
   },
 ]
 
@@ -1591,10 +1736,12 @@ export default function App() {
     })()
     return () => { cancelled = true }
   }, [])
-  const [wissenTab, setWissenTab] = useState<'architektur' | 'kulinarisch' | 'zeittafel'>('architektur')
+  const [wissenTab, setWissenTab] = useState<'architektur' | 'kulinarisch'>('architektur')
   const [glossarKat, setGlossarKat] = useState(0)
   const [archOpen, setArchOpen] = useState(false)
   const [personenOpen, setPersonenOpen] = useState(false)
+  const [naturOpen, setNaturOpen] = useState(false)
+  const [zeittafelOpen, setZeittafelOpen] = useState(false)
   const [expandedPerson, setExpandedPerson] = useState<number | null>(null)
   const [expandedEpochen, setExpandedEpochen] = useState<number[]>([])
   const toggleEpoche = (idx: number) =>
@@ -1839,63 +1986,24 @@ export default function App() {
             <h2 className="section-title"><BookOpen size={28} /> Wissen</h2>
             <div className="section-divider" />
             <div className="wissen-tabs">
-              {(['architektur', 'kulinarisch', 'zeittafel'] as const).map(tab => (
+              {(['architektur', 'kulinarisch'] as const).map(tab => (
                 <button
                   key={tab}
                   className={`wissen-tab ${wissenTab === tab ? 'active' : ''}`}
                   onClick={() => setWissenTab(tab)}
                 >
-                  {tab === 'architektur' ? 'Architektur-Lexikon' : tab === 'kulinarisch' ? 'Kulinarisches Lexikon' : 'Zeittafel'}
+                  {tab === 'architektur' ? 'Architektur-Lexikon' : 'Kulinarisches Lexikon'}
                 </button>
               ))}
             </div>
-            {wissenTab === 'zeittafel' ? (
-              <>
-                <p style={{ color: '#6b7280', margin: '0 0 1.25rem', fontSize: '0.9rem' }}>
-                  Nach der Zeittafel aus dem Kreta-Heft der Griechischklassen – Epoche antippen zum Aufklappen.
-                </p>
-                <div className="timeline">
-                  {zeittafelDaten.map((epoche, ei) => {
-                    const epocheOpen = expandedEpochen.includes(ei)
-                    return (
-                      <div key={ei} className="timeline-epoche">
-                        <div className="timeline-epoche-header" style={{ borderLeftColor: epoche.farbe }} onClick={() => toggleEpoche(ei)}>
-                          <div>
-                            <h3 style={{ color: epoche.farbe }}>{epoche.epoche}</h3>
-                            <span className="timeline-epoche-zeitraum">{epoche.zeitraum}</span>
-                          </div>
-                          {epocheOpen ? <ChevronUp size={18} style={{ color: epoche.farbe }} /> : <ChevronDown size={18} style={{ color: epoche.farbe }} />}
-                        </div>
-                        <AnimatePresence>
-                          {epocheOpen && (
-                            <motion.div className="timeline-ereignisse" initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }} style={{ overflow: 'hidden' }}>
-                              {epoche.ereignisse.map((e, i) => (
-                                <div key={i} className="timeline-item">
-                                  <div className="timeline-dot" style={{ background: epoche.farbe }} />
-                                  <div className="timeline-content">
-                                    <span className="timeline-datum" style={{ color: epoche.farbe }}>{e.datum}</span>
-                                    <p className="timeline-text">{e.text}</p>
-                                  </div>
-                                </div>
-                              ))}
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </div>
-                    )
-                  })}
-                </div>
-              </>
-            ) : (
-              <div className="lexikon-grid">
-                {wissenData.map((e, i) => (
-                  <motion.div key={i} className="lexikon-entry" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} transition={{ delay: i * 0.04 }}>
-                    <div className="lexikon-term">{e.term}</div>
-                    <div className="lexikon-def">{e.definition}</div>
-                  </motion.div>
-                ))}
-              </div>
-            )}
+            <div className="lexikon-grid">
+              {wissenData.map((e, i) => (
+                <motion.div key={i} className="lexikon-entry" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} transition={{ delay: i * 0.04 }}>
+                  <div className="lexikon-term">{e.term}</div>
+                  <div className="lexikon-def">{e.definition}</div>
+                </motion.div>
+              ))}
+            </div>
 
             {/* ── Architektur im Detail (Struktur wie Sizilien-Seite, aufklappbar) ── */}
             <div className={`arch-header${archOpen ? '' : ' collapsed'}`} onClick={() => setArchOpen(!archOpen)}>
@@ -2168,6 +2276,112 @@ export default function App() {
                     </AnimatePresence>
                   </motion.div>
                 ))}
+              </div>
+            </motion.div>)}
+            </AnimatePresence>
+
+            {/* ── Flora & Fauna Kretas (Struktur wie Sizilien-Seite, aufklappbar) ── */}
+            <div className={`arch-header${naturOpen ? '' : ' collapsed'}`} onClick={() => setNaturOpen(!naturOpen)}>
+              <h3>
+                <span className="arch-header-icon">🌿</span>
+                <span className="arch-header-title">Flora &amp; Fauna Kretas</span>
+                <span className="arch-chevron-area">
+                  <span className="arch-toggle-hint">{naturOpen ? 'Einklappen' : 'Aufklappen'}</span>
+                  {naturOpen ? <ChevronUp size={22} /> : <ChevronDown size={22} />}
+                </span>
+              </h3>
+              <p>Vom uralten Olivenbaum bis zum Kri-Kri – die Natur der Insel</p>
+            </div>
+
+            <AnimatePresence>
+            {naturOpen && (<motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }} style={{ overflow: 'hidden' }}>
+
+              <h3 className="arch-subtitle">🌱 Markante Pflanzen Kretas</h3>
+              <div className="arch-grid arch-grid-3">
+                {naturFlora.map((p, i) => (
+                  <motion.div key={i} className="arch-card arch-card-church" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}>
+                    <div className="arch-card-church-img">
+                      <img src={p.img} alt={p.name} loading="lazy" className="arch-card-natur-img" />
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexWrap: 'wrap', marginBottom: '0.1rem' }}>
+                      <span className="natur-badge natur-badge-flora">Pflanze</span>
+                      {p.tipp && <span className="natur-badge natur-badge-tipp">🗺 Route-Tipp</span>}
+                    </div>
+                    <div className="natur-lat">{p.lat}</div>
+                    <h4 style={{ margin: '0 0 0.3rem 0' }}>{p.name}</h4>
+                    <p style={{ fontSize: '0.82rem', lineHeight: 1.55 }}>{p.desc}</p>
+                    <div className="arch-beispiel" style={{ marginTop: '0.4rem' }}>📍 {p.ort}</div>
+                  </motion.div>
+                ))}
+              </div>
+
+              <h3 className="arch-subtitle" style={{ marginTop: '2rem' }}>🦅 Tiere Kretas – Land, Luft &amp; Meer</h3>
+              <div className="arch-grid arch-grid-3">
+                {naturFauna.map((t, i) => (
+                  <motion.div key={i} className="arch-card arch-card-church" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}>
+                    <div className="arch-card-church-img">
+                      <img src={t.img} alt={t.name} loading="lazy" className="arch-card-natur-img" />
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexWrap: 'wrap', marginBottom: '0.1rem' }}>
+                      <span className="natur-badge natur-badge-fauna">Tier</span>
+                      {t.tipp && <span className="natur-badge natur-badge-tipp">🗺 Route-Tipp</span>}
+                    </div>
+                    <div className="natur-lat">{t.lat}</div>
+                    <h4 style={{ margin: '0 0 0.3rem 0' }}>{t.name}</h4>
+                    <p style={{ fontSize: '0.82rem', lineHeight: 1.55 }}>{t.desc}</p>
+                    <div className="arch-beispiel" style={{ marginTop: '0.4rem' }}>📍 {t.ort}</div>
+                  </motion.div>
+                ))}
+              </div>
+
+            </motion.div>)}
+            </AnimatePresence>
+
+            {/* ── Zeittafel Kretas (aus dem Kreta-Heft, aufklappbar) ── */}
+            <div className={`arch-header${zeittafelOpen ? '' : ' collapsed'}`} onClick={() => setZeittafelOpen(!zeittafelOpen)}>
+              <h3>
+                <span className="arch-header-icon"><Clock size={22} /></span>
+                <span className="arch-header-title">Zeittafel Kretas</span>
+                <span className="arch-chevron-area">
+                  <span className="arch-toggle-hint">{zeittafelOpen ? 'Einklappen' : 'Aufklappen'}</span>
+                  {zeittafelOpen ? <ChevronUp size={22} /> : <ChevronDown size={22} />}
+                </span>
+              </h3>
+              <p>Acht Jahrtausende Geschichte – nach der Zeittafel aus dem Kreta-Heft</p>
+            </div>
+
+            <AnimatePresence>
+            {zeittafelOpen && (<motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }} style={{ overflow: 'hidden' }}>
+              <div className="timeline">
+                {zeittafelDaten.map((epoche, ei) => {
+                  const epocheOpen = expandedEpochen.includes(ei)
+                  return (
+                    <div key={ei} className="timeline-epoche">
+                      <div className="timeline-epoche-header" style={{ borderLeftColor: epoche.farbe }} onClick={() => toggleEpoche(ei)}>
+                        <div>
+                          <h3 style={{ color: epoche.farbe }}>{epoche.epoche}</h3>
+                          <span className="timeline-epoche-zeitraum">{epoche.zeitraum}</span>
+                        </div>
+                        {epocheOpen ? <ChevronUp size={18} style={{ color: epoche.farbe }} /> : <ChevronDown size={18} style={{ color: epoche.farbe }} />}
+                      </div>
+                      <AnimatePresence>
+                        {epocheOpen && (
+                          <motion.div className="timeline-ereignisse" initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }} style={{ overflow: 'hidden' }}>
+                            {epoche.ereignisse.map((e, i) => (
+                              <div key={i} className="timeline-item">
+                                <div className="timeline-dot" style={{ background: epoche.farbe }} />
+                                <div className="timeline-content">
+                                  <span className="timeline-datum" style={{ color: epoche.farbe }}>{e.datum}</span>
+                                  <p className="timeline-text">{e.text}</p>
+                                </div>
+                              </div>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  )
+                })}
               </div>
             </motion.div>)}
             </AnimatePresence>
