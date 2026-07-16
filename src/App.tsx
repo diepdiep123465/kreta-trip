@@ -769,12 +769,37 @@ ducit in errorem variarum ambage viarum.`,
     kommentar: `Die kretischen Paläste – besonders Malia direkt am Meer (Tag 3) – hatten keinerlei Befestigungen: Eine gewaltige Flotte war die „Schiffsmauer" der Insel. Der Mythos vom bronzenen Riesen, der dreimal täglich die Insel umrundet, ist das mythische Abbild dieses Schutzes.`,
   },
   {
+    titel: `Finsternis über dem kretischen Meer`,
+    autor: `Apollonios von Rhodos, Die Argonauten 4,1694–1701`,
+    epoche: `3. Jh. v. Chr.`,
+    original: `αὐτίκα δὲ Κρηταῖον ὑπὲρ μέγα λαῖτμα θέοντας
+νὺξ ἐφόβει, τήν πέρ τε κατουλάδα κικλήσκουσιν·
+νύκτ᾽ ὀλοὴν οὐκ ἄστρα διίσχανεν, οὐκ ἀμαρυγαὶ
+μήνης, οὐρανόθεν δὲ μέλαν χάος, ἠέ τις ἄλλη
+ὠρώρει σκοτίη μυχάτων ἀνιοῦσα βερέθρων.
+αὐτοὶ δ᾽ εἴτ᾽ Ἀίδῃ εἴτ᾽ ὕδασιν ἐμφορέοντο
+ἠείδειν οὐδ᾽ ὅσσον· ἐπέτρεψαν δὲ θαλάσσῃ
+νόστον, ἀμηχανίῃ πεφορημένοι, ᾗ κε φέρῃσιν.`,
+    uebersetzung: `Die nächste Nacht brach über sie herein, als sie sich weit draußen im kretischen Meer befanden. Sie fürchteten sich, denn sie waren in jene Art Nacht geraten, die das Leichentuch des Verderbens genannt wird. Kein Stern, kein Mondlicht durchbrach die Finsternis des Grabes. Schwarzes Chaos hatte sich auf sie vom Himmel herabgesenkt. Oder war diese Dunkelheit aus dem tiefsten Abgrund emporgestiegen? Sie wußten es nicht zu sagen, ob sie durch den Hades trieben oder noch auf dem Meer. Alles, was sie tun konnten, war, ihren Kurs auf die See hinaus zu nehmen, ohne irgend zu wissen, wohin er sie führen werde.`,
+    kommentar: `Aus dem Reiseheft (zu Malia, Tag 3): Der Mythos von den Argonauten berichtet von einem seltsamen Naturereignis, das vielleicht verantwortlich war für das plötzliche Ende der minoischen Kultur auf Kreta und die Zerstörung der Paläste. Die unheimliche „Katoulas-Nacht" – Finsternis ohne Stern und Mond – liest sich wie die Erinnerung an die Aschewolke des Thera-Ausbruchs (um 1450 v. Chr.).`,
+  },
+  {
     titel: `Sarpedon und die Lykier`,
     autor: `Herodot, Historien 1,173`,
     epoche: `5. Jh. v. Chr.`,
     original: ``,
     uebersetzung: `Die Lykier stammen ursprünglich aus Kreta. Ganz Kreta wurde nämlich in alter Zeit von Barbaren bewohnt. Als Sarpedon und Minos, die Söhne der Europa, in Kreta um die Herrschaft stritten, siegte Minos und vertrieb Sarpedon und dessen Anhänger. Die Vertriebenen zogen nach Asien in das Land, das jetzt die Lykier bewohnen. Ihre Gebräuche sind zum Teil heute noch kretisch.`,
     kommentar: `Der „Vater der Geschichtsschreibung" deutet den Mythos historisch: Hinter dem Bruderstreit der Europa-Söhne stehen Machtkämpfe um Kreta, bei denen ganze Volksgruppen auswanderten. Sarpedon galt als König von Malia (Tag 3), bevor er nach Kleinasien zog.`,
+  },
+  {
+    titel: `Rauschkulte – der „Rauchgiftraum" von Lato`,
+    autor: `Herodot, Historien 1,202 und 4,75`,
+    epoche: `5. Jh. v. Chr.`,
+    original: `εἶναι δὲ καὶ ἄλλα σφι δένδρεα καρπὸν τοιόνδε τινὰ φέροντα, τὸν ἐπείτε ἂν ἐς τὠυτὸ συνέλθωσι κατὰ εἴλας καὶ πῦρ ἀνακαύσωνται, κύκλῳ περιιζομένους ἐπιβάλλειν ἐπὶ τὸ πῦρ, ὀσφραινομένους δὲ καταγιζομένου τοῦ καρποῦ τοῦ ἐπιβαλλομένου μεθύσκεσθαι τῇ ὀδμῇ κατά περ Ἕλληνας τῷ οἴνῳ, πλέω δὲ ἐπιβαλλομένου τοῦ καρποῦ μᾶλλον μεθύσκεσθαι, μέχρι οὗ ἐς ὄρχησίν τε ἀνίστασθαι καὶ ἐς ἀοιδὴν ἀπικνέεσθαι. (Historien 1,202)
+
+τῆς ὦν κανναβίδος τὸ σπέρμα ἐπεὰν λάβωσι οἱ Σκύθαι, ὑπὸ τοὺς πίλους ὑποδύνουσι, καὶ ἔπειτα ἐπιβάλλουσι τὸ σπέρμα ἐπὶ τοὺς διαφανέας λίθους τῷ πυρί· τὸ δὲ θυμιᾶται ἐπιβαλλόμενον καὶ ἀτμίδα παρέχεται τοσαύτην ὥστε Ἑλληνικὴ οὐδεμία ἄν μιν πυρίη ἀποκρατήσειε. οἱ δὲ Σκύθαι ἀγάμενοι τῇ πυρίῃ ὠρύονται. (Historien 4,75)`,
+    uebersetzung: `Noch andere Bäume soll es bei den Massageten (Sammelbegriff für die Volksstämme östlich des Kaspischen Meeres) geben, die eine eigene Art von Frucht tragen. Wenn sie nämlich in großer Schar zusammengekommen sind und ein Feuer angezündet haben, so setzen sie sich im Kreis um das Feuer herum und werfen von der Frucht in das Feuer. Und wenn sie dann an der brennenden Frucht riechen, so werden sie berauscht von dem Geruch, gerade so wie die Griechen vom Wein. Je mehr nun von der Frucht daraufgeworfen wird, desto berauschter werden sie, bis sie zum Tanzen sich erheben und zu singen anfangen. – Die Skythen (im Gebiet der heutigen Ukraine) nehmen den Samen von einem besonderen Hanf, kriechen damit unter eine Decke und legen die Samen auf durch Feuer glühende Steine. Die fangen dann an zu rauchen und verbreiten einen solchen Dampf, daß kein Schwitzbad darüber gehen dürfte. Die Skythen aber werden so froh dabei, daß sie laut heulen.`,
+    kommentar: `Aus dem Reiseheft zur dorischen Stadt Lato (Tag 3): In der Versammlungshalle der Männer sind noch Sitzreihen mit Armlehnen zu sehen, die aschenbecherähnliche Vertiefungen haben – „vielleicht war dies ein Rauchgiftraum". Herodots Berichte über die Rauschrituale der Massageten und Skythen zeigen, dass solche Praktiken der antiken Welt durchaus vertraut waren.`,
   },
   {
     titel: `Kreta – Wiege der Trojaner`,
@@ -796,10 +821,26 @@ centum urbes habitant magnas, uberrima regna.`,
     kommentar: `Im Archäologischen Museum von Heraklion (Tag 8) steht die „Mohngöttin" – ein Idol vom Ende des 2. Jahrtausends v. Chr., das Mohnkapseln auf dem Kopf trägt. Homers Nepenthes, das Helena in den Wein mischt, gilt als literarisches Echo solcher Rauschkulte im alten Kreta.`,
   },
   {
+    titel: `Die Belagerung von Chandax – Byzanz erobert Kreta zurück`,
+    autor: `Leon Diakonos, Geschichte 1,7C–8A und 2,14B–15A`,
+    epoche: `10. Jh. n. Chr.`,
+    original: ``,
+    uebersetzung: `In kurzer Zeit sind an die vierzigtausend Barbaren umgekommen, sie wurden von den Rhomäern (Byzantinern) regelrecht niedergemetzelt. Diesen glänzenden Sieg krönte unser Feldherr (Nikephoros Phokas) mit einer weiteren Heldentat. Er ordnete nämlich an, den feindlichen Gefallenen die Köpfe abzuschlagen, sie in die Tornister zu stecken und ins Lager zu schaffen. Er versprach einem jeden, der einen Kopf mitbringe, eine Silbermünze als Belohnung. In der Nacht kehrte Nikephoros wieder ins Lager zurück. Als am folgenden Tag die Sonne am Horizont aufging, befahl der Feldherr, einen Teil der abgeschlagenen Barbarenköpfe auf Speere aufzuspießen und diese vor der Palisade nebeneinander aufzupflanzen, die übrigen Köpfe aber mit Wurfmaschinen in die Stadt zu schleudern. Sobald die Kreter erkannten, daß es die Köpfe ihrer Landsleute und Verwandten waren, erfaßte sie Schauder, ihr Verstand wurde wirr. Man hörte Geheul von Männern und Wehklagen der Frauen – doch selbst jetzt wollten sie sich den Rhomäern nicht ergeben. – Im Frühjahr darauf machte Nikephoros Phokas einen erneuten Sturm auf die Stadt. Mitten im Angriff beugte sich ein unzüchtiges, dreistes Weib überaus mutwillig über die Schutzwehr hinaus und sprach mit allerlei Gaukeleien gewisse Zaubersprüche – die Kreter sollen sich nämlich sehr leicht Weissagungen und anderem unfrommem Betrug ergeben –, wobei sie den Feldherrn mit spöttischen Worten überschüttete. Da spannte ein erfahrener Bogenschütze seinen Bogen und schoß einen Pfeil gegen die Frau. Sie stürzte vom Turm und hauchte ihr Seelchen aus. So büßte sie mit diesem gräßlichen Ende ihren Übermut.`,
+    kommentar: `Aus dem Reiseheft zu Iraklion (Tag 8): Im 9. Jh. landeten arabische Seeräuber auf Kreta und bauten das Fort Rabd-el-Kandak an der Stelle des heutigen Iraklion. 960/961 belagerte der byzantinische General (und spätere Kaiser) Nikephoros Phokas die Araberstadt – die Wiedereroberung durch Byzanz ging mit unvorstellbaren Grausamkeiten einher. Der byzantinische Historiker Leon Diakonos schildert sie als Augenzeuge seiner Epoche.`,
+  },
+  {
+    titel: `Nächtliche Gassen Iraklions – Kazantzakis erinnert sich`,
+    autor: `Nikos Kazantzakis, Rechenschaft vor El Greco 2, 126/138/115/149`,
+    epoche: `20. Jh.`,
+    original: ``,
+    uebersetzung: `Ich lief des nachts in den engen Gassen Iraklions umher, und aus jeder Ecke, aus jedem Winkel sprangen die uralten Erinnerungen hervor. Ich begegnete mir als Kind, das ganz einsam umhergehen und mit den anderen Kindern nicht spielen wollte, dann als Jüngling, der mit den Freunden auf den venezianischen Mauern oberhalb des Meeres spazierenging, in der Abenddämmerung, während eine süße, salzige Brise vom Meer her Jasminduft aus den Gärten der Nachbarschaft herwehte. Und wenn der Mond perlmutten schimmerte, verfiel ich einem tiefen unwiderstehlichen Rausch; mit mir berauschten sich auch Türen und Dachziegel der Häuser – Steine, Bretter, Quellen, Glockentürme legten die Schwere der Körperlichkeit ab und ließen im Lichte des Mondes ihre nackte Seele glänzend leuchten. – Gibt es etwas, wahrer als die Wahrheit? Ja, das Märchen; das gibt der vergänglichen Welt unsterblichen Sinn. – Ich erlebte, ohne mich von der Stelle zu rühren, Odysseus' Taten und Leiden; er war losgefahren auf die große Reise ohne Rückkehr, seine kleine Insel, seine unbedeutende Frau und der gute, wohlgesinnte Sohn genügten ihm nicht mehr; er nahm endgültig Abschied und ging fort, ging über Sparta, raubte Helena, fuhr nach Kreta herab, steckte den verfallenen Palast von Knossos an, fühlte sich auch dort beengt, auch die große herrliche Insel genügte ihm nicht. Er fuhr weiter nach dem Süden …`,
+    kommentar: `Aus dem Reiseheft zu Iraklion (Tag 8): In seiner Autobiographie „Rechenschaft vor El Greco" beschwört Kazantzakis die nächtliche Magie seiner Heimatstadt – und macht Odysseus zum ruhelosen Wanderer, der selbst Knossos hinter sich lässt. Sein eigenes Epos „Odissia" (33.333 Verse) setzt genau dort an, wo Homer endet.`,
+  },
+  {
     titel: `„Ich erhoffe nichts, ich fürchte nichts: ich bin frei."`,
     autor: `Nikos Kazantzakis, Grabinschrift (Iraklion)`,
     epoche: `20. Jh.`,
-    original: `Δεν ελπίζω τίποτα. Δε φοβούμαι τίποτα. Είμαι λέφτερος.`,
+    original: ``,
     uebersetzung: `Ich erhoffe nichts. Ich fürchte nichts. Ich bin frei.`,
     kommentar: `Auf der Südbastion der venezianischen Stadtmauer von Iraklion liegt das Grab des 1957 gestorbenen kretischen Schriftstellers – Autor von „Alexis Sorbas" (vgl. unsere Musik-Sektion). Die Amtskirche verweigerte dem kirchenkritischen Dichter ein Grab auf dem Friedhof; auf dem Stein steht der von ihm selbst verfasste Grabspruch. Wir kommen am Tag 8 in Heraklion daran vorbei.`,
   },
