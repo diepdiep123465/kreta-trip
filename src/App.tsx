@@ -136,7 +136,7 @@ const days: DayData[] = [
       { name: 'Eileithyia-Höhle', desc: 'Antikes Höhlenheiligtum bei Amnisos – Kultstätte der Geburtsgöttin Eileithyia, schon bei Homer erwähnt', km: '20 km', image: `/kreta-trip/bilder/eileithyia.jpg` },
       { name: 'Lassithi-Hochebene', desc: 'Fahrt über die landschaftlich reizvolle Hochebene mit ihren Windmühlen und Obstgärten', km: '75 km', image: `/kreta-trip/bilder/Lassithi3.jpg` },
       { name: 'Zeus-Höhle', desc: 'Diktäische Grotte (Psychro) – der mythische Geburtsort des Zeus', image: `/kreta-trip/bilder/zeus-hoehle.jpg` },
-      { name: 'Ierapetra', desc: 'Südlichste Stadt Europas – Ankunft im Hotel Coriva Beach', km: '80 km' },
+      { name: 'Ierapetra', desc: 'Südlichste Stadt Europas – Ankunft im Hotel Coriva Beach', km: '80 km', image: `/kreta-trip/bilder/ierapetra.jpg` },
     ],
   },
   {
